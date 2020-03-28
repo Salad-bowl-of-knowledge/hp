@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .highlight .c { color: #998; font-style: italic; }
 
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
@@ -427,15 +428,19 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
-h1 { font-weight: bold; font-size: 2.75rem; padding: .5em .75em; background-color: #f6f6f6; border-bottom: 2px solid #ccc; }
+h1 { font-weight: bold; padding: .5em .75em; background-color: #f6f6f6; border-bottom: 2px solid #ccc; }
 
-h2 { font-weight: bold; font-size: 2.3rem; padding: 0rem 1rem; margin: 3rem 0 1rem 0; text-align: left; border-left: 6px solid #126ca7; border-bottom: 3px solid #126ca7; }
+h2 { font-weight: bold; padding: 0rem 1rem; margin: 3rem 0 1rem 0; text-align: left; border-left: 6px solid #126ca7; border-bottom: 3px solid #126ca7; }
 
-h3 { font-weight: bold; font-size: 1.7rem; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
+h3 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
 
-h4 { font-weight: bold; font-size: 1.65rem; padding: .25em 0 .25em 1em; }
+h4 { font-weight: bold; }
 
 .wrapper { max-width: calc(1200px - (30px * 2)); }
+
+.section-nav { padding: 0.5em 1em; padding-left: 30px; margin: 2em 0; font-weight: bold; color: #6091d3; /*文字色*/ background: #FFF; border: solid 3px #6091d3; /*線*/ border-radius: 10px; /*角の丸み*/ }
+
+.section-nav a { font-size: 16px; }
 
 .language-python + .language-plaintext { border-left: 1px solid grey; margin-left: 1rem !important; }
 
