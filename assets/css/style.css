@@ -427,6 +427,16 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
+h1 { font-weight: bold; font-size: 2.75rem; padding: .5em .75em; background-color: #f6f6f6; border-bottom: 2px solid #ccc; }
+
+h2 { font-weight: bold; font-size: 2.3rem; padding: 0rem 1rem; margin: 3rem 0 1rem 0; text-align: left; border-left: 6px solid #126ca7; border-bottom: 3px solid #126ca7; }
+
+h3 { font-weight: bold; font-size: 1.7rem; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
+
+h4 { font-weight: bold; font-size: 1.65rem; padding: .25em 0 .25em 1em; }
+
+.wrapper { max-width: calc(1200px - (30px * 2)); }
+
 .language-python + .language-plaintext { border-left: 1px solid grey; margin-left: 1rem !important; }
 
 [class^="language-"]:not(.language-plaintext) pre, [class^="language-"]:not(.language-plaintext) code { background-color: #323443 !important; color: #f8f8f2; }
