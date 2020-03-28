@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 統計学
-permalink: /statistics/
+permalink: /3-statistics/
 ---
 
 ## Pythonで統計処理
@@ -26,7 +26,7 @@ permalink: /statistics/
 
 [Pythonによる分位点回帰 (Quantile regression)](https://omedstu.jimdofree.com/2020/01/21/pythonによる分位点回帰-quantile-regression/)
 
- 
+
 
 ## 確率論
 
@@ -36,7 +36,7 @@ permalink: /statistics/
 
 [マルコフ連鎖 (Markov chain)](https://omedstu.jimdofree.com/2018/05/04/マルコフ連鎖-markov-chain/)
 
- 
+
 
 ### 確率分布
 
@@ -46,7 +46,7 @@ permalink: /statistics/
 
 [デルタ法 (Delta method)](https://omedstu.jimdofree.com/2018/09/16/デルタ法-delta-method/)
 
- 
+
 
 ## 統計的推定・検定
 
@@ -60,7 +60,7 @@ permalink: /statistics/
 
 [ケンドールの一致係数(Kendall's coefficient of concordance)](https://omedstu.jimdofree.com/2018/01/10/ケンドールの一致係数/)
 
- 
+
 
 ## 統計解析
 
@@ -76,7 +76,7 @@ permalink: /statistics/
 
 [対数オッズ比の分散](https://omedstu.jimdofree.com/2018/09/16/対数オッズ比の分散/)
 
- 
+
 
 ## データ分析
 
@@ -84,13 +84,13 @@ permalink: /statistics/
 
 [PythonによるPrincipal Curveの実装 (bendingアルゴリズム)](https://omedstu.jimdofree.com/2019/10/06/pythonによるprincipal-curveの実装-bendingアルゴリズム/)
 
- 
+
 
 ## 稲垣宣生 「数理統計学」演習問題の解答
 
 書いたものをあげます。
 
- 
+
 
 [演習問題1](https://omedstu.jimdofree.com/2017/11/12/演習問題1/)
 
@@ -120,7 +120,7 @@ permalink: /statistics/
 
 演習問題14
 
- 
+
 
 ## 統計検定
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 機械学習
-permalink: /machine-learning/
+permalink: /2-machine-learning/
 ---
 
 ## 最適化
@@ -49,5 +49,3 @@ permalink: /machine-learning/
 [OpenAI Gymでオリジナルの環境を作る](https://omedstu.jimdofree.com/2018/05/30/openai-gymでオリジナルの環境を作る/)
 
 [Kerasを用いたDQNでFlappyBirdを学習させる](https://omedstu.jimdofree.com/2018/06/01/kerasを用いたdqnでflappybirdを学習させる/)
-
- 

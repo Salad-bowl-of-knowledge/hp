@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About Us
-permalink: /about/
+permalink: /0-about/
 ---
 
 - 山拓：神経科学の研究をしています。  
