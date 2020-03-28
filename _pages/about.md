@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 - 山拓：神経科学の研究をしています。  
-Github : https://github.com/takyamamoto
+Github : <https://github.com/takyamamoto>
 - 凪：理学部（）と工学部（）がいるので人間科学部（）になってみる今日このごろ
 - ざっきぃ：ライフワークはクラシック音楽鑑賞。しばらく統計から離れて医学に集中します。
 - 優曇華院：数理物理学者．
