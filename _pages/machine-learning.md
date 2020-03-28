@@ -12,7 +12,7 @@ permalink: /machine-learning/
 
 [Boltzmann Generatorsの解説](https://omedstu.jimdofree.com/2019/09/25/boltzmann-generatorの解説/)
 
- 
+
 
 ## Deep Learning
 
@@ -22,13 +22,13 @@ permalink: /machine-learning/
 
 [ChainerでPredNetの実装をしてみた](https://omedstu.jimdofree.com/2018/08/05/chainerでprednetの実装をしてみた/)
 
- 
+
 
 ### TensorFlow
 
 [tensorflow-gpuとCUDAのバージョン](https://omedstu.jimdofree.com/2018/06/28/tensorflow-gpuとcudaのバージョン/)
 
- 
+
 
 ### Keras
 
@@ -42,7 +42,7 @@ permalink: /machine-learning/
 
 [KerasのconvLSTM2Dの使用例を見る](https://omedstu.jimdofree.com/2018/06/29/kerasのconvlstmの実装を見る/)
 
- 
+
 
 ### 強化学習
 
