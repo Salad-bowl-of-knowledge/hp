@@ -1,13 +1,12 @@
 ---
 layout: page
-title: About Me
+title: About Us
 permalink: /about/
 ---
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
-
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
-
-
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+- 山拓：神経科学の研究をしています。  
+Github : https://github.com/takyamamoto
+- 凪：理学部（）と工学部（）がいるので人間科学部（）になってみる今日このごろ
+- ざっきぃ：ライフワークはクラシック音楽鑑賞。しばらく統計から離れて医学に集中します。
+- 優曇華院：数理物理学者．
+- みこ：音楽バカ。医者になるのはフルートを吹くため

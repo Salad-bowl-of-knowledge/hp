@@ -1,11 +1,45 @@
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-@import "minima/fastpages-styles";   
+@import "minima/fastpages-styles";
 
 
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
+h1{
+  font-weight:bold;
+  font-size: 2.75rem;
+  padding: .5em .75em;
+  background-color: #f6f6f6;
+  border-bottom: 2px solid #ccc;
+}
+
+h2{
+	font-weight:bold;
+	font-size: 2.3rem;
+  padding: 0rem 1rem;
+  margin: 3rem 0 1rem 0;
+  text-align: left;
+  border-left: 6px solid #126ca7;
+  border-bottom: 3px solid #126ca7;
+}
+
+h3{
+	font-weight:bold;
+	font-size: 1.7rem;
+	padding: .25em 0 .25em .75em;
+  border-left: 6px solid #ccc;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1.65rem;
+	padding: .25em 0 .25em 1em;
+}
+
+.wrapper {
+  max-width: calc(1200px - (30px * 2));
+}
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
-@import "minima/fastpages-dracula-highlight"; 
+@import "minima/fastpages-dracula-highlight";
