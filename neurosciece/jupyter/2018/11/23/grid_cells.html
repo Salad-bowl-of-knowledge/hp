@@ -243,14 +243,10 @@ window.onload = wrap_img;
 <p>公開されているデータはMatLabのmatファイル形式です。しかし、<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html">scipy.io.loadmat</a>を用いることでpythonでデータの中身を取得することができます。</p>
 <p>使用するデータは以下の通りです。</p>
 <ul>
-<li>
-<p>10704-07070407_POS.mat</p>
-</li>
-<li>
-<p>10704-07070407_T2C3.mat</p>
-</li>
+<li><a href="https://github.com/Salad-bowl-of-knowledge/hp/blob/master/_notebooks/data/grid_cells_data/10704-07070407_POS.mat">10704-07070407_POS.mat</a></li>
+<li><a href="https://github.com/Salad-bowl-of-knowledge/hp/blob/master/_notebooks/data/grid_cells_data/10704-07070407_T2C3.mat">10704-07070407_T2C3.mat</a></li>
 </ul>
-<p>これらのファイルは<a href="https://archive.norstore.no/pages/public/datasetDetail.jsf?id=8F6BE356-3277-475C-87B1-C7A977632DA7">https://archive.norstore.no/pages/public/datasetDetail.jsf?id=8F6BE356-3277-475C-87B1-C7A977632DA7</a>からダウンロードできるファイルの一部です。ただし全体で2.23GBあるので、簡単に試したい場合は上記のリンクからダウンロードしてください。</p>
+<p>これらのファイルは<a href="https://archive.norstore.no/pages/public/datasetDetail.jsf?id=8F6BE356-3277-475C-87B1-C7A977632DA7">https://archive.norstore.no/pages/public/datasetDetail.jsf?id=8F6BE356-3277-475C-87B1-C7A977632DA7</a>からダウンロードできるファイルの一部です。ただし全体で2.23GBあるので、簡単に試したい場合は上記のリンクからダウンロードしてください。以下では<code>./data/grid_cells_data/</code>ディレクトリの下にファイルを置いています。</p>
 <p>データの末尾の"POS"と"T2C3"の意味について説明しておきます。まず、"POS"はpost, posx, posyを含む構造体でそれぞれ試行の経過時間、x座標, y座標です。座標は-50~50で記録されています。恐らく1m四方の正方形の部屋で、原点を部屋の中心としているのだと思います。"T2C3"はtがtetrode（テトロード電極）でcがcell（細胞）を意味します。後ろの数字は番号付けたものと思われます。</p>
 
 </div>
