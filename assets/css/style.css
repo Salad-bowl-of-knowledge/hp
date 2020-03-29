@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .highlight .c { color: #998; font-style: italic; }
 
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
@@ -451,9 +452,7 @@ h4 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #cc
 
 .wrapper { max-width: calc(1200px - (30px * 2)); }
 
-.section-nav { padding: 0.5em 1em; border: solid 3px #16a085; border-radius: 10px; }
-
-.toc-box .box-title { position: absolute; display: inline-block; top: -13px; left: 10px; padding: 0 9px; line-height: 1; font-size: 19px; background: #FFF; color: #16a085; font-weight: bold; }
+.section-nav { padding: 0.5em 1em; padding-left: 30px; margin: 2em 0; border: solid 3px #16a085; /*線*/ border-radius: 10px; /*角の丸み*/ }
 
 .section-nav a { font-size: 16px; }
 
