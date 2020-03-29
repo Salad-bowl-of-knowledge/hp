@@ -112,7 +112,7 @@ window.onload = wrap_img;
 </span></p>
 
     
-      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
       
         <a class="category-tags-link" href="/hp/categories/#markdown">markdown</a>
         
@@ -271,35 +271,48 @@ wget https://example.com/cat_photo1.png
   </ol>
 </div>
 
-  </div><a class="u-url" href="/hp/markdown/2020/01/14/test-markdown-post.html" hidden></a>
+  </div><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+<a class="u-url" href="/hp/markdown/2020/01/14/test-markdown-post.html" hidden></a>
 </article>
+
       </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/hp/"></data>
-
-  <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
-        <p class="feed-subscribe">
-          <a href="/hp/feed.xml">
-            <svg class="svg-icon orange">
-              <use xlink:href="/hp/assets/minima-social-icons.svg#rss"></use>
-            </svg><span>Subscribe</span>
-          </a>
-        </p>
-      </div>
-      <div class="footer-col">
-        <p></p>
-      </div>
-    </div>
-
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/hp/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/hp/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
-</div>
-
-  </div>
-
-</footer>
+    </main><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
 </body>
 
 </html>
