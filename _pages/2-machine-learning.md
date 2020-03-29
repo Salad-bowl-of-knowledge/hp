@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 機械学習
-permalink: /2-machine-learning/
+permalink: /machine-learning/
 ---
 
 ## 最適化

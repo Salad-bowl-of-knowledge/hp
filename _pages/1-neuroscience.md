@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 神経科学
-permalink: /1-neuroscience/
+permalink: /neuroscience/
 ---
 
 ## 神経表現の可視化

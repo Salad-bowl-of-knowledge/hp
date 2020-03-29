@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 統計学
-permalink: /3-statistics/
+permalink: /statistics/
 ---
 
 ## Pythonで統計処理
