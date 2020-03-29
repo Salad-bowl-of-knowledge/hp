@@ -25,59 +25,59 @@
 
   
   
-
-  
-      ,"page1": {
+      ,"page0": {
           "title": "About Us",
           "content": "山拓：神経科学の研究をしています。 Github : https://github.com/takyamamoto | 凪：理学部（）と工学部（）がいるので人間科学部（）になってみる今日このごろ | ざっきぃ：ライフワークはクラシック音楽鑑賞。しばらく統計から離れて医学に集中します。 | 優曇華院：数理物理学者． | みこ：音楽バカ。医者になるのはフルートを吹くため | .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/0-about/",
-          "relUrl": "/0-about/",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/about/",
+          "relUrl": "/about/",
           "date": ""
       }
       
   
 
+  
+      ,"page1": {
+          "title": "神経科学",
+          "content": "神経表現の可視化 . グリッド細胞の発火パターンをPythonで可視化する | スパイクトリガー平均・共分散の計算法 (Python) | ネコLGN細胞のスパイクトリガー平均による受容野解析 | Sorted plotの注意点 | . 解剖・形態学 . NibabelとMayaviによるMR画像の可視化 | 脳が対側支配をする進化的な利点は何か | . 色覚 . RGBからXYZ, LMS色空間への変換 | CIELUV色相環をPythonで描画する | . 強化学習 . Distributional Reinforcement Learningの仕組み | . 計算神経科学 . 古典的モデル . FitzHugh-Nagumoモデルをアニメーションで見る | Hodgkin-Huxleyモデルをアニメーションで見る | 心臓刺激伝導系の数理モデルのPythonでのシミュレーション | . ニューラルネットワークと神経科学 . 予測符号化 (predictive coding) とは何か | 掛け算のニューラルネットワークとベイズ推定 | 『人工神経回路で脳を理解する』論文まとめ | ニューラルネットワークにおける意味発達の数学理論 | Spiking Neural UnitをChainerで実装してみた | 物体認識のためのRecurrent CNNまとめ | FORCE法によるRecurrent Spiking Neural Networksの教師あり学習 | 人工神経回路による脳の理解はどこまで進んだか | . Computational neuroscience (Coursera) . Computational neuroscience : Week0 | Computational neuroscience : Week1 | Computational neuroscience : Week2 | Computational neuroscience : Week3 | .",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/neuroscience/",
+          "relUrl": "/neuroscience/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page2": {
+          "title": "機械学習",
+          "content": "最適化 . [線形計画法（シンプレックス法）入門　PDFファイル] . Hamiltonian Descent Methodsの実装についての解説 . Boltzmann Generatorsの解説 . Deep Learning . Chainer . Chainerで学習率のスケジューリングをする方法 . ChainerでPredNetの実装をしてみた . TensorFlow . tensorflow-gpuとCUDAのバージョン . Keras . Kerasにおける中間層の出力の可視化 . KerasによるGraph Convolutional Networks . Kerasにおいてforループでmodelを定義する . Keras examples directoryで実装例を見る . KerasのconvLSTM2Dの使用例を見る . 強化学習 . OpenAI Gymでオリジナルの環境を作る . Kerasを用いたDQNでFlappyBirdを学習させる .",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/machine-learning/",
+          "relUrl": "/machine-learning/",
+          "date": ""
+      }
+      
   
 
   
       ,"page3": {
-          "title": "機械学習",
-          "content": "最適化 . [線形計画法（シンプレックス法）入門　PDFファイル] . Hamiltonian Descent Methodsの実装についての解説 . Boltzmann Generatorsの解説 . Deep Learning . Chainer . Chainerで学習率のスケジューリングをする方法 . ChainerでPredNetの実装をしてみた . TensorFlow . tensorflow-gpuとCUDAのバージョン . Keras . Kerasにおける中間層の出力の可視化 . KerasによるGraph Convolutional Networks . Kerasにおいてforループでmodelを定義する . Keras examples directoryで実装例を見る . KerasのconvLSTM2Dの使用例を見る . 強化学習 . OpenAI Gymでオリジナルの環境を作る . Kerasを用いたDQNでFlappyBirdを学習させる .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/2-machine-learning/",
-          "relUrl": "/2-machine-learning/",
-          "date": ""
-      }
-      
-  
-
-  
-      ,"page4": {
-          "title": "神経科学",
-          "content": "神経表現の可視化 . グリッド細胞の発火パターンをPythonで可視化する | スパイクトリガー平均・共分散の計算法 (Python) | ネコLGN細胞のスパイクトリガー平均による受容野解析 | Sorted plotの注意点 | . 解剖・形態学 . NibabelとMayaviによるMR画像の可視化 | 脳が対側支配をする進化的な利点は何か | . 色覚 . RGBからXYZ, LMS色空間への変換 | CIELUV色相環をPythonで描画する | . 強化学習 . Distributional Reinforcement Learningの仕組み | . 計算神経科学 . 古典的モデル . FitzHugh-Nagumoモデルをアニメーションで見る | Hodgkin-Huxleyモデルをアニメーションで見る | 心臓刺激伝導系の数理モデルのPythonでのシミュレーション | . ニューラルネットワークと神経科学 . 予測符号化 (predictive coding) とは何か | 掛け算のニューラルネットワークとベイズ推定 | 『人工神経回路で脳を理解する』論文まとめ | ニューラルネットワークにおける意味発達の数学理論 | Spiking Neural UnitをChainerで実装してみた | 物体認識のためのRecurrent CNNまとめ | FORCE法によるRecurrent Spiking Neural Networksの教師あり学習 | 人工神経回路による脳の理解はどこまで進んだか | . Computational neuroscience (Coursera) . Computational neuroscience : Week0 | Computational neuroscience : Week1 | Computational neuroscience : Week2 | Computational neuroscience : Week3 | .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/1-neuroscience/",
-          "relUrl": "/1-neuroscience/",
-          "date": ""
-      }
-      
-  
-
-  
-  
-
-  
-
-  
-  
-
-  
-      ,"page8": {
           "title": "統計学",
           "content": "Pythonで統計処理 . 分散共分散行列を相関行列/偏相関係数に変換 . Graph Lassoによる変数間の関係のグラフ化 . Pythonで線形回帰モデルの計算（１） . Pythonで線形回帰モデルの計算（２） . Pythonで正規分布の区間推定 . PythonでGaussian Fitting . scipyによる1次元混合ガウス回帰 . matplotlibのみで線形回帰の信頼区間を描画する . matplotlibで棒グラフ間の有意差の描画をする . Pythonによる分位点回帰 (Quantile regression) . 確率論 . 確率モデル . 確率過程とランダムウォーク . マルコフ連鎖 (Markov chain) . 確率分布 . q分位数と中央値 . 確率変数の変換 . デルタ法 (Delta method) . 統計的推定・検定 . 比率の区間推定 . ピアソンのカイ二乗検定 (Pearson chi-squared test) . スチューデントのt検定 (Student t-test) . ノンパラメトリック検定 . ケンドールの一致係数(Kendall’s coefficient of concordance) . 統計解析 . 回帰分析 . 重回帰分析① . 重回帰分析② . 正規方程式 . ロジスティック回帰分析 . 対数オッズ比の分散 . データ分析 . Principle Curve 入門 . PythonによるPrincipal Curveの実装 (bendingアルゴリズム) . 稲垣宣生 「数理統計学」演習問題の解答 . 書いたものをあげます。 . 演習問題1 . 演習問題2 . 演習問題3 . 演習問題4 . 演習問題5 . 演習問題6 . 演習問題7 . 演習問題8 . 演習問題9 . 演習問題10 . 演習問題11 . 演習問題12 . 演習問題13 . 演習問題14 . 統計検定 . 統計検定1級の対策 . 統計検定2級のフィードバック（前編） . 統計検定2級のフィードバック（後編） .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/3-statistics/",
-          "relUrl": "/3-statistics/",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/statistics/",
+          "relUrl": "/statistics/",
           "date": ""
       }
       
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
   
 
   
