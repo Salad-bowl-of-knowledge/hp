@@ -428,13 +428,15 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
-h1 { font-size: 2rem; font-weight: bold; padding: .5em .75em; background-color: #f6f6f6; border-bottom: 2px solid #ccc; }
+h1 { font-size: 2rem !important; font-weight: bold; padding: .5em .75em; background-color: #f6f6f6; border-bottom: 2px solid #ccc; }
 
-h2 { font-size: 1.75rem; font-weight: bold; padding: 0rem 1rem; margin: 3rem 0 1rem 0; text-align: left; border-left: 6px solid #126ca7; border-bottom: 3px solid #126ca7; }
+h2 { font-size: 1.75rem !important; font-weight: bold; padding: 0rem 1rem; margin: 3rem 0 1rem 0; text-align: left; border-left: 6px solid #ccc; border-bottom: 3px solid #ccc; }
 
-h3 { font-size: 1.5rem; font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
+h3 { color: #010101; border-left: solid 0px !important; border-bottom: solid 3px #C6CEC7; padding-left: 0 !important; position: relative; }
 
-h4 { font-size: 1.5rem; font-weight: bold; }
+h3:after { position: absolute; content: " "; display: block; border-bottom: solid 3px #1aac81; bottom: -3px; width: 20%; }
+
+h4 { font-size: 1.5rem !important; font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
 
 .wrapper { max-width: calc(1200px - (30px * 2)); }
 
@@ -442,7 +444,7 @@ h4 { font-size: 1.5rem; font-weight: bold; }
 
 .section-nav a { font-size: 16px; }
 
-.site-header { background-color: #2c3e50; border-bottom: solid 10px #16a085; color: #FFF; position: -webkit-sticky; position: sticky; z-index: 999; top: 0; }
+.site-header { background-color: #2c3e50; border-bottom: solid 10px #16a085; color: #FFF; position: -webkit-sticky !important; position: sticky !important; z-index: 999 !important; top: 0 !important; }
 
 .site-title { color: #FFF !important; }
 
