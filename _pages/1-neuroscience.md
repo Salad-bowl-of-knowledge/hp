@@ -6,7 +6,7 @@ permalink: /neuroscience/
 
 ## 神経表現の可視化
 
-- [グリッド細胞の発火パターンをPythonで可視化する](https://omedstu.jimdofree.com/2018/11/23/グリッド細胞の発火パターンをpythonで可視化する/)
+- [グリッド細胞の発火パターンをPythonで可視化する](https://salad-bowl-of-knowledge.github.io/hp/neurosciece/jupyter/2018/11/23/grid_cells.html)
 - [スパイクトリガー平均・共分散の計算法 (Python)](https://omedstu.jimdofree.com/2018/07/08/スパイクトリガー平均-共分散の計算法-python/)
 - [ネコLGN細胞のスパイクトリガー平均による受容野解析](https://omedstu.jimdofree.com/2019/05/31/ネコlgn細胞のスパイクトリガー平均による受容野解析/)
 - [Sorted plotの注意点](https://omedstu.jimdofree.com/2019/07/16/sorted-plotの注意点/)
