@@ -4,4 +4,4 @@ title: Computer
 permalink: /computer/
 ---
 
-
+Computer
