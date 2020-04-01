@@ -462,10 +462,6 @@ h4 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #cc
 
 .page-link { color: #FFF !important; }
 
-.site-nav { background: #2c3e50; }
-
-.site-nav .menu-icon > svg path { fill: #FFF; }
-
 body { font-size: 16px !important; }
 
 .highlight pre, .highlight code { background: #364549 !important; color: #f8f8f2; }
@@ -586,8 +582,10 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .highlight .gd { color: #ff5555; }
 
+.site-nav .menu-icon > svg path { fill: #FFF; }
+
 /* top menu*/
-.site-nav { position: absolute; top: 9px; border-radius: 5px; text-align: right; }
+.site-nav { position: relative; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: right; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: 1000px; }
 
 .site-nav .nav-trigger { display: none; }
 
@@ -599,7 +597,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .site-nav input:checked ~ .trigger { display: block; padding-bottom: 5px; }
 
-.site-nav .page-link { display: block; padding: 5px 10px; margin-left: 20px; }
+.site-nav .page-link { display: inline-block; padding: 5px 10px; margin-left: 20px; }
 
 .site-nav .page-link:not(:last-child) { margin-right: 0; }
 
