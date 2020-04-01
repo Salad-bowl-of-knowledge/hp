@@ -450,7 +450,7 @@ h3:after { position: absolute; content: " "; display: block; border-bottom: soli
 
 h4 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
 
-.wrapper { max-width: calc(1200px - (30px * 2)); }
+.wrapper { position: relative !important; max-width: calc(1200px - (30px * 2)); }
 
 .section-nav { padding: 0.5em 1em; padding-left: 30px; margin: 2em 0; border: solid 3px #16a085; /*線*/ border-radius: 10px; /*角の丸み*/ }
 
@@ -585,7 +585,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 .site-nav .menu-icon > svg path { fill: #FFF; }
 
 /* top menu*/
-.site-nav { position: relative; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: right; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: 1000px; }
+.site-nav { position: absolute; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: right; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: 1000px; }
 
 .site-nav .nav-trigger { display: none; }
 
