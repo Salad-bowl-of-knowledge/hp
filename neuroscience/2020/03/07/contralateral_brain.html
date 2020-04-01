@@ -338,6 +338,21 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
 <a class="u-url" href="/hp/neuroscience/2020/03/07/contralateral_brain.html" hidden></a>
 </article>
 
@@ -359,6 +374,21 @@ $(document).ready(function() {
             $('body, html').animate({ scrollTop: 0 }, 500);
                 return false;
     });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
 });
 </script>
 </body>
