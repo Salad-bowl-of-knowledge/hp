@@ -591,9 +591,9 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .site-nav .nav-trigger { display: none; }
 
-.site-nav .menu-icon { float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; }
+.site-nav .menu-icon { display: inline !important; float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; }
 
-.site-nav label[for="nav-trigger"] { display: block; float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; }
+.site-nav label[for="nav-trigger"] { display: block !important; float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; }
 
 .site-nav input ~ .trigger { clear: both; display: none; }
 
