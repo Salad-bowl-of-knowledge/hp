@@ -70,28 +70,6 @@
 
   
       ,"page2": {
-          "title": "読書",
-          "content": "読書 .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/reading/",
-          "relUrl": "/reading/",
-          "date": ""
-      }
-      
-  
-
-  
-      ,"page3": {
-          "title": "エッセイ",
-          "content": "エッセイ .",
-          "url": "https://salad-bowl-of-knowledge.github.io/hp/essay/",
-          "relUrl": "/essay/",
-          "date": ""
-      }
-      
-  
-
-  
-      ,"page4": {
           "title": "機械学習",
           "content": "最適化 . [線形計画法（シンプレックス法）入門　PDFファイル] . Hamiltonian Descent Methodsの実装についての解説 . Boltzmann Generatorsの解説 . Deep Learning . Chainer . Chainerで学習率のスケジューリングをする方法 . ChainerでPredNetの実装をしてみた . TensorFlow . tensorflow-gpuとCUDAのバージョン . Keras . Kerasにおける中間層の出力の可視化 . KerasによるGraph Convolutional Networks . Kerasにおいてforループでmodelを定義する . Keras examples directoryで実装例を見る . KerasのconvLSTM2Dの使用例を見る . 強化学習 . OpenAI Gymでオリジナルの環境を作る . Kerasを用いたDQNでFlappyBirdを学習させる .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/machine-learning/",
@@ -102,7 +80,7 @@
   
 
   
-      ,"page5": {
+      ,"page3": {
           "title": "統計学",
           "content": "Pythonで統計処理 . 分散共分散行列を相関行列/偏相関係数に変換 . Graph Lassoによる変数間の関係のグラフ化 . Pythonで線形回帰モデルの計算（１） . Pythonで線形回帰モデルの計算（２） . Pythonで正規分布の区間推定 . PythonでGaussian Fitting . scipyによる1次元混合ガウス回帰 . matplotlibのみで線形回帰の信頼区間を描画する . matplotlibで棒グラフ間の有意差の描画をする . Pythonによる分位点回帰 (Quantile regression) . 確率論 . 確率モデル . 確率過程とランダムウォーク . マルコフ連鎖 (Markov chain) . 確率分布 . q分位数と中央値 . 確率変数の変換 . デルタ法 (Delta method) . 統計的推定・検定 . 比率の区間推定 . ピアソンのカイ二乗検定 (Pearson chi-squared test) . スチューデントのt検定 (Student t-test) . ノンパラメトリック検定 . ケンドールの一致係数(Kendall’s coefficient of concordance) . 統計解析 . 回帰分析 . 重回帰分析① . 重回帰分析② . 正規方程式 . ロジスティック回帰分析 . 対数オッズ比の分散 . データ分析 . Principle Curve 入門 . PythonによるPrincipal Curveの実装 (bendingアルゴリズム) . 稲垣宣生 「数理統計学」演習問題の解答 . 書いたものをあげます。 . 演習問題1 . 演習問題2 . 演習問題3 . 演習問題4 . 演習問題5 . 演習問題6 . 演習問題7 . 演習問題8 . 演習問題9 . 演習問題10 . 演習問題11 . 演習問題12 . 演習問題13 . 演習問題14 . 統計検定 . 統計検定1級の対策 . 統計検定2級のフィードバック（前編） . 統計検定2級のフィードバック（後編） .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/statistics/",
@@ -113,7 +91,7 @@
   
 
   
-      ,"page6": {
+      ,"page4": {
           "title": "医学",
           "content": "医学 .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/medicine/",
@@ -124,9 +102,7 @@
   
 
   
-
-  
-      ,"page8": {
+      ,"page5": {
           "title": "化学",
           "content": "化学 .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/chemistry/",
@@ -137,7 +113,7 @@
   
 
   
-      ,"page9": {
+      ,"page6": {
           "title": "物理学",
           "content": "物理学 .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/physics/",
@@ -148,7 +124,7 @@
   
 
   
-      ,"page10": {
+      ,"page7": {
           "title": "数学",
           "content": "数学 .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/mathematics/",
@@ -159,7 +135,7 @@
   
 
   
-      ,"page11": {
+      ,"page8": {
           "title": "Programming",
           "content": "Programming .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/programming/",
@@ -170,7 +146,7 @@
   
 
   
-      ,"page12": {
+      ,"page9": {
           "title": "Computer",
           "content": "Computer .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/computer/",
@@ -178,6 +154,30 @@
           "date": ""
       }
       
+  
+
+  
+      ,"page10": {
+          "title": "読書",
+          "content": "読書 .",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/reading/",
+          "relUrl": "/reading/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page11": {
+          "title": "エッセイ",
+          "content": "エッセイ .",
+          "url": "https://salad-bowl-of-knowledge.github.io/hp/essay/",
+          "relUrl": "/essay/",
+          "date": ""
+      }
+      
+  
+
   
 
   
