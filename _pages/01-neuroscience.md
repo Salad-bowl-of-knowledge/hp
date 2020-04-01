@@ -13,7 +13,7 @@ permalink: /neuroscience/
 
 ## 解剖・形態学
 - [NibabelとMayaviによるMR画像の可視化](https://omedstu.jimdofree.com/2020/01/15/nibabelとmayaviによるmr画像の可視化/)
-- [脳が対側支配をする進化的な利点は何か](https://omedstu.jimdofree.com/2020/03/07/脳が対側支配をする進化的な利点は何か/)
+- [脳が対側支配をする進化的な利点は何か](https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain.html)
 
 ## 色覚
 - [RGBからXYZ, LMS色空間への変換](https://omedstu.jimdofree.com/2019/08/25/rgbからxyz-lms色空間への変換/)
