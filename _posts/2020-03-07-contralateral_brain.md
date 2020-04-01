@@ -39,13 +39,13 @@ Quoraの記事で紹介されている論文を足掛かりに文献を調べた
 
 さて、Cajalの視交叉についての仮説は、脳内での外界の連続性を維持するためには交叉が必要である、ということです。次図は前方に眼があり視交叉が無い生物が矢を見た場合の図です。網膜で外界が反転されるため、交叉が無いと矢尻と矢羽が繋がった像となります。そのため、2つの視野像から脳内で外界を復元するには像を交叉させる必要があります。
 
-![img1]({{ site.baseurl }}/images/contralateral_brain_figs/img1.png)
+![img1](images/contralateral_brain_figs/img1.png)
 
 (Ramón y Cajal. 1898; 図の間接的な引用元は [Ramón Y Cajal. *Histología del sistema nervioso del hombre y de los vertebrados. Tomo II. Segunda parte*. 2012](https://digital.csic.es/bitstream/10261/158606/1/Capítulo32-T2-2ª parte.pdf))
 
 次図の上部は、前述の通り視交叉により外界が正しく復元されることを示しています。また、完全な交叉ではない半交叉であることが立体視に重要であることも指摘していました。Cajalはさらに説を広げ、運動路と感覚路に交叉がある理由も視交叉と関連付けました。これが対側支配におけるCajalの仮説です。次図中央部では連続した外界が復元されていますが、このままでは像が反転しています。Cajalは視野の右側を体の右側と、視野の左側を体の左側と一致させるために、運動路と体性感覚路を交叉させる必要があると主張しました。
 
-![img2]({{ site.baseurl }}/images/contralateral_brain_figs/img2.png)
+![img2](images/contralateral_brain_figs/img2.png)
 
 (Ramón y Cajal. 1898)
 
@@ -58,7 +58,7 @@ Quoraの記事で紹介されている論文を足掛かりに文献を調べた
 
 ねじれ仮説には([Kinsbourne, *Neuropsychology*. 2013](https://www.semanticscholar.org/paper/Somatic-twist:-a-model-for-the-evolution-of-Kinsbourne/fe2d36ddc63af9f26aa22ec1bbce115f7aa35387))の**体性ねじれ説 (somatic twist hypothesis)** と、([de Lussanet & Osse, *Animal Biol*. 2012](https://arxiv.org/abs/1003.1872))の**軸ねじれ説 (axial twist hypothesis)** の2つが提案されています。まず、Kinsbourneの体性ねじれ説は、180度の回転が一回起こった、というものです。一方で、de LussanetとOsseの軸ねじれ説は2つの90度の回転が起こった、というものです。両者の差異は分かりづらいですが、de LussanetとOsseによって解説されています ([de Lussanet & Osse, *Neuropsychology*. 2015](https://peerj.com/preprints/432.pdf))。
 
-![img3]({{ site.baseurl }}/images/contralateral_brain_figs/img3.png)
+![img3](images/contralateral_brain_figs/img3.png)
 
 (de Lussanet & Osse, *Neuropsychology*. 2015, Fig.1)
 
@@ -72,7 +72,7 @@ AはKinsbourneの体性ねじれ説を示しており、前口動物(Protostome)
 
 危険な刺激を知覚し回避行動を取るために体の構造の進化に伴って交叉が必要となった、というのが**回避行動仮説 (avoidance behavior hypothesis)** です ([Vulliemoz et al., *Lancet Neurol*. 2005](https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(05)00990-7/fulltext))。
 
-![img4]({{ site.baseurl }}/images/contralateral_brain_figs/img4.png)
+![img4](images/contralateral_brain_figs/img4.png)
 
 (Vulliemoz et al., *Lancet Neurol*. 2005, Fig.2)
 
