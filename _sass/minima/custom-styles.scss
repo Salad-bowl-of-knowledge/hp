@@ -207,6 +207,7 @@ code {
   }
 
   .menu-icon {
+    display: inline!important;
     float: right;
     width: 36px;
     height: 26px;
@@ -216,7 +217,7 @@ code {
   }
 
   label[for="nav-trigger"] {
-    display: block;
+    display: block!important;
     float: right;
     width: 36px;
     height: 36px;
