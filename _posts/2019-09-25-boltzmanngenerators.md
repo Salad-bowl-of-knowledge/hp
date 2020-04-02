@@ -76,7 +76,6 @@ $$
     &= p_Z(\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x};\theta)\\
     p_Z(\boldsymbol{z};\theta) &= p_X(\boldsymbol{x})\mid\frac{\partial\boldsymbol{x}}{\partial{z}} \mid\\
     &= p_X(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))R_{zx}(\boldsymbol{z};\theta)
-\label{pXpZ_Jacobian}
 \end{aligned}
 $$
 
@@ -121,8 +120,9 @@ training by energyでは，
 1. latent spaceから正規分布$p_Z(\boldsymbol{z})$に従って適当に$\boldsymbol{z}$を選ぶ
 2. $\boldsymbol{F} _ {zx}:\boldsymbol{z}\mapsto\boldsymbol{x}$を使って$p_X(x)$を計算する
 3. 生成された確率分布$p_X(x)$と目標のBoltzmann分布$e^{-u(\boldsymbol{x})}$との差をロス
-    $$\begin{aligned}
-    J_\text{KL}=E_{\boldsymbol{z}}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z}))-\log R_{zx}(\boldsymbol{z})]\label{training_energy}
+    $$
+    \begin{aligned}
+    J_\text{KL}=E_{\boldsymbol{z}}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z}))-\log R_{zx}(\boldsymbol{z})]
     \end{aligned}$$
     で評価する．
 
