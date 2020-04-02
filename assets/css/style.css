@@ -584,16 +584,14 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .site-nav .menu-icon > svg path { fill: #FFF; }
 
-.site-nav { border: 1px solid #FFF !important; background: #2c3e50; }
-
 /* top menu*/
 .site-nav { position: absolute; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: left; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: 1000px; }
 
 .site-nav .nav-trigger { display: none; }
 
-.site-nav .menu-icon { float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; }
+.site-nav .menu-icon { display: inline !important; float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; }
 
-.site-nav label[for="nav-trigger"] { float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; }
+.site-nav label[for="nav-trigger"] { display: block !important; float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; }
 
 .site-nav input ~ .trigger { clear: both; display: none; }
 
