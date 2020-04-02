@@ -192,12 +192,6 @@ code {
     fill: #FFF;
 }
 
-.site-nav {
-  border: 1px solid #FFF!important;
-  background: #2c3e50;
-}
-
-
 /* top menu*/
 .site-nav {
   position: absolute;
@@ -215,6 +209,7 @@ code {
   }
 
   .menu-icon {
+    display: inline!important;
     float: right;
     width: 36px;
     height: 26px;
@@ -224,6 +219,7 @@ code {
   }
 
   label[for="nav-trigger"] {
+    display: block!important;
     float: right;
     width: 36px;
     height: 36px;
