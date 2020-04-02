@@ -593,7 +593,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .menupc > ul { list-style: none; }
 
-.menupc > li { float: left; width: 25%; /* グローバルナビ4つの場合 */ height: 50px; line-height: 50px; background: #1d2113; }
+.menupc > li { float: left; width: 25%; /* グローバルナビ4つの場合 */ height: 50px; line-height: 50px; background: #2c3e50; }
 
 .menupc > li a { display: block; color: #fff; }
 
