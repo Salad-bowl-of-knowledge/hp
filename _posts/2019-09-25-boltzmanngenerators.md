@@ -47,7 +47,7 @@ $$
 \end{aligned}
 $$
 
-もちろん，$\boldsymbol{F}_{xz}=\boldsymbol{F}_{zx}{}^{-1}$．これらの変換のJacobi行列を求めれば，
+もちろん， $\boldsymbol{F}_{xz}=\boldsymbol{F}_{zx}{}^{-1}$ ．これらの変換のJacobi行列を求めれば，
 
 $$
 \begin{aligned}
