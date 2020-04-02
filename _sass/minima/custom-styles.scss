@@ -264,6 +264,9 @@ code {
     margin: 0 auto;
 }
 
+.menupc > ul{
+  list-style: none;
+}
 .menupc > li {
     float: left;
     width: 25%; /* グローバルナビ4つの場合 */
