@@ -3,6 +3,7 @@ toc: true
 layout: post
 description:
 author: 山拓
+comments: true
 categories: [neuroscience]
 title: 脳が対側支配をする進化的な利点は何か
 ---
