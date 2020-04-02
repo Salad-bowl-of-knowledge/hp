@@ -197,10 +197,8 @@ code {
   background: #2c3e50;
 }
 
-/*
-/* top menu*/
-/*
 
+/* top menu*/
 .site-nav {
   position: absolute;
   top: 0px;
@@ -253,102 +251,4 @@ code {
     }
     margin-left: 20px;
   }
-}
-*/
-@media screen and (min-width: 600px){
-.site-nav {
-    display: none;
-}
-
-.menupc {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.menupc > ul{
-  list-style: none!important;
-}
-.menupc > li {
-    float: left;
-    width: 25%; /* グローバルナビ4つの場合 */
-    height: 50px;
-    line-height: 50px;
-    background: #2c3e50;
-}
-
-.menupc > li a {
-    display: block;
-    color: #fff;
-}
-
-.menupc > li a:hover {
-    color: #999;
-}
-
-ul.menu__second-level {
-    visibility: hidden;
-    opacity: 0;
-    z-index: 1;
-}
-
-.menupc > li:hover {
-    background: #072A24;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-}
-
-.menu__second-level li {
-    border-top: 1px solid #111;
-}
-
-/* 下矢印 */
-.init-bottom:after {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin: 0 0 0 15px;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-/* floatクリア */
-.menupc:before,
-.menupc:after {
-    content: " ";
-    display: table;
-}
-
-.menupc:after {
-    clear: both;
-}
-
-.menupc {
-    *zoom: 1;
-}
-
-.menu > li.menu__mega {
-    position: relative;
-}
-
-li.menu__mega ul.menu__second-level {
-    position: absolute;
-    top: 40px;
-    width: 100%;
-    background: #072A24;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-}
-
-li.menu__mega:hover ul.menu__second-level {
-    top: 50px;
-    visibility: visible;
-    opacity: 1;
-}
 }
