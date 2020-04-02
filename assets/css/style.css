@@ -585,7 +585,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 .site-nav .menu-icon > svg path { fill: #FFF; }
 
 /* top menu*/
-.site-nav { position: absolute; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: left; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; }
+.site-nav { position: absolute; top: 0px; border: 1px solid #FFF !important; border-radius: 5px; text-align: left; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: none; }
 
 .site-nav .nav-trigger { display: none; }
 
