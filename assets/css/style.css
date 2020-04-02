@@ -591,6 +591,8 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 /* .site-nav { position: absolute; top: 0px; border: 1px solid #FFF!important; border-radius: 5px; text-align: left; background: #2c3e50; margin: 9px 10px 10px 10px; opacity: 0.9; max-width: 1000px; .nav-trigger { display: none; } .menu-icon { float: right; width: 36px; height: 26px; line-height: 0; padding-top: 10px; text-align: center; } label[for="nav-trigger"] { float: right; width: 36px; height: 36px; z-index: 2; cursor: pointer; } input ~ .trigger { clear: both; display: none; } input:checked ~ .trigger { display: block; padding-bottom: 5px; } .page-link { display: inline-block; padding: 5px 10px; // Gaps between nav items, but not on the last one &:not(:last-child) { margin-right: 0; } margin-left: 20px; } } */
 .menupc { position: relative; width: 100%; height: 50px; max-width: 1000px; margin: 0 auto; }
 
+.menupc > ul { list-style: none; }
+
 .menupc > li { float: left; width: 25%; /* グローバルナビ4つの場合 */ height: 50px; line-height: 50px; background: #1d2113; }
 
 .menupc > li a { display: block; color: #fff; }
