@@ -255,6 +255,11 @@ code {
   }
 }
 */
+@media screen and (min-width: 600px){
+.site-nav {
+    width: 500px;
+    text-align: center;
+}
 
 .menupc {
     position: relative;
@@ -265,7 +270,7 @@ code {
 }
 
 .menupc > ul{
-  list-style: none;
+  list-style: none!important;
 }
 .menupc > li {
     float: left;
@@ -373,4 +378,5 @@ li.menu__mega ul.menu__second-level > li {
 
 li.menu__mega ul.menu__second-level > li:nth-child(3n+2) {
     margin: 0 1%;
+}
 }
