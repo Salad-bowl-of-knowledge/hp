@@ -31,7 +31,7 @@ $$
 
 $$
 \begin{aligned}
-  w(\boldsymbol{x})=\frac{e^{-u(\boldsymbol{x})}}{p_X(\boldsymbol{x})}\label{re-weighting}
+  w(\boldsymbol{x})=\frac{e^{-u(\boldsymbol{x})}}{p_X(\boldsymbol{x})}
 \end{aligned}
 $$
 
@@ -87,8 +87,8 @@ $F_{zx}$を直接求めることは困難なので，アフィンカップリン
 
 $$
 \begin{aligned}
-  & \boldsymbol{f}_{xz}(\boldsymbol{x_1},\boldsymbol{x_2})\\
-  &\quad:
+  & \boldsymbol{f}_{xz}(\boldsymbol{x_1},\boldsymbol{x_2})
+  \quad:
   \begin{cases}
     \boldsymbol{z}_1 = \boldsymbol{x}_1\\
     \boldsymbol{z}_2 = \boldsymbol{x}_2\odot\exp(\boldsymbol{S}(\boldsymbol{x}_1;\theta))+\boldsymbol{T}(\boldsymbol{x}_1;\theta)
@@ -101,8 +101,8 @@ $$
 
 $$
 \begin{aligned}
-  & \boldsymbol{f}_{zx}(\boldsymbol{z_1},\boldsymbol{z_2})\\
-  &\quad:
+  & \boldsymbol{f}_{zx}(\boldsymbol{z_1},\boldsymbol{z_2})
+  \quad:
   \begin{cases}
     \boldsymbol{x}_1 = \boldsymbol{z}_1\\
     \boldsymbol{x}_2 = (\boldsymbol{z}_2-\boldsymbol{T}(\boldsymbol{x_1};\theta))\odot\exp(-\boldsymbol{S}(\boldsymbol{z}_1;\theta))
@@ -135,7 +135,7 @@ training by exampleでは，
 
 $$
 \begin{aligned}
-    J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F}_{xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]\label{training_example}
+    J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F}_{xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]\tag{1}
 \end{aligned}
 $$
 
@@ -321,7 +321,7 @@ $$
 \end{aligned}
 $$
 
-を考える．これを最小にすることは，サンプル$\rho(\boldsymbol{x})$が正規分布で選ばれる確率が最大になることに対応する．通常は$\sigma=1$なので，$\eqref{training_example}$が得られる．
+を考える．これを最小にすることは，サンプル$\rho(\boldsymbol{x})$が正規分布で選ばれる確率が最大になることに対応する．通常は$\sigma=1$なので，$(1)$が得られる．
 
 ## RCロス関数
 configration spaceで定義されたreaction cordinate $r(\boldsymbol{x})$を使う場合は，次のRCロス関数を考える：
