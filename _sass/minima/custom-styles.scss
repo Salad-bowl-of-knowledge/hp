@@ -296,16 +296,6 @@ ul.menu__second-level {
     z-index: 1;
 }
 
-ul.menu__third-level {
-    visibility: hidden;
-    opacity: 0;
-}
-
-ul.menu__fourth-level {
-    visibility: hidden;
-    opacity: 0;
-}
-
 .menupc > li:hover {
     background: #072A24;
     -webkit-transition: all .5s;
@@ -314,14 +304,6 @@ ul.menu__fourth-level {
 
 .menu__second-level li {
     border-top: 1px solid #111;
-}
-
-.menu__third-level li {
-    border-top: 1px solid #111;
-}
-
-.menu__second-level li a:hover {
-    background: #111;
 }
 
 /* 下矢印 */
@@ -353,13 +335,14 @@ ul.menu__fourth-level {
     *zoom: 1;
 }
 
+.menu > li.menu__mega {
+    position: relative;
+}
+
 li.menu__mega ul.menu__second-level {
     position: absolute;
     top: 40px;
-    left: 0;
-    box-sizing: border-box;
     width: 100%;
-    padding: 20px 2%;
     background: #072A24;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
@@ -369,15 +352,5 @@ li.menu__mega:hover ul.menu__second-level {
     top: 50px;
     visibility: visible;
     opacity: 1;
-}
-
-li.menu__mega ul.menu__second-level > li {
-    float: left;
-    width: 32%;
-    border: none;
-}
-
-li.menu__mega ul.menu__second-level > li:nth-child(3n+2) {
-    margin: 0 1%;
 }
 }
