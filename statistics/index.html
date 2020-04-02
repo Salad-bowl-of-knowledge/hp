@@ -213,6 +213,22 @@ $(function(){
   });
 });
 </script>
+
+<script>
+$(function(){
+  $('.page-link').wrapAll('<ul class="menupc">');
+  var i = 1;
+  $('.page-link').each(function(){
+      $(this).addClass('page' + i);
+      i++;
+  });
+
+  $('.page-link' + '.page1, .page13, .page14').wrap('<li class="menu__mega">');
+  $(".menupc a").slice(1, 12).wrapAll("<ul class='menu__second-level'></ul>");
+  $('.menu__second-level').wrap('<li class="menu__mega">');
+  $('.menu__second-level').before('<a href="#" class="page-link">Blog</a>');
+});
+</script>
 </body>
 
 </html>
