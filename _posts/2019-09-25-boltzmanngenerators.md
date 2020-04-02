@@ -42,17 +42,17 @@ configration variable $\boldsymbol{x}$とlatent variable $z$の間には，次�
 
 $$
 \begin{aligned}
-    \boldsymbol{z} &= \boldsymbol{F}_{xz}(\boldsymbol{x}; \theta)\\
-    \boldsymbol{x} &= \boldsymbol{F}_{zx}(\boldsymbol{z}; \theta).
+    \boldsymbol{z} &= \boldsymbol{F} _ {xz}(\boldsymbol{x}; \theta)\\
+    \boldsymbol{x} &= \boldsymbol{F} _ {zx}(\boldsymbol{z}; \theta).
 \end{aligned}
 $$
 
-もちろん， $\boldsymbol{F}_{xz}=\boldsymbol{F}_{zx}{}^{-1}$ ．これらの変換のJacobi行列を求めれば，
+もちろん， $\boldsymbol{F} _ {xz}=\boldsymbol{F} _ {zx}{}^{-1}$ ．これらの変換のJacobi行列を求めれば，
 
 $$
 \begin{aligned}
-    J_{zx}(\boldsymbol{z}; \theta) &= \frac{\partial\boldsymbol{x}}{\partial\boldsymbol{z}} = \left(\frac{\partial \boldsymbol{F}_{zx}}{\partial z_1},\dots,\frac{\partial \boldsymbol{F}_{zx}}{\partial z_n}\right)(\boldsymbol{z}; \theta)\\
-    J_{xz}(\boldsymbol{x}; \theta) &= \frac{\partial\boldsymbol{z}}{\partial\boldsymbol{x}} = \left(\frac{\partial \boldsymbol{F}_{xz}}{\partial x_1},\dots,\frac{\partial \boldsymbol{F}_{xz}}{\partial x_n}\right)(\boldsymbol{x}; \theta)
+    J_{zx}(\boldsymbol{z}; \theta) &= \frac{\partial\boldsymbol{x}}{\partial\boldsymbol{z}} = \left(\frac{\partial \boldsymbol{F} _ {zx}}{\partial z_1},\dots,\frac{\partial \boldsymbol{F} _ {zx}}{\partial z_n}\right)(\boldsymbol{z}; \theta)\\
+    J_{xz}(\boldsymbol{x}; \theta) &= \frac{\partial\boldsymbol{z}}{\partial\boldsymbol{x}} = \left(\frac{\partial \boldsymbol{F} _ {xz}}{\partial x_1},\dots,\frac{\partial \boldsymbol{F} _ {xz}}{\partial x_n}\right)(\boldsymbol{x}; \theta)
 \end{aligned}
 $$
 
@@ -73,9 +73,9 @@ $$
 $$
 \begin{aligned}
     p_X(\boldsymbol{x};\theta) &= p_Z(\boldsymbol{z})\mid\frac{\partial\boldsymbol{z}}{\partial{x}} \mid\\
-    &= p_Z(\boldsymbol{F}_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x};\theta)\\
+    &= p_Z(\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x};\theta)\\
     p_Z(\boldsymbol{z};\theta) &= p_X(\boldsymbol{x})\mid\frac{\partial\boldsymbol{x}}{\partial{z}} \mid\\
-    &= p_X(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta))R_{zx}(\boldsymbol{z};\theta)
+    &= p_X(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))R_{zx}(\boldsymbol{z};\theta)
 \label{pXpZ_Jacobian}
 \end{aligned}
 $$
@@ -83,17 +83,17 @@ $$
 となる．右辺の確率分布は$\theta$に依存しない（系がはじめから有している確率分布）が，左辺の計算結果は$\theta$に依存する（Boltzmann Generatorによって得られた確率分布）．
 
 ## RealNVPによるニューラルネットワーク構成
-$F_{zx}$を直接求めることは困難なので，アフィンカップリングレイヤ（入出力の一部が比較的簡単な関係にある全単射）を考える．具体的には，$\boldsymbol{x}$を$(\boldsymbol{x}_1,\boldsymbol{x}_2)$，$\boldsymbol{z}$を$(\boldsymbol{z}_1,\boldsymbol{z}_2)$に分ける．これらについて，非線形変換を次のように定義する：
+$F_{zx}$を直接求めることは困難なので，アフィンカップリングレイヤ（入出力の一部が比較的簡単な関係にある全単射）を考える．具体的には，$\boldsymbol{x}$を$(\boldsymbol{x} _ 1,\boldsymbol{x} _ 2)$，$\boldsymbol{z}$を$(\boldsymbol{z} _ 1,\boldsymbol{z} _ 2)$に分ける．これらについて，非線形変換を次のように定義する：
 
 $$
 \begin{aligned}
-  & \boldsymbol{f}_{xz}(\boldsymbol{x_1},\boldsymbol{x_2})
+  & \boldsymbol{f} _ {xz}(\boldsymbol{x_1},\boldsymbol{x_2})
   \quad:
   \begin{cases}
-    \boldsymbol{z}_1 = \boldsymbol{x}_1\\
-    \boldsymbol{z}_2 = \boldsymbol{x}_2\odot\exp(\boldsymbol{S}(\boldsymbol{x}_1;\theta))+\boldsymbol{T}(\boldsymbol{x}_1;\theta)
+    \boldsymbol{z} _ 1 = \boldsymbol{x} _ 1\\
+    \boldsymbol{z} _ 2 = \boldsymbol{x} _ 2\odot\exp(\boldsymbol{S}(\boldsymbol{x} _ 1;\theta))+\boldsymbol{T}(\boldsymbol{x} _ 1;\theta)
   \end{cases};\\
-  & \log R_{xz} = \sum_iS_i(\boldsymbol{x}_1;\theta).
+  & \log R_{xz} = \sum_iS_i(\boldsymbol{x} _ 1;\theta).
 \end{aligned}
 $$
 
@@ -101,13 +101,13 @@ $$
 
 $$
 \begin{aligned}
-  & \boldsymbol{f}_{zx}(\boldsymbol{z_1},\boldsymbol{z_2})
+  & \boldsymbol{f} _ {zx}(\boldsymbol{z_1},\boldsymbol{z_2})
   \quad:
   \begin{cases}
-    \boldsymbol{x}_1 = \boldsymbol{z}_1\\
-    \boldsymbol{x}_2 = (\boldsymbol{z}_2-\boldsymbol{T}(\boldsymbol{x_1};\theta))\odot\exp(-\boldsymbol{S}(\boldsymbol{z}_1;\theta))
+    \boldsymbol{x} _ 1 = \boldsymbol{z} _ 1\\
+    \boldsymbol{x} _ 2 = (\boldsymbol{z} _ 2-\boldsymbol{T}(\boldsymbol{x_1};\theta))\odot\exp(-\boldsymbol{S}(\boldsymbol{z} _ 1;\theta))
   \end{cases};\\
-  & \log R_{zx} = -\sum_iS_i(\boldsymbol{z}_1;\theta).
+  & \log R_{zx} = -\sum_iS_i(\boldsymbol{z} _ 1;\theta).
 \end{aligned}
 $$
 
@@ -119,10 +119,10 @@ Boltzmann Generatorでは，主に２つの機械学習：training by energyとt
 training by energyでは，
 
 1. latent spaceから正規分布$p_Z(\boldsymbol{z})$に従って適当に$\boldsymbol{z}$を選ぶ
-2. $\boldsymbol{F}_{zx}:\boldsymbol{z}\mapsto\boldsymbol{x}$を使って$p_X(x)$を計算する
+2. $\boldsymbol{F} _ {zx}:\boldsymbol{z}\mapsto\boldsymbol{x}$を使って$p_X(x)$を計算する
 3. 生成された確率分布$p_X(x)$と目標のBoltzmann分布$e^{-u(\boldsymbol{x})}$との差をロス
     $$\begin{aligned}
-    J_\text{KL}=E_{\boldsymbol{z}}[u(\boldsymbol{F}_{zx}(\boldsymbol{z}))-\log R_{zx}(\boldsymbol{z})]\label{training_energy}
+    J_\text{KL}=E_{\boldsymbol{z}}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z}))-\log R_{zx}(\boldsymbol{z})]\label{training_energy}
     \end{aligned}$$
     で評価する．
 
@@ -135,7 +135,7 @@ training by exampleでは，
 
 $$
 \begin{aligned}
-    J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F}_{xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]\tag{1}
+    J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F} _ {xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]\tag{1}
 \end{aligned}
 $$
 
@@ -182,8 +182,8 @@ $$
 
 $$
 \begin{aligned}
-    q_Z(\boldsymbol{z};\theta) &= \mu_X(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta))R_{zx}(\boldsymbol{z})\\
-    q_X(\boldsymbol{x};\theta) &= \mu_Z(\boldsymbol{F}_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x})
+    q_Z(\boldsymbol{z};\theta) &= \mu_X(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))R_{zx}(\boldsymbol{z})\\
+    q_X(\boldsymbol{x};\theta) &= \mu_Z(\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x})
 \end{aligned}
 $$
 
@@ -202,10 +202,10 @@ $$
 
 $$
 \begin{aligned}
-  &\text{KL}_\theta(\mu_Z \| q_Z) = -H_Z-\int\mu_Z(\boldsymbol{z})\log q(\boldsymbol{z})\,d\boldsymbol{z}\\
-  &= -H_Z-\int\mu_Z(\boldsymbol{z})[\log\mu_X(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta)\\
+  &\text{KL} _ \theta(\mu_Z \| q_Z) = -H_Z-\int\mu_Z(\boldsymbol{z})\log q(\boldsymbol{z})\,d\boldsymbol{z}\\
+  &= -H_Z-\int\mu_Z(\boldsymbol{z})[\log\mu_X(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta)\\
   &\qquad\qquad+\log R_{zx}(\boldsymbol{z};\theta))]\,d\boldsymbol{z}\\
-  &= -H_Z-\int\mu_Z(\boldsymbol{z})\biggl[\log\frac{\exp(-u(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta)))}{Z_X}\\
+  &= -H_Z-\int\mu_Z(\boldsymbol{z})\biggl[\log\frac{\exp(-u(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta)))}{Z_X}\\
   &\qquad\qquad+\log R_{zx}(\boldsymbol{z};\theta))\biggr]\,d\boldsymbol{z}\\
   &= -H_Z+\log Z_X\\
   &\qquad+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(F_{zx}(\boldsymbol{z};\theta))-\log R_{zx}(\boldsymbol{z};\theta)]
@@ -230,10 +230,10 @@ $$
 
 $$
 \begin{aligned}
-  &\text{KL}_\theta(\mu_Z \| q_Z) \\
+  &\text{KL} _ \theta(\mu_Z \| q_Z) \\
   &= -H_Z+\log Z_X\\
   &\qquad+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(F_{zx}(\boldsymbol{z};\theta))-\log R_{zx}(\boldsymbol{z};\theta)]\\
-  &= -H_X+\log Z_X+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{z})}[u(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta))]\\
+  &= -H_X+\log Z_X+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{z})}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))]\\
   &= -H_X+\log Z_X+E_{\boldsymbol{x}\sim\mu_X(\boldsymbol{x})}[u(\boldsymbol{x})].
 \end{aligned}
 $$
@@ -242,10 +242,10 @@ $$
 
 $$
 \begin{aligned}
-  &\text{KL}_\theta(q_X \| \mu_X) \\
+  &\text{KL} _ \theta(q_X \| \mu_X) \\
   &= -H_X-\int q_X(\boldsymbol{x};\theta)\log\mu_X(\boldsymbol{x})\,d\boldsymbol{x}\\
-  &= -H_X-\int\mu_Z(\boldsymbol{F}_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x})\log\mu_X(\boldsymbol{x})\,d\boldsymbol{x}\\
-  &= -H_X+\log Z_X+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{z})}[u(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta))]\\
+  &= -H_X-\int\mu_Z(\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x})\log\mu_X(\boldsymbol{x})\,d\boldsymbol{x}\\
+  &= -H_X+\log Z_X+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{z})}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))]\\
   &= -H_X+\log Z_X+E_{\boldsymbol{x}\sim\mu_X(\boldsymbol{x})}[u(\boldsymbol{x})].
 \end{aligned}
 $$
@@ -254,7 +254,7 @@ $$
 
 $$
 \begin{aligned}
-  \text{KL}_\theta(\mu_Z \| q_Z)=\text{KL}_\theta(q_X\| \mu_X).
+  \text{KL} _ \theta(\mu_Z \| q_Z)=\text{KL} _ \theta(q_X\| \mu_X).
 \end{aligned}
 $$
 
@@ -274,7 +274,7 @@ $$
 \begin{aligned}
   w(\boldsymbol{x}) &= \frac{\mu_X(\boldsymbol{x})}{q_X(\boldsymbol{x})}=\frac{q_Z(\boldsymbol{z})}{\mu_Z(\boldsymbol{z})}\\
   &= \frac{Z_X\exp(-u(\boldsymbol{x}))}{\mu_Z(\boldsymbol{z})R_{xz}(\boldsymbol{x})}\\
-  &\propto \exp(-u(\boldsymbol{F}_{zx}(\boldsymbol{x};\theta))+u_Z(\boldsymbol{z})+\log R_{zx}(\boldsymbol{z}))
+  &\propto \exp(-u(\boldsymbol{F} _ {zx}(\boldsymbol{x};\theta))+u_Z(\boldsymbol{z})+\log R_{zx}(\boldsymbol{z}))
 \end{aligned}
 $$
 
@@ -290,23 +290,23 @@ $$
 
 $$
 \begin{aligned}
-  &\min\text{KL}_\theta(\mu_Z\| q_Z)\\
-  &= \min E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(\boldsymbol{F}_{zx}(\boldsymbol{z};\theta))-\log R_{zx}(\boldsymbol{z};\theta)]\\
-  &= \min E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(\boldsymbol{F}_{zx}(\boldsymbol{x};\theta))-u_Z(\boldsymbol{z})-\log R_{zx}(\boldsymbol{z})]\\
+  &\min\text{KL} _ \theta(\mu_Z\| q_Z)\\
+  &= \min E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z};\theta))-\log R_{zx}(\boldsymbol{z};\theta)]\\
+  &= \min E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[u(\boldsymbol{F} _ {zx}(\boldsymbol{x};\theta))-u_Z(\boldsymbol{z})-\log R_{zx}(\boldsymbol{z})]\\
   &= \min E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[\log\mu_Z(\boldsymbol{z})-\log q_Z(\boldsymbol{z};\theta)]\\
   &= \max E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{Z})}[\log w(\boldsymbol{x})].
 \end{aligned}
 $$
 
 ## MLロス関数
-$\text{KL}_\theta(\mu_Z \| q_Z)=\text{KL}_\theta(q_X\| \mu_X)$であったが，次のKLロスを考える：
+$\text{KL} _ \theta(\mu_Z \| q_Z)=\text{KL} _ \theta(q_X\| \mu_X)$であったが，次のKLロスを考える：
 
 $$
 \begin{aligned}
-  &\text{KL}_\theta(\mu_X \| q_X) = -H_X-\int\mu_X(\boldsymbol{x})\log q_X(\boldsymbol{x};\theta)\,d\boldsymbol{x}\\
-  &= -H_X-\int\mu_X(\boldsymbol{x})[\log\mu_Z(\boldsymbol{F}_{xz}(\boldsymbol{x};\theta))+\log R_{xz}(\boldsymbol{x})]\,d\boldsymbol{x}\\
+  &\text{KL} _ \theta(\mu_X \| q_X) = -H_X-\int\mu_X(\boldsymbol{x})\log q_X(\boldsymbol{x};\theta)\,d\boldsymbol{x}\\
+  &= -H_X-\int\mu_X(\boldsymbol{x})[\log\mu_Z(\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta))+\log R_{xz}(\boldsymbol{x})]\,d\boldsymbol{x}\\
   &= -H_X+\log Z_Z\\
-  &\qquad+E_{\boldsymbol{x}\sim\mu_X(\boldsymbol{x})}\left[\frac{1}{2\sigma^2}\|\boldsymbol{F}_{xz}(\boldsymbol{x};\theta)\|^2-\log R_{xz}(\boldsymbol{x})\right].
+  &\qquad+E_{\boldsymbol{x}\sim\mu_X(\boldsymbol{x})}\left[\frac{1}{2\sigma^2}\|\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta)\|^2-\log R_{xz}(\boldsymbol{x})\right].
 \end{aligned}
 $$
 
@@ -317,7 +317,7 @@ training by exampleを実行する場合，そのexampleが$\mu_X(\boldsymbol{x}
 $$
 \begin{aligned}
   J_\text{ML} &= -E_{\boldsymbol{x}\sim\rho}[\log q_X(\boldsymbol{x};\theta)]\\
-  &= E_{\boldsymbol{x}\sim\rho(\boldsymbol{x})}\left[\frac{1}{2\sigma^2}\|\boldsymbol{F}_{xz}(\boldsymbol{x};\theta)\|^2-\log R_{xz}(\boldsymbol{x})\right]
+  &= E_{\boldsymbol{x}\sim\rho(\boldsymbol{x})}\left[\frac{1}{2\sigma^2}\|\boldsymbol{F} _ {xz}(\boldsymbol{x};\theta)\|^2-\log R_{xz}(\boldsymbol{x})\right]
 \end{aligned}
 $$
 
