@@ -5,7 +5,7 @@ description:
 author: 優曇華院
 comments: true
 categories: [statistics]
-title: scGenの解説
+title: Principal Curve 入門
 ---
 # Principal Curve（主曲線）
 ## Principal ComponentとPrincipal Curve
@@ -514,3 +514,14 @@ n\log l+\sum _ {i=1} ^ k\sum _ {\boldsymbol{x}\in V _ i}\frac{d(\boldsymbol{s} _
 $$
 
 となる．$\eqref{k-segment _ log _ likelihood _ sum}$が初めて極小となる$k$が最適な$k$となる．
+
+
+
+## 参考文献
+
+- Hastie, T. and Stuetzle, W. (1989). **Principal Curves**. *JASA*, **84** (406), 502-516. ([pdf](https://web.stanford.edu/~hastie/Papers/principalcurves.pdf))
+- Hastie, T., Tibshirani, R., and Friedman, J. (2009). ***The Elements of Statistical Learning: Data Mining, Inference, and Prediction***. (2nd ed.). Springer. ([website](https://web.stanford.edu/~hastie/ElemStatLearn//))
+- Kegl, B.,Krzyzak, A., Linder, T., and Zeger, K. (2000). **Learning and design of principal curves**. *IEEE*. **22** (3), 281-297. ([pdf](https://www.lri.fr/~kegl/research/PDFs/KeKrLiZe00.pdf))
+- Verbeek, J., Vlassis, N., and Krose, B. (2002). **A k-segments algorithm for finding principal curves**. *Pattern Recognition Letters*, Elsevier. **23** (8), 1009–1017. ([pdf](https://hal.inria.fr/inria-00321497/document))
+
+ 
