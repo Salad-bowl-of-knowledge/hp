@@ -17,6 +17,8 @@ $$
 
 が最小となるようにする．これは，$\boldsymbol{R} ^ d$内で，$x _ i$軸に沿った，データ点と直線の距離の２乗平均を最小にするのに等しい（図）．
 
+![img1]({{ site.baseurl }}/images/posts/princurve_figs/image1.png)
+
 これに対し，主成分分析では，同じく直線を考えるが，その直線に関する成分の２乗和
 
 $$
@@ -37,7 +39,11 @@ $$
 
 が最小となるような直線を選ぶことに等しい（図）．
 
+![img2]({{ site.baseurl }}/images/posts/princurve_figs/image2.png)
+
 Principal Curve Analysisはデータ点を曲線で代表する方法である．各データ点とその曲線上への射影点との距離の２乗平均が最小となるような曲線を考える（図）.
+
+![img3]({{ site.baseurl }}/images/posts/princurve_figs/image3.png)
 
 ## Principal Curveの定義
 $\boldsymbol{R} ^ p$内に確率密度$h$に従って分布した点を$\boldsymbol{X}$で表す．$E(\boldsymbol{X})=0$としても一般性を失わない．$C ^ \infty$級曲線$\boldsymbol{f}:\boldsymbol{R}\supset\Lambda\to\boldsymbol{R} ^ p$を考える．ただし$\boldsymbol{f}$は自己交叉しないものとする：
@@ -83,6 +89,8 @@ projection indexの性質（最短距離を指すパラメータが複数ある�
 $$
 \{\boldsymbol{X}\}=\bigoplus _ \lambda\{\boldsymbol{X}\mid\lambda _ {\boldsymbol{f}}(\boldsymbol{X})=\lambda\}.
 $$
+
+![img4]({{ site.baseurl }}/images/posts/princurve_figs/image4.png)
 
 よって，$\boldsymbol{X}$の平均は，ある$\lambda$にprojection indexによって写される$\boldsymbol{X}$の平均$\boldsymbol{X} _ \lambda=E(\boldsymbol{X}\mid\lambda _ {\boldsymbol{f}}(\boldsymbol{X})=\lambda)$の$\lambda$に関する平均に等しい：
 
@@ -323,6 +331,10 @@ $p$次元の$n$個のデータ点を考える．点が有限の場合，principa
 
 まずは，projection index $\lambda _ {\boldsymbol{f} ^ {(j)}}(\boldsymbol{x} _ i)$を求める．$\boldsymbol{x} _ i$と，$\boldsymbol{f} _ k{} ^ {(j)}$と$\boldsymbol{f} _ {k+1}{} ^ {(j)}$を両端とする線分の最短距離を$d _ {ik}$とする．また，$\boldsymbol{f} _ 1{} ^ {(j)}$から最短距離を与える線分側の点までの折れ線に沿った距離を$\lambda _ {ik}$とする．こうして，$1\leq k\leq n-1$に対し$d _ {ik}$と$\lambda _ {ik}$を求める．
 
+![img5]({{ site.baseurl }}/images/posts/princurve_figs/image5.png)
+
+複数データ点のためのprojection index
+
 $\boldsymbol{x} _ i$のprojection index $\lambda _ {i}$は$d _ {ik}$の最小値を与える$\lambda _ {ik}$とする：
 
 $$
@@ -491,6 +503,8 @@ $$
 \end{aligned}
 $$
 
+![img6]({{ site.baseurl }}/images/posts/princurve_figs/image6.png)
+
 よって，$\eqref{k-segment _ log _ likelihood}$の最後の項は次のように書ける：
 
 $$
@@ -523,5 +537,3 @@ $$
 - Hastie, T., Tibshirani, R., and Friedman, J. (2009). ***The Elements of Statistical Learning: Data Mining, Inference, and Prediction***. (2nd ed.). Springer. ([website](https://web.stanford.edu/~hastie/ElemStatLearn//))
 - Kegl, B.,Krzyzak, A., Linder, T., and Zeger, K. (2000). **Learning and design of principal curves**. *IEEE*. **22** (3), 281-297. ([pdf](https://www.lri.fr/~kegl/research/PDFs/KeKrLiZe00.pdf))
 - Verbeek, J., Vlassis, N., and Krose, B. (2002). **A k-segments algorithm for finding principal curves**. *Pattern Recognition Letters*, Elsevier. **23** (8), 1009–1017. ([pdf](https://hal.inria.fr/inria-00321497/document))
-
- 
