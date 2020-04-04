@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>scGenの解説 | 知識のサラダボウル</title>
+<title>Principal Curve 入門 | 知識のサラダボウル</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="scGenの解説" />
+<meta property="og:title" content="Principal Curve 入門" />
 <meta name="author" content="優曇華院" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\ldots,\check{x} _ i,\ldots,x _ d)$の式を考え，実際のデータとの差の分散" />
@@ -16,12 +16,12 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-09-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"優曇華院"},"description":"Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\\ldots,\\check{x} _ i,\\ldots,x _ d)$の式を考え，実際のデータとの差の分散","@type":"BlogPosting","headline":"scGenの解説","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"優曇華院"},"description":"Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\\ldots,\\check{x} _ i,\\ldots,x _ d)$の式を考え，実際のデータとの差の分散","@type":"BlogPosting","headline":"Principal Curve 入門","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/hp/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" /><link rel="shortcut icon" type="image/x-icon" href="/hp/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>scGenの解説 | 知識のサラダボウル</title>
+<title>Principal Curve 入門 | 知識のサラダボウル</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="scGenの解説" />
+<meta property="og:title" content="Principal Curve 入門" />
 <meta name="author" content="優曇華院" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\ldots,\check{x} _ i,\ldots,x _ d)$の式を考え，実際のデータとの差の分散" />
@@ -32,7 +32,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-09-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"優曇華院"},"description":"Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\\ldots,\\check{x} _ i,\\ldots,x _ d)$の式を考え，実際のデータとの差の分散","@type":"BlogPosting","headline":"scGenの解説","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"優曇華院"},"description":"Principal Curve（主曲線） Principal ComponentとPrincipal Curve $\\boldsymbol{R} ^ d$内で$N$個のデータがどのように分布しているかを，比較的簡単な式で表したい（次元を減らしたい）時がある．一つのよく知られた方法は，線形回帰である．これは，線形関数$f$を用いて，$f(x _ 1,\\ldots,\\check{x} _ i,\\ldots,x _ d)$の式を考え，実際のデータとの差の分散","@type":"BlogPosting","headline":"Principal Curve 入門","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/statistics/2019/09/29/princurve.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -103,7 +103,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">scGenの解説</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-09-29T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Principal Curve 入門</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-09-29T00:00:00-05:00" itemprop="datePublished">
         Sep 29, 2019
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      9 min read
     
 </span></p>
 
@@ -210,6 +210,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#目的関数">目的関数</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#参考文献">参考文献</a></li>
 </ul>
 </li>
 </ul><h1 id="principal-curve主曲線">
@@ -697,6 +698,17 @@ d _ n ^ \text{VR}
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>l</mi><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><munder><mo>∑</mo><mrow><mi mathvariant="bold-italic">x</mi><mo>∈</mo><msub><mi>V</mi><mi>i</mi></msub></mrow></munder><mfrac><mrow><mi>d</mi><mo stretchy="false">(</mo><msub><mi mathvariant="bold-italic">s</mi><mi>i</mi></msub><mo separator="true">,</mo><mi mathvariant="bold-italic">x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">n\log l+\sum _ {i=1} ^ k\sum _ {\boldsymbol{x}\in V _ i}\frac{d(\boldsymbol{s} _ i,\boldsymbol{x}) ^ 2}{2\sigma ^ 2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:3.2305490000000003em;vertical-align:-1.394436em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8361130000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.855664em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">x</span></span></span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.394436em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.491108em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol">s</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 
 <p>となる．$\eqref{k-segment _ log _ likelihood _ sum}$が初めて極小となる$k$が最適な$k$となる．</p>
+
+<h2 id="参考文献">
+<a class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考文献</h2>
+
+<ul>
+  <li>Hastie, T. and Stuetzle, W. (1989). <strong>Principal Curves</strong>. <em>JASA</em>, <strong>84</strong> (406), 502-516. (<a href="https://web.stanford.edu/~hastie/Papers/principalcurves.pdf">pdf</a>)</li>
+  <li>Hastie, T., Tibshirani, R., and Friedman, J. (2009). <strong><em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em></strong>. (2nd ed.). Springer. (<a href="https://web.stanford.edu/~hastie/ElemStatLearn//">website</a>)</li>
+  <li>Kegl, B.,Krzyzak, A., Linder, T., and Zeger, K. (2000). <strong>Learning and design of principal curves</strong>. <em>IEEE</em>. <strong>22</strong> (3), 281-297. (<a href="https://www.lri.fr/~kegl/research/PDFs/KeKrLiZe00.pdf">pdf</a>)</li>
+  <li>Verbeek, J., Vlassis, N., and Krose, B. (2002). <strong>A k-segments algorithm for finding principal curves</strong>. <em>Pattern Recognition Letters</em>, Elsevier. <strong>23</strong> (8), 1009–1017. (<a href="https://hal.inria.fr/inria-00321497/document">pdf</a>)</li>
+</ul>
+
 
   </div><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
