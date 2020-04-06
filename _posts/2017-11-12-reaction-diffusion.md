@@ -4,7 +4,7 @@ layout: post
 author: 山拓
 description:
 categories: [processing]
-title: 拡散律速凝集
+title: 反応拡散方程式
 ---
 
 ## 概要
@@ -30,7 +30,7 @@ int i,j;
 int cx,cy,x,y,X,Y;
 
 void setup(){
-  size(400,400);
+  size(200,200);
   colorMode(HSB);
   field=new float[width][height][2];
   next_field=new float[width][height][2];
