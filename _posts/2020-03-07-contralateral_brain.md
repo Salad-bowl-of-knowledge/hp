@@ -96,46 +96,18 @@ AはKinsbourneの体性ねじれ説を示しており、前口動物(Protostome)
 本記事では主に運動野と感覚野の対側支配がどのように生じたのか、また何故対側支配が保存されてきたのか、ということについての仮説を見てきました (重ねて言いますが仮説止まりです)。現在提案されている説をまとめると、体がねじれることで対側支配が生まれ、それが生存にとって有利であったために保存されてきた、と言えます。冒頭に述べたように、進化が絡むと直接的な証拠というものを見つけづらいとは思いますが (他の研究例を知らないだけかもしれませんが)、将来は何らかの説に落ち着くのではないか、と思っています。
 
 ## 参考文献
-- Carson RG. **Neural pathways mediating bilateral interactions between the upper limbs**. *Brain Res Rev*. 2005;49(3):641–662. doi:10.1016/j.brainresrev.2005.03.005
-[https://www.sciencedirect.com/science/article/abs/pii/S0165017305000482?via%3Dihub](https://www.sciencedirect.com/science/article/abs/pii/S0165017305000482?via=ihub)
-
-- Comer JD, Alvarez S, Butler SJ, Kaltschmidt JA. **Commissural axon guidance in the developing spinal cord: from Cajal to the present day**. *Neural Dev*. 2019;14(1):9. doi:10.1186/s13064-019-0133-1
-<https://neuraldevelopment.biomedcentral.com/articles/10.1186/s13064-019-0133-1>
-
-- de Lussanet MH, Osse JW. **Decussation as an axial twist: A comment on Kinsbourne (2013)**. *Neuropsychology*. 2015;29(5):713–714. doi:10.1037/neu0000163
-<https://peerj.com/preprints/432.pdf>
-
-- de Lussanet, MH, Osse, JW. **An ancestral axial twist explains the contralateral forebrain and the optic chiasm in vertebrates**. *Animal Biol*. 2012; 62: 193-216. doi:10.1163/157075611X617102.
-<https://arxiv.org/abs/1003.1872>
-
-- Dixon AF. **Why are the great motor and sensory tracts of the central nervous system crossed?**. *The Dublin Journal of Medical Science*. 1907; 124, 1–4. doi:10.1007/BF02972358
-<https://link.springer.com/article/10.1007/BF02972358>
-
-- Dixon AF. **Why are the cerebral motor and sensory cortical areas arranged in an inverted order?**. *The Dublin Journal of Medical Science*. 1918; 145, 154–160. doi:10.1007/BF02958527
-[https://link.springer.com/article/10.1007%2FBF02958527](https://link.springer.com/article/10.1007/BF02958527)
-
-- Kinsbourne M. **Somatic twist: a model for the evolution of decussation**. *Neuropsychology*. 2013;27(5):511–515. doi:10.1037/a0033662
-[https://www.semanticscholar.org/paper/Somatic-twist%3A-a-model-for-the-evolution-of-Kinsbourne/fe2d36ddc63af9f26aa22ec1bbce115f7aa35387](https://www.semanticscholar.org/paper/Somatic-twist:-a-model-for-the-evolution-of-Kinsbourne/fe2d36ddc63af9f26aa22ec1bbce115f7aa35387)
-
-- Loosemore RG. **The inversion hypothesis: A novel explanation for the contralaterality of the human brain**. *Biosci Hypotheses*. 2009;2:375–382
-<https://www.sciencedirect.com/science/article/abs/pii/S1756239209001347>
-
-- Mora C, Velásquez C, Martino J. **The neural pathway midline crossing theory: a historical analysis of Santiago Rámon y Cajal's contribution on cerebral localization and on contralateral forebrain organization**. *Neurosurg Focus*. 2019;47(3):E10. doi:10.3171/2019.6.FOCUS19341
-<https://thejns.org/focus/view/journals/neurosurg-focus/47/3/article-pE10.xml>
-
+- Carson RG. [**Neural pathways mediating bilateral interactions between the upper limbs**](https://www.sciencedirect.com/science/article/abs/pii/S0165017305000482). *Brain Res Rev*. 2005;49(3):641–662. doi:10.1016/j.brainresrev.2005.03.005
+- Comer JD, Alvarez S, Butler SJ, Kaltschmidt JA. [**Commissural axon guidance in the developing spinal cord: from Cajal to the present day**](https://neuraldevelopment.biomedcentral.com/articles/10.1186/s13064-019-0133-1). *Neural Dev*. 2019;14(1):9. doi:10.1186/s13064-019-0133-1
+- de Lussanet MH, Osse JW. [**Decussation as an axial twist: A comment on Kinsbourne (2013)**](https://peerj.com/preprints/432.pdf). *Neuropsychology*. 2015;29(5):713–714. doi:10.1037/neu0000163
+- de Lussanet, MH, Osse, JW. [**An ancestral axial twist explains the contralateral forebrain and the optic chiasm in vertebrates**](https://arxiv.org/abs/1003.1872). *Animal Biol*. 2012; 62: 193-216. doi:10.1163/157075611X617102.
+- Dixon AF. [**Why are the great motor and sensory tracts of the central nervous system crossed?**](https://link.springer.com/article/10.1007/BF02972358). *The Dublin Journal of Medical Science*. 1907; 124, 1–4. doi:10.1007/BF02972358
+- Dixon AF. [**Why are the cerebral motor and sensory cortical areas arranged in an inverted order?**](https://link.springer.com/article/10.1007%2FBF02958527). *The Dublin Journal of Medical Science*. 1918; 145, 154–160. doi:10.1007/BF02958527
+- Kinsbourne M. [**Somatic twist: a model for the evolution of decussation**](https://www.semanticscholar.org/paper/Somatic-twist%3A-a-model-for-the-evolution-of-Kinsbourne/fe2d36ddc63af9f26aa22ec1bbce115f7aa35387). *Neuropsychology*. 2013;27(5):511–515. doi:10.1037/a0033662
+- Loosemore RG. [**The inversion hypothesis: A novel explanation for the contralaterality of the human brain**](https://www.sciencedirect.com/science/article/abs/pii/S1756239209001347). *Biosci Hypotheses*. 2009;2:375–382
+- Mora C, Velásquez C, Martino J. [**The neural pathway midline crossing theory: a historical analysis of Santiago Rámon y Cajal's contribution on cerebral localization and on contralateral forebrain organization**](https://thejns.org/focus/view/journals/neurosurg-focus/47/3/article-pE10.xml). *Neurosurg Focus*. 2019;47(3):E10. doi:10.3171/2019.6.FOCUS19341
 - Ramón y Cajal, S. **Estructura del kiasma óptico y teoría general de los entrecruzamientos de las vías nerviosas**. 1898. [german 1899, english 2004]. *Rev. Trim. Microgràfica* 3, 15–65.
-
-- Ramón Y Cajal, S. *Histología del sistema nervioso del hombre y de los vertebrados. Tomo II. Segunda parte*. Boletín Oficial del Estado. 2012.
-[https://digital.csic.es/bitstream/10261/158606/1/Cap%C3%ADtulo32-T2-2%C2%AA%20parte.pdf](https://digital.csic.es/bitstream/10261/158606/1/Capítulo32-T2-2ª parte.pdf)
-
-- Shinbrot T, Young W. **Why decussate? Topological constraints on 3D wiring**. *Anat Rec (Hoboken)*. 2008;291(10):1278–1292. doi:10.1002/ar.20731
-<https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/ar.20731>
-
-- Vulliemoz S, Raineteau O, Jabaudon D. **Reaching beyond the midline: why are human brains cross wired?**. *Lancet Neurol.* 2005;4(2):87–99. doi:10.1016/S1474-4422(05)00990-7
-<https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(05)00990-7/fulltext>
-
-- Welniarz Q, Dusart I, Roze E. **The corticospinal tract: Evolution, development, and human disorders**. *Dev Neurobiol*. 2017;77(7):810–829. doi:10.1002/dneu.22455
- <https://onlinelibrary.wiley.com/doi/abs/10.1002/dneu.22455>
-
-- Whitehead L, Banihani S. **The evolution of contralateral control of the body by the brain: is it a protective mechanism?**. *Laterality*. 2014;19(3):325–339. doi:10.1080/1357650X.2013.824461
-<https://www.researchgate.net/publication/255732556_The_evolution_of_contralateral_control_of_the_body_by_the_brain_Is_it_a_protective_mechanism>
+- Ramón Y Cajal, S. [*Histología del sistema nervioso del hombre y de los vertebrados. Tomo II. Segunda parte*](https://digital.csic.es/bitstream/10261/158606/1/Cap%C3%ADtulo32-T2-2%C2%AA%20parte.pdf). Boletín Oficial del Estado. 2012.
+- Shinbrot T, Young W. [**Why decussate? Topological constraints on 3D wiring**](https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/ar.20731). *Anat Rec (Hoboken)*. 2008;291(10):1278–1292. doi:10.1002/ar.20731
+- Vulliemoz S, Raineteau O, Jabaudon D. [**Reaching beyond the midline: why are human brains cross wired?**](https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(05)00990-7/fulltext). *Lancet Neurol.* 2005;4(2):87–99. doi:10.1016/S1474-4422(05)00990-7
+- Welniarz Q, Dusart I, Roze E. [**The corticospinal tract: Evolution, development, and human disorders**](https://onlinelibrary.wiley.com/doi/abs/10.1002/dneu.22455). *Dev Neurobiol*. 2017;77(7):810–829. doi:10.1002/dneu.22455
+- Whitehead L, Banihani S. [**The evolution of contralateral control of the body by the brain: is it a protective mechanism?**](https://www.researchgate.net/publication/255732556_The_evolution_of_contralateral_control_of_the_body_by_the_brain_Is_it_a_protective_mechanism). *Laterality*. 2014;19(3):325–339. doi:10.1080/1357650X.2013.824461
