@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>格子ボルツマン法による流体シミュレーション (Python) | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="格子ボルツマン法による流体シミュレーション (Python)" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"datePublished":"2020-04-08T00:00:00-05:00","headline":"格子ボルツマン法による流体シミュレーション (Python)","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html"},"@type":"BlogPosting","url":"https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html","dateModified":"2020-04-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/hp/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" /><link rel="shortcut icon" type="image/x-icon" href="/hp/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>格子ボルツマン法による流体シミュレーション (Python) | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="格子ボルツマン法による流体シミュレーション (Python)" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"datePublished":"2020-04-08T00:00:00-05:00","headline":"格子ボルツマン法による流体シミュレーション (Python)","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html"},"@type":"BlogPosting","url":"https://salad-bowl-of-knowledge.github.io/hp/phisics/2020/04/08/lattice_boltzmann.html","dateModified":"2020-04-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/hp/">知識のサラダボウル</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/hp/about/">About Us</a><a class="page-link" href="/hp/neuroscience/">神経科学</a><a class="page-link" href="/hp/machine-learning/">機械学習</a><a class="page-link" href="/hp/statistics/">統計学</a><a class="page-link" href="/hp/medicine/">医学</a><a class="page-link" href="/hp/chemistry/">化学</a><a class="page-link" href="/hp/physics/">物理学</a><a class="page-link" href="/hp/mathematics/">数学</a><a class="page-link" href="/hp/programming/">Programming</a><a class="page-link" href="/hp/computer/">Computer</a><a class="page-link" href="/hp/reading/">読書</a><a class="page-link" href="/hp/essay/">エッセイ</a><a class="page-link" href="/hp/search/">Search</a><a class="page-link" href="/hp/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">格子ボルツマン法による流体シミュレーション (Python)</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-04-08T00:00:00-05:00" itemprop="datePublished">
+        Apr 8, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">山拓</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/hp/categories/#phisics">phisics</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/Salad-bowl-of-knowledge/hp/tree/master/_notebooks/2020-04-08-lattice_boltzmann.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/hp/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/Salad-bowl-of-knowledge/hp/master?filepath=_notebooks%2F2020-04-08-lattice_boltzmann.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/hp/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/Salad-bowl-of-knowledge/hp/blob/master/_notebooks/2020-04-08-lattice_boltzmann.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/hp/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-04-08-lattice_boltzmann.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>%matplotlib nbagg</code>を付ければipynb上でアニメーションが実行できる</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> nbagg
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>定数の設定</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define constants:</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># lattice dimensions</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">viscosity</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># fluid viscosity</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">viscosity</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="c1"># "relaxation" parameter</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># initial and in-flow speed</span>
+<span class="n">four9ths</span> <span class="o">=</span> <span class="mf">4.0</span><span class="o">/</span><span class="mf">9.0</span> <span class="c1"># abbreviations for lattice-Boltzmann weight factors</span>
+<span class="n">one9th</span>   <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">9.0</span>
+<span class="n">one36th</span>  <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">36.0</span>
+<span class="n">performanceData</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># set to True if performance data is desired</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>格子の初期化</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialize all the arrays to steady rightward flow:</span>
+<span class="n">n0</span> <span class="o">=</span> <span class="n">four9ths</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># particle densities along 9 directions</span>
+<span class="n">nN</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nS</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nE</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nW</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nNE</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nSE</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nNW</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">nSW</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">))</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">n0</span> <span class="o">+</span> <span class="n">nN</span> <span class="o">+</span> <span class="n">nS</span> <span class="o">+</span> <span class="n">nE</span> <span class="o">+</span> <span class="n">nW</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nSE</span> <span class="o">+</span> <span class="n">nNW</span> <span class="o">+</span> <span class="n">nSW</span> <span class="c1"># macroscopic density</span>
+<span class="n">ux</span> <span class="o">=</span> <span class="p">(</span><span class="n">nE</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nSE</span> <span class="o">-</span> <span class="n">nW</span> <span class="o">-</span> <span class="n">nNW</span> <span class="o">-</span> <span class="n">nSW</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span> <span class="c1"># macroscopic x velocity</span>
+<span class="n">uy</span> <span class="o">=</span> <span class="p">(</span><span class="n">nN</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nNW</span> <span class="o">-</span> <span class="n">nS</span> <span class="o">-</span> <span class="n">nSE</span> <span class="o">-</span> <span class="n">nSW</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span> <span class="c1"># macroscopic y velocity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>障害物の初期化</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialize barriers:</span>
+<span class="n">barrier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span> <span class="c1"># True wherever there's a barrier</span>
+<span class="n">barrier</span><span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">8</span><span class="p">):</span><span class="nb">int</span><span class="p">((</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">8</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>			<span class="c1"># simple linear barrier</span>
+<span class="n">barrierN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrier</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># sites just north of barriers</span>
+<span class="n">barrierS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrier</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># sites just south of barriers</span>
+<span class="n">barrierE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrier</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># etc.</span>
+<span class="n">barrierW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrier</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">barrierNE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrierN</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">barrierNW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrierN</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">barrierSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrierS</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">barrierSW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">barrierS</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>流れを定義する関数</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Move all particles by one step along their directions of motion (pbc):</span>
+<span class="k">def</span> <span class="nf">stream</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">nN</span><span class="p">,</span> <span class="n">nS</span><span class="p">,</span> <span class="n">nE</span><span class="p">,</span> <span class="n">nW</span><span class="p">,</span> <span class="n">nNE</span><span class="p">,</span> <span class="n">nNW</span><span class="p">,</span> <span class="n">nSE</span><span class="p">,</span> <span class="n">nSW</span>
+    <span class="n">nN</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nN</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>	<span class="c1"># axis 0 is north-south; + direction is north</span>
+    <span class="n">nNE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nNE</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nNW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nNW</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nS</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nS</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nSE</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nSW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nSW</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">nE</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nE</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>	<span class="c1"># axis 1 is east-west; + direction is east</span>
+    <span class="n">nNE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nNE</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nSE</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nW</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nW</span><span class="p">,</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nNW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nNW</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nSW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">nSW</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Use tricky boolean arrays to handle barrier collisions (bounce-back):</span>
+    <span class="n">nN</span><span class="p">[</span><span class="n">barrierN</span><span class="p">]</span> <span class="o">=</span> <span class="n">nS</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nS</span><span class="p">[</span><span class="n">barrierS</span><span class="p">]</span> <span class="o">=</span> <span class="n">nN</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nE</span><span class="p">[</span><span class="n">barrierE</span><span class="p">]</span> <span class="o">=</span> <span class="n">nW</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nW</span><span class="p">[</span><span class="n">barrierW</span><span class="p">]</span> <span class="o">=</span> <span class="n">nE</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nNE</span><span class="p">[</span><span class="n">barrierNE</span><span class="p">]</span> <span class="o">=</span> <span class="n">nSW</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nNW</span><span class="p">[</span><span class="n">barrierNW</span><span class="p">]</span> <span class="o">=</span> <span class="n">nSE</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nSE</span><span class="p">[</span><span class="n">barrierSE</span><span class="p">]</span> <span class="o">=</span> <span class="n">nNW</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+    <span class="n">nSW</span><span class="p">[</span><span class="n">barrierSW</span><span class="p">]</span> <span class="o">=</span> <span class="n">nNE</span><span class="p">[</span><span class="n">barrier</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>衝突を定義する関数</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Collide particles within each cell to redistribute velocities (could be optimized a little more):</span>
+<span class="k">def</span> <span class="nf">collide</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">rho</span><span class="p">,</span> <span class="n">ux</span><span class="p">,</span> <span class="n">uy</span><span class="p">,</span> <span class="n">n0</span><span class="p">,</span> <span class="n">nN</span><span class="p">,</span> <span class="n">nS</span><span class="p">,</span> <span class="n">nE</span><span class="p">,</span> <span class="n">nW</span><span class="p">,</span> <span class="n">nNE</span><span class="p">,</span> <span class="n">nNW</span><span class="p">,</span> <span class="n">nSE</span><span class="p">,</span> <span class="n">nSW</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">n0</span> <span class="o">+</span> <span class="n">nN</span> <span class="o">+</span> <span class="n">nS</span> <span class="o">+</span> <span class="n">nE</span> <span class="o">+</span> <span class="n">nW</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nSE</span> <span class="o">+</span> <span class="n">nNW</span> <span class="o">+</span> <span class="n">nSW</span>
+    <span class="n">ux</span> <span class="o">=</span> <span class="p">(</span><span class="n">nE</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nSE</span> <span class="o">-</span> <span class="n">nW</span> <span class="o">-</span> <span class="n">nNW</span> <span class="o">-</span> <span class="n">nSW</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
+    <span class="n">uy</span> <span class="o">=</span> <span class="p">(</span><span class="n">nN</span> <span class="o">+</span> <span class="n">nNE</span> <span class="o">+</span> <span class="n">nNW</span> <span class="o">-</span> <span class="n">nS</span> <span class="o">-</span> <span class="n">nSE</span> <span class="o">-</span> <span class="n">nSW</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
+    <span class="n">ux2</span> <span class="o">=</span> <span class="n">ux</span> <span class="o">*</span> <span class="n">ux</span> <span class="c1"># pre-compute terms used repeatedly...</span>
+    <span class="n">uy2</span> <span class="o">=</span> <span class="n">uy</span> <span class="o">*</span> <span class="n">uy</span>
+    <span class="n">u2</span> <span class="o">=</span> <span class="n">ux2</span> <span class="o">+</span> <span class="n">uy2</span>
+    <span class="n">omu215</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u2</span> <span class="c1"># "one minus u2 times 1.5"</span>
+    <span class="n">uxuy</span> <span class="o">=</span> <span class="n">ux</span> <span class="o">*</span> <span class="n">uy</span>
+    <span class="n">n0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">n0</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">four9ths</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">omu215</span>
+    <span class="n">nN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nN</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one9th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">uy</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">uy2</span><span class="p">)</span>
+    <span class="n">nS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nS</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one9th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">uy</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">uy2</span><span class="p">)</span>
+    <span class="n">nE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nE</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one9th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">ux</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">ux2</span><span class="p">)</span>
+    <span class="n">nW</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nW</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one9th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">ux</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">ux2</span><span class="p">)</span>
+    <span class="n">nNE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nNE</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one36th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">ux</span><span class="o">+</span><span class="n">uy</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="p">(</span><span class="n">u2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">uxuy</span><span class="p">))</span>
+    <span class="n">nNW</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nNW</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one36th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">ux</span><span class="o">+</span><span class="n">uy</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="p">(</span><span class="n">u2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">uxuy</span><span class="p">))</span>
+    <span class="n">nSE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nSE</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one36th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">ux</span><span class="o">-</span><span class="n">uy</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="p">(</span><span class="n">u2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">uxuy</span><span class="p">))</span>
+    <span class="n">nSW</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">omega</span><span class="p">)</span><span class="o">*</span><span class="n">nSW</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">one36th</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">omu215</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">ux</span><span class="o">-</span><span class="n">uy</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="p">(</span><span class="n">u2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">uxuy</span><span class="p">))</span>
+    <span class="c1"># Force steady rightward flow at ends (no need to set 0, N, and S components):</span>
+    <span class="n">nE</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nW</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one9th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nNE</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nSE</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nNW</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">nSW</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">one36th</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">u0</span> <span class="o">+</span> <span class="mf">4.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">u0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Curlを計算する関数</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute curl of the macroscopic velocity field:</span>
+<span class="k">def</span> <span class="nf">curl</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">uy</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">uy</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">uy</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>メインの関数</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here comes the graphics and animation...</span>
+<span class="n">theFig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">fluidImage</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">uy</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="o">-.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span> 
+                        <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'jet'</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
+
+<span class="n">bImageArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">bImageArray</span><span class="p">[</span><span class="n">barrier</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">barrierImage</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bImageArray</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">nextFrame</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">stream</span><span class="p">()</span>
+        <span class="n">collide</span><span class="p">()</span>
+    <span class="n">fluidImage</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">uy</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">fluidImage</span><span class="p">,</span> <span class="n">barrierImage</span><span class="p">)</span> <span class="c1"># return the figure elements to redraw</span>
+
+<span class="n">animate</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">theFig</span><span class="p">,</span> <span class="n">nextFrame</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="fcedf1ff-87d3-4741-b031-a82a72fffb18"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#fcedf1ff-87d3-4741-b031-a82a72fffb18');
+/* Put everything inside the global mpl namespace */
+window.mpl = {};
+
+
+mpl.get_websocket_type = function() {
+    if (typeof(WebSocket) !== 'undefined') {
+        return WebSocket;
+    } else if (typeof(MozWebSocket) !== 'undefined') {
+        return MozWebSocket;
+    } else {
+        alert('Your browser does not have WebSocket support. ' +
+              'Please try Chrome, Safari or Firefox ≥ 6. ' +
+              'Firefox 4 and 5 are also supported but you ' +
+              'have to enable WebSockets in about:config.');
+    };
+}
+
+mpl.figure = function(figure_id, websocket, ondownload, parent_element) {
+    this.id = figure_id;
+
+    this.ws = websocket;
+
+    this.supports_binary = (this.ws.binaryType != undefined);
+
+    if (!this.supports_binary) {
+        var warnings = document.getElementById("mpl-warnings");
+        if (warnings) {
+            warnings.style.display = 'block';
+            warnings.textContent = (
+                "This browser does not support binary websocket messages. " +
+                    "Performance may be slow.");
+        }
+    }
+
+    this.imageObj = new Image();
+
+    this.context = undefined;
+    this.message = undefined;
+    this.canvas = undefined;
+    this.rubberband_canvas = undefined;
+    this.rubberband_context = undefined;
+    this.format_dropdown = undefined;
+
+    this.image_mode = 'full';
+
+    this.root = $('<div/>');
+    this._root_extra_style(this.root)
+    this.root.attr('style', 'display: inline-block');
+
+    $(parent_element).append(this.root);
+
+    this._init_header(this);
+    this._init_canvas(this);
+    this._init_toolbar(this);
+
+    var fig = this;
+
+    this.waiting = false;
+
+    this.ws.onopen =  function () {
+            fig.send_message("supports_binary", {value: fig.supports_binary});
+            fig.send_message("send_image_mode", {});
+            if (mpl.ratio != 1) {
+                fig.send_message("set_dpi_ratio", {'dpi_ratio': mpl.ratio});
+            }
+            fig.send_message("refresh", {});
+        }
+
+    this.imageObj.onload = function() {
+            if (fig.image_mode == 'full') {
+                // Full images could contain transparency (where diff images
+                // almost always do), so we need to clear the canvas so that
+                // there is no ghosting.
+                fig.context.clearRect(0, 0, fig.canvas.width, fig.canvas.height);
+            }
+            fig.context.drawImage(fig.imageObj, 0, 0);
+        };
+
+    this.imageObj.onunload = function() {
+        fig.ws.close();
+    }
+
+    this.ws.onmessage = this._make_on_message_function(this);
+
+    this.ondownload = ondownload;
+}
+
+mpl.figure.prototype._init_header = function() {
+    var titlebar = $(
+        '<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ' +
+        'ui-helper-clearfix"/>');
+    var titletext = $(
+        '<div class="ui-dialog-title" style="width: 100%; ' +
+        'text-align: center; padding: 3px;"/>');
+    titlebar.append(titletext)
+    this.root.append(titlebar);
+    this.header = titletext[0];
+}
+
+
+
+mpl.figure.prototype._canvas_extra_style = function(canvas_div) {
+
+}
+
+
+mpl.figure.prototype._root_extra_style = function(canvas_div) {
+
+}
+
+mpl.figure.prototype._init_canvas = function() {
+    var fig = this;
+
+    var canvas_div = $('<div/>');
+
+    canvas_div.attr('style', 'position: relative; clear: both; outline: 0');
+
+    function canvas_keyboard_event(event) {
+        return fig.key_event(event, event['data']);
+    }
+
+    canvas_div.keydown('key_press', canvas_keyboard_event);
+    canvas_div.keyup('key_release', canvas_keyboard_event);
+    this.canvas_div = canvas_div
+    this._canvas_extra_style(canvas_div)
+    this.root.append(canvas_div);
+
+    var canvas = $('<canvas/>');
+    canvas.addClass('mpl-canvas');
+    canvas.attr('style', "left: 0; top: 0; z-index: 0; outline: 0")
+
+    this.canvas = canvas[0];
+    this.context = canvas[0].getContext("2d");
+
+    var backingStore = this.context.backingStorePixelRatio ||
+	this.context.webkitBackingStorePixelRatio ||
+	this.context.mozBackingStorePixelRatio ||
+	this.context.msBackingStorePixelRatio ||
+	this.context.oBackingStorePixelRatio ||
+	this.context.backingStorePixelRatio || 1;
+
+    mpl.ratio = (window.devicePixelRatio || 1) / backingStore;
+
+    var rubberband = $('<canvas/>');
+    rubberband.attr('style', "position: absolute; left: 0; top: 0; z-index: 1;")
+
+    var pass_mouse_events = true;
+
+    canvas_div.resizable({
+        start: function(event, ui) {
+            pass_mouse_events = false;
+        },
+        resize: function(event, ui) {
+            fig.request_resize(ui.size.width, ui.size.height);
+        },
+        stop: function(event, ui) {
+            pass_mouse_events = true;
+            fig.request_resize(ui.size.width, ui.size.height);
+        },
+    });
+
+    function mouse_event_fn(event) {
+        if (pass_mouse_events)
+            return fig.mouse_event(event, event['data']);
+    }
+
+    rubberband.mousedown('button_press', mouse_event_fn);
+    rubberband.mouseup('button_release', mouse_event_fn);
+    // Throttle sequential mouse events to 1 every 20ms.
+    rubberband.mousemove('motion_notify', mouse_event_fn);
+
+    rubberband.mouseenter('figure_enter', mouse_event_fn);
+    rubberband.mouseleave('figure_leave', mouse_event_fn);
+
+    canvas_div.on("wheel", function (event) {
+        event = event.originalEvent;
+        event['data'] = 'scroll'
+        if (event.deltaY < 0) {
+            event.step = 1;
+        } else {
+            event.step = -1;
+        }
+        mouse_event_fn(event);
+    });
+
+    canvas_div.append(canvas);
+    canvas_div.append(rubberband);
+
+    this.rubberband = rubberband;
+    this.rubberband_canvas = rubberband[0];
+    this.rubberband_context = rubberband[0].getContext("2d");
+    this.rubberband_context.strokeStyle = "#000000";
+
+    this._resize_canvas = function(width, height) {
+        // Keep the size of the canvas, canvas container, and rubber band
+        // canvas in synch.
+        canvas_div.css('width', width)
+        canvas_div.css('height', height)
+
+        canvas.attr('width', width * mpl.ratio);
+        canvas.attr('height', height * mpl.ratio);
+        canvas.attr('style', 'width: ' + width + 'px; height: ' + height + 'px;');
+
+        rubberband.attr('width', width);
+        rubberband.attr('height', height);
+    }
+
+    // Set the figure to an initial 600x600px, this will subsequently be updated
+    // upon first draw.
+    this._resize_canvas(600, 600);
+
+    // Disable right mouse context menu.
+    $(this.rubberband_canvas).bind("contextmenu",function(e){
+        return false;
+    });
+
+    function set_focus () {
+        canvas.focus();
+        canvas_div.focus();
+    }
+
+    window.setTimeout(set_focus, 100);
+}
+
+mpl.figure.prototype._init_toolbar = function() {
+    var fig = this;
+
+    var nav_element = $('<div/>');
+    nav_element.attr('style', 'width: 100%');
+    this.root.append(nav_element);
+
+    // Define a callback function for later on.
+    function toolbar_event(event) {
+        return fig.toolbar_button_onclick(event['data']);
+    }
+    function toolbar_mouse_event(event) {
+        return fig.toolbar_button_onmouseover(event['data']);
+    }
+
+    for(var toolbar_ind in mpl.toolbar_items) {
+        var name = mpl.toolbar_items[toolbar_ind][0];
+        var tooltip = mpl.toolbar_items[toolbar_ind][1];
+        var image = mpl.toolbar_items[toolbar_ind][2];
+        var method_name = mpl.toolbar_items[toolbar_ind][3];
+
+        if (!name) {
+            // put a spacer in here.
+            continue;
+        }
+        var button = $('<button/>');
+        button.addClass('ui-button ui-widget ui-state-default ui-corner-all ' +
+                        'ui-button-icon-only');
+        button.attr('role', 'button');
+        button.attr('aria-disabled', 'false');
+        button.click(method_name, toolbar_event);
+        button.mouseover(tooltip, toolbar_mouse_event);
+
+        var icon_img = $('<span/>');
+        icon_img.addClass('ui-button-icon-primary ui-icon');
+        icon_img.addClass(image);
+        icon_img.addClass('ui-corner-all');
+
+        var tooltip_span = $('<span/>');
+        tooltip_span.addClass('ui-button-text');
+        tooltip_span.html(tooltip);
+
+        button.append(icon_img);
+        button.append(tooltip_span);
+
+        nav_element.append(button);
+    }
+
+    var fmt_picker_span = $('<span/>');
+
+    var fmt_picker = $('<select/>');
+    fmt_picker.addClass('mpl-toolbar-option ui-widget ui-widget-content');
+    fmt_picker_span.append(fmt_picker);
+    nav_element.append(fmt_picker_span);
+    this.format_dropdown = fmt_picker[0];
+
+    for (var ind in mpl.extensions) {
+        var fmt = mpl.extensions[ind];
+        var option = $(
+            '<option/>', {selected: fmt === mpl.default_extension}).html(fmt);
+        fmt_picker.append(option);
+    }
+
+    // Add hover states to the ui-buttons
+    $( ".ui-button" ).hover(
+        function() { $(this).addClass("ui-state-hover");},
+        function() { $(this).removeClass("ui-state-hover");}
+    );
+
+    var status_bar = $('<span class="mpl-message"/>');
+    nav_element.append(status_bar);
+    this.message = status_bar[0];
+}
+
+mpl.figure.prototype.request_resize = function(x_pixels, y_pixels) {
+    // Request matplotlib to resize the figure. Matplotlib will then trigger a resize in the client,
+    // which will in turn request a refresh of the image.
+    this.send_message('resize', {'width': x_pixels, 'height': y_pixels});
+}
+
+mpl.figure.prototype.send_message = function(type, properties) {
+    properties['type'] = type;
+    properties['figure_id'] = this.id;
+    this.ws.send(JSON.stringify(properties));
+}
+
+mpl.figure.prototype.send_draw_message = function() {
+    if (!this.waiting) {
+        this.waiting = true;
+        this.ws.send(JSON.stringify({type: "draw", figure_id: this.id}));
+    }
+}
+
+
+mpl.figure.prototype.handle_save = function(fig, msg) {
+    var format_dropdown = fig.format_dropdown;
+    var format = format_dropdown.options[format_dropdown.selectedIndex].value;
+    fig.ondownload(fig, format);
+}
+
+
+mpl.figure.prototype.handle_resize = function(fig, msg) {
+    var size = msg['size'];
+    if (size[0] != fig.canvas.width || size[1] != fig.canvas.height) {
+        fig._resize_canvas(size[0], size[1]);
+        fig.send_message("refresh", {});
+    };
+}
+
+mpl.figure.prototype.handle_rubberband = function(fig, msg) {
+    var x0 = msg['x0'] / mpl.ratio;
+    var y0 = (fig.canvas.height - msg['y0']) / mpl.ratio;
+    var x1 = msg['x1'] / mpl.ratio;
+    var y1 = (fig.canvas.height - msg['y1']) / mpl.ratio;
+    x0 = Math.floor(x0) + 0.5;
+    y0 = Math.floor(y0) + 0.5;
+    x1 = Math.floor(x1) + 0.5;
+    y1 = Math.floor(y1) + 0.5;
+    var min_x = Math.min(x0, x1);
+    var min_y = Math.min(y0, y1);
+    var width = Math.abs(x1 - x0);
+    var height = Math.abs(y1 - y0);
+
+    fig.rubberband_context.clearRect(
+        0, 0, fig.canvas.width / mpl.ratio, fig.canvas.height / mpl.ratio);
+
+    fig.rubberband_context.strokeRect(min_x, min_y, width, height);
+}
+
+mpl.figure.prototype.handle_figure_label = function(fig, msg) {
+    // Updates the figure title.
+    fig.header.textContent = msg['label'];
+}
+
+mpl.figure.prototype.handle_cursor = function(fig, msg) {
+    var cursor = msg['cursor'];
+    switch(cursor)
+    {
+    case 0:
+        cursor = 'pointer';
+        break;
+    case 1:
+        cursor = 'default';
+        break;
+    case 2:
+        cursor = 'crosshair';
+        break;
+    case 3:
+        cursor = 'move';
+        break;
+    }
+    fig.rubberband_canvas.style.cursor = cursor;
+}
+
+mpl.figure.prototype.handle_message = function(fig, msg) {
+    fig.message.textContent = msg['message'];
+}
+
+mpl.figure.prototype.handle_draw = function(fig, msg) {
+    // Request the server to send over a new figure.
+    fig.send_draw_message();
+}
+
+mpl.figure.prototype.handle_image_mode = function(fig, msg) {
+    fig.image_mode = msg['mode'];
+}
+
+mpl.figure.prototype.updated_canvas_event = function() {
+    // Called whenever the canvas gets updated.
+    this.send_message("ack", {});
+}
+
+// A function to construct a web socket function for onmessage handling.
+// Called in the figure constructor.
+mpl.figure.prototype._make_on_message_function = function(fig) {
+    return function socket_on_message(evt) {
+        if (evt.data instanceof Blob) {
+            /* FIXME: We get "Resource interpreted as Image but
+             * transferred with MIME type text/plain:" errors on
+             * Chrome.  But how to set the MIME type?  It doesn't seem
+             * to be part of the websocket stream */
+            evt.data.type = "image/png";
+
+            /* Free the memory for the previous frames */
+            if (fig.imageObj.src) {
+                (window.URL || window.webkitURL).revokeObjectURL(
+                    fig.imageObj.src);
+            }
+
+            fig.imageObj.src = (window.URL || window.webkitURL).createObjectURL(
+                evt.data);
+            fig.updated_canvas_event();
+            fig.waiting = false;
+            return;
+        }
+        else if (typeof evt.data === 'string' && evt.data.slice(0, 21) == "data:image/png;base64") {
+            fig.imageObj.src = evt.data;
+            fig.updated_canvas_event();
+            fig.waiting = false;
+            return;
+        }
+
+        var msg = JSON.parse(evt.data);
+        var msg_type = msg['type'];
+
+        // Call the  "handle_{type}" callback, which takes
+        // the figure and JSON message as its only arguments.
+        try {
+            var callback = fig["handle_" + msg_type];
+        } catch (e) {
+            console.log("No handler for the '" + msg_type + "' message type: ", msg);
+            return;
+        }
+
+        if (callback) {
+            try {
+                // console.log("Handling '" + msg_type + "' message: ", msg);
+                callback(fig, msg);
+            } catch (e) {
+                console.log("Exception inside the 'handler_" + msg_type + "' callback:", e, e.stack, msg);
+            }
+        }
+    };
+}
+
+// from http://stackoverflow.com/questions/1114465/getting-mouse-location-in-canvas
+mpl.findpos = function(e) {
+    //this section is from http://www.quirksmode.org/js/events_properties.html
+    var targ;
+    if (!e)
+        e = window.event;
+    if (e.target)
+        targ = e.target;
+    else if (e.srcElement)
+        targ = e.srcElement;
+    if (targ.nodeType == 3) // defeat Safari bug
+        targ = targ.parentNode;
+
+    // jQuery normalizes the pageX and pageY
+    // pageX,Y are the mouse positions relative to the document
+    // offset() returns the position of the element relative to the document
+    var x = e.pageX - $(targ).offset().left;
+    var y = e.pageY - $(targ).offset().top;
+
+    return {"x": x, "y": y};
+};
+
+/*
+ * return a copy of an object with only non-object keys
+ * we need this to avoid circular references
+ * http://stackoverflow.com/a/24161582/3208463
+ */
+function simpleKeys (original) {
+  return Object.keys(original).reduce(function (obj, key) {
+    if (typeof original[key] !== 'object')
+        obj[key] = original[key]
+    return obj;
+  }, {});
+}
+
+mpl.figure.prototype.mouse_event = function(event, name) {
+    var canvas_pos = mpl.findpos(event)
+
+    if (name === 'button_press')
+    {
+        this.canvas.focus();
+        this.canvas_div.focus();
+    }
+
+    var x = canvas_pos.x * mpl.ratio;
+    var y = canvas_pos.y * mpl.ratio;
+
+    this.send_message(name, {x: x, y: y, button: event.button,
+                             step: event.step,
+                             guiEvent: simpleKeys(event)});
+
+    /* This prevents the web browser from automatically changing to
+     * the text insertion cursor when the button is pressed.  We want
+     * to control all of the cursor setting manually through the
+     * 'cursor' event from matplotlib */
+    event.preventDefault();
+    return false;
+}
+
+mpl.figure.prototype._key_event_extra = function(event, name) {
+    // Handle any extra behaviour associated with a key event
+}
+
+mpl.figure.prototype.key_event = function(event, name) {
+
+    // Prevent repeat events
+    if (name == 'key_press')
+    {
+        if (event.which === this._key)
+            return;
+        else
+            this._key = event.which;
+    }
+    if (name == 'key_release')
+        this._key = null;
+
+    var value = '';
+    if (event.ctrlKey && event.which != 17)
+        value += "ctrl+";
+    if (event.altKey && event.which != 18)
+        value += "alt+";
+    if (event.shiftKey && event.which != 16)
+        value += "shift+";
+
+    value += 'k';
+    value += event.which.toString();
+
+    this._key_event_extra(event, name);
+
+    this.send_message(name, {key: value,
+                             guiEvent: simpleKeys(event)});
+    return false;
+}
+
+mpl.figure.prototype.toolbar_button_onclick = function(name) {
+    if (name == 'download') {
+        this.handle_save(this, null);
+    } else {
+        this.send_message("toolbar_button", {name: name});
+    }
+};
+
+mpl.figure.prototype.toolbar_button_onmouseover = function(tooltip) {
+    this.message.textContent = tooltip;
+};
+mpl.toolbar_items = [["Home", "Reset original view", "fa fa-home icon-home", "home"], ["Back", "Back to previous view", "fa fa-arrow-left icon-arrow-left", "back"], ["Forward", "Forward to next view", "fa fa-arrow-right icon-arrow-right", "forward"], ["", "", "", ""], ["Pan", "Pan axes with left mouse, zoom with right", "fa fa-arrows icon-move", "pan"], ["Zoom", "Zoom to rectangle", "fa fa-square-o icon-check-empty", "zoom"], ["", "", "", ""], ["Download", "Download plot", "fa fa-floppy-o icon-save", "download"]];
+
+mpl.extensions = ["eps", "jpeg", "pdf", "png", "ps", "raw", "svg", "tif"];
+
+mpl.default_extension = "png";var comm_websocket_adapter = function(comm) {
+    // Create a "websocket"-like object which calls the given IPython comm
+    // object with the appropriate methods. Currently this is a non binary
+    // socket, so there is still some room for performance tuning.
+    var ws = {};
+
+    ws.close = function() {
+        comm.close()
+    };
+    ws.send = function(m) {
+        //console.log('sending', m);
+        comm.send(m);
+    };
+    // Register the callback with on_msg.
+    comm.on_msg(function(msg) {
+        //console.log('receiving', msg['content']['data'], msg);
+        // Pass the mpl event to the overridden (by mpl) onmessage function.
+        ws.onmessage(msg['content']['data'])
+    });
+    return ws;
+}
+
+mpl.mpl_figure_comm = function(comm, msg) {
+    // This is the function which gets called when the mpl process
+    // starts-up an IPython Comm through the "matplotlib" channel.
+
+    var id = msg.content.data.id;
+    // Get hold of the div created by the display call when the Comm
+    // socket was opened in Python.
+    var element = $("#" + id);
+    var ws_proxy = comm_websocket_adapter(comm)
+
+    function ondownload(figure, format) {
+        window.open(figure.imageObj.src);
+    }
+
+    var fig = new mpl.figure(id, ws_proxy,
+                           ondownload,
+                           element.get(0));
+
+    // Call onopen now - mpl needs it, as it is assuming we've passed it a real
+    // web socket which is closed, not our websocket->open comm proxy.
+    ws_proxy.onopen();
+
+    fig.parent_element = element.get(0);
+    fig.cell_info = mpl.find_output_cell("<div id='" + id + "'></div>");
+    if (!fig.cell_info) {
+        console.error("Failed to find cell for figure", id, fig);
+        return;
+    }
+
+    var output_index = fig.cell_info[2]
+    var cell = fig.cell_info[0];
+
+};
+
+mpl.figure.prototype.handle_close = function(fig, msg) {
+    var width = fig.canvas.width/mpl.ratio
+    fig.root.unbind('remove')
+
+    // Update the output cell to use the data from the current canvas.
+    fig.push_to_output();
+    var dataURL = fig.canvas.toDataURL();
+    // Re-enable the keyboard manager in IPython - without this line, in FF,
+    // the notebook keyboard shortcuts fail.
+    IPython.keyboard_manager.enable()
+    $(fig.parent_element).html('<img src="' + dataURL + '" width="' + width + '">');
+    fig.close_ws(fig, msg);
+}
+
+mpl.figure.prototype.close_ws = function(fig, msg){
+    fig.send_message('closing', msg);
+    // fig.ws.close()
+}
+
+mpl.figure.prototype.push_to_output = function(remove_interactive) {
+    // Turn the data on the canvas into data in the output cell.
+    var width = this.canvas.width/mpl.ratio
+    var dataURL = this.canvas.toDataURL();
+    this.cell_info[1]['text/html'] = '<img src="' + dataURL + '" width="' + width + '">';
+}
+
+mpl.figure.prototype.updated_canvas_event = function() {
+    // Tell IPython that the notebook contents must change.
+    IPython.notebook.set_dirty(true);
+    this.send_message("ack", {});
+    var fig = this;
+    // Wait a second, then push the new image to the DOM so
+    // that it is saved nicely (might be nice to debounce this).
+    setTimeout(function () { fig.push_to_output() }, 1000);
+}
+
+mpl.figure.prototype._init_toolbar = function() {
+    var fig = this;
+
+    var nav_element = $('<div/>');
+    nav_element.attr('style', 'width: 100%');
+    this.root.append(nav_element);
+
+    // Define a callback function for later on.
+    function toolbar_event(event) {
+        return fig.toolbar_button_onclick(event['data']);
+    }
+    function toolbar_mouse_event(event) {
+        return fig.toolbar_button_onmouseover(event['data']);
+    }
+
+    for(var toolbar_ind in mpl.toolbar_items){
+        var name = mpl.toolbar_items[toolbar_ind][0];
+        var tooltip = mpl.toolbar_items[toolbar_ind][1];
+        var image = mpl.toolbar_items[toolbar_ind][2];
+        var method_name = mpl.toolbar_items[toolbar_ind][3];
+
+        if (!name) { continue; };
+
+        var button = $('<button class="btn btn-default" href="#" title="' + name + '"><i class="fa ' + image + ' fa-lg"></i></button>');
+        button.click(method_name, toolbar_event);
+        button.mouseover(tooltip, toolbar_mouse_event);
+        nav_element.append(button);
+    }
+
+    // Add the status bar.
+    var status_bar = $('<span class="mpl-message" style="text-align:right; float: right;"/>');
+    nav_element.append(status_bar);
+    this.message = status_bar[0];
+
+    // Add the close button to the window.
+    var buttongrp = $('<div class="btn-group inline pull-right"></div>');
+    var button = $('<button class="btn btn-mini btn-primary" href="#" title="Stop Interaction"><i class="fa fa-power-off icon-remove icon-large"></i></button>');
+    button.click(function (evt) { fig.handle_close(fig, {}); } );
+    button.mouseover('Stop Interaction', toolbar_mouse_event);
+    buttongrp.append(button);
+    var titlebar = this.root.find($('.ui-dialog-titlebar'));
+    titlebar.prepend(buttongrp);
+}
+
+mpl.figure.prototype._root_extra_style = function(el){
+    var fig = this
+    el.on("remove", function(){
+	fig.close_ws(fig, {});
+    });
+}
+
+mpl.figure.prototype._canvas_extra_style = function(el){
+    // this is important to make the div 'focusable
+    el.attr('tabindex', 0)
+    // reach out to IPython and tell the keyboard manager to turn it's self
+    // off when our div gets focus
+
+    // location in version 3
+    if (IPython.notebook.keyboard_manager) {
+        IPython.notebook.keyboard_manager.register_events(el);
+    }
+    else {
+        // location in version 2
+        IPython.keyboard_manager.register_events(el);
+    }
+
+}
+
+mpl.figure.prototype._key_event_extra = function(event, name) {
+    var manager = IPython.notebook.keyboard_manager;
+    if (!manager)
+        manager = IPython.keyboard_manager;
+
+    // Check for shift+enter
+    if (event.shiftKey && event.which == 13) {
+        this.canvas_div.blur();
+        // select the cell after this one
+        var index = IPython.notebook.find_cell_index(this.cell_info[0]);
+        IPython.notebook.select(index + 1);
+    }
+}
+
+mpl.figure.prototype.handle_save = function(fig, msg) {
+    fig.ondownload(fig, null);
+}
+
+
+mpl.find_output_cell = function(html_output) {
+    // Return the cell and output element which can be found *uniquely* in the notebook.
+    // Note - this is a bit hacky, but it is done because the "notebook_saving.Notebook"
+    // IPython event is triggered only after the cells have been serialised, which for
+    // our purposes (turning an active figure into a static one), is too late.
+    var cells = IPython.notebook.get_cells();
+    var ncells = cells.length;
+    for (var i=0; i<ncells; i++) {
+        var cell = cells[i];
+        if (cell.cell_type === 'code'){
+            for (var j=0; j<cell.output_area.outputs.length; j++) {
+                var data = cell.output_area.outputs[j];
+                if (data.data) {
+                    // IPython >= 3 moved mimebundle to data attribute of output
+                    data = data.data;
+                }
+                if (data['text/html'] == html_output) {
+                    return [cell, data, j];
+                }
+            }
+        }
+    }
+}
+
+// Register the function which deals with the matplotlib target/channel.
+// The kernel may be null if the page has been refreshed.
+if (IPython.notebook.kernel != null) {
+    IPython.notebook.kernel.comm_manager.register_target('matplotlib', mpl.mpl_figure_comm);
+}
+
+</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAYAAAA7Ldc6AAAgAElEQVR4Xuy9CbhWxZUuvBDDfAZFIaA4IRiFJKImqGQwUWOG7kvS6Qxtbsek08AT86eD6UQ6pgfoBoztfzu5t39iIOYHOmk7s6ZjIqQzACqZlJg2MRIRRQSDonCY5KBw7lN7n9q19jm1TlV9e/y+857n8XHzfbVreGvV/urd6621hvT09PQQ/oAAEAACQAAIAAEgAASAABAAAiUgMAQEpASU0QQQAAJAAAgAASAABIAAEAACEQIgIDAEIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAEgAAQAAJAAAgAASAABEpDAASkNKjREBAAAkAACAABIAAEgAAQAAIgILABIAAE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" width="800">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="Salad-bowl-of-knowledge/hp"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/hp/phisics/2020/04/08/lattice_boltzmann.html" hidden></a>
+</article>
+
+      </div>
+    </main><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+</body>
+
+</html>
