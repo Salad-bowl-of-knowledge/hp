@@ -1,15 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" rel="self" type="application/atom+xml" /><link href="https://salad-bowl-of-knowledge.github.io/hp/" rel="alternate" type="text/html" /><updated>2020-04-13T09:17:58-05:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/feed.xml</id><title type="html">知識のサラダボウル</title><entry><title type="html">PowerPointによるボイロ音声付きプレゼン動画の作成法</title><link href="https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint.html" rel="alternate" type="text/html" title="PowerPointによるボイロ音声付きプレゼン動画の作成法" /><published>2020-04-13T00:00:00-05:00</published><updated>2020-04-13T00:00:00-05:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint</id><content type="html" xml:base="https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint.html">&lt;p&gt;タイトルの通り、PowerPointでボイロ音声付きプレゼン動画を作成しました。ボイロというのはVOICEROIDの略で、読み上げ用音声合成ソフトのシリーズ製品です。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" rel="self" type="application/atom+xml" /><link href="https://salad-bowl-of-knowledge.github.io/hp/" rel="alternate" type="text/html" /><updated>2020-04-13T09:56:31-05:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/feed.xml</id><title type="html">知識のサラダボウル</title><entry><title type="html">PowerPointによるVOICEROID音声付きプレゼン動画の作成法</title><link href="https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint.html" rel="alternate" type="text/html" title="PowerPointによるVOICEROID音声付きプレゼン動画の作成法" /><published>2020-04-13T00:00:00-05:00</published><updated>2020-04-13T00:00:00-05:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint</id><content type="html" xml:base="https://salad-bowl-of-knowledge.github.io/hp/presentation/2020/04/13/voiceroid_powerpoint.html">&lt;p&gt;タイトルの通り、PowerPointでVOICEROID音声付きプレゼン動画を作成しました。VOICEROIDは読み上げ用音声合成ソフトのシリーズ製品です。動画編集ソフトを使おうかと思いましたが、PowerPointで完結させられたので備忘録として残します。なお、環境はWindows10です。また、VOICEROIDを使わずに自分の声を入れたい場合は「スライドショー」&amp;gt;「スライドショーの記録」または「録音」を使いましょう。&lt;/p&gt;
 
 &lt;h2 id=&quot;作成した動画&quot;&gt;作成した動画&lt;/h2&gt;
 &lt;p&gt;阪医Python会の新入生歓迎用動画として作成しました。&lt;/p&gt;
 
-&lt;h3 id=&quot;動画&quot;&gt;動画&lt;/h3&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/0NF6zhajueg&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;h3 id=&quot;スライド&quot;&gt;スライド&lt;/h3&gt;
-&lt;div style=&quot;width: 65%&quot;&gt;
-&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;4eb92fd774f0446ea4d40e103c3ad188&quot; data-ratio=&quot;1.77777777777778&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
-&lt;/div&gt;</content><author><name>山拓</name></author><summary type="html">タイトルの通り、PowerPointでボイロ音声付きプレゼン動画を作成しました。ボイロというのはVOICEROIDの略で、読み上げ用音声合成ソフトのシリーズ製品です。</summary></entry><entry><title type="html">脳が対側支配をする進化的な利点は何か</title><link href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain.html" rel="alternate" type="text/html" title="脳が対側支配をする進化的な利点は何か" /><published>2020-03-07T00:00:00-06:00</published><updated>2020-03-07T00:00:00-06:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain</id><content type="html" xml:base="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain.html">&lt;p&gt;神経解剖を学ぶと、次のような疑問は自然と生じると思います。それは「&lt;strong&gt;なぜ脳では対側支配(contralateral innervation)があるのか&lt;/strong&gt;」というものです。ここでの&lt;strong&gt;対側&lt;/strong&gt;とは、身体の正中線に対し反対側のことを指します。例としては&lt;strong&gt;左運動野&lt;/strong&gt;が&lt;strong&gt;右側の筋群&lt;/strong&gt;を、&lt;strong&gt;右運動野&lt;/strong&gt; が &lt;strong&gt;左側の筋群&lt;/strong&gt; を制御するといった対側制御(contralateral control)が挙げられます。何ともややこしい配線ですが、なぜ同側支配ではダメだったのでしょうか？対側支配をする利点はあるのでしょうか？&lt;/p&gt;
+&lt;p&gt;スライド版は&lt;a href=&quot;https://speakerdeck.com/takyamamoto/shen-jing-sheng-li-xue-falseshi-dian-dejian-runiyurarunetutowakuru-men&quot;&gt;こちら&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;作成方法&quot;&gt;作成方法&lt;/h2&gt;
+&lt;h3 id=&quot;-スライドを作成する&quot;&gt;① スライドを作成する&lt;/h3&gt;
+&lt;p&gt;普通にプレゼンするときのようにスライドを作成しました。ただし、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;キャラの立ち絵&lt;/li&gt;
+  &lt;li&gt;読み上げ文の字幕&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の2つのスペースは確保しました。立ち絵は無くても良いですが、発表者の姿が見えないという違和感を減少させられます。また、字幕に関してはVOICEROIDは結構発音の調整が難しいので何を言っているか理解するには必須だと感じました。動画を止めた時に理解もしやすいです。&lt;/p&gt;
+
+&lt;p&gt;その他、調整したのはフォントです。普段の発表とは異なり、柔らかい印象を持たせたかったのでフォントは&lt;code class=&quot;highlighter-rouge&quot;&gt;BIZ UDPゴシック&lt;/code&gt;を選びました。&lt;/p&gt;
+
+&lt;h3 id=&quot;-各スライドの読み上げ文章を作成する&quot;&gt;② 各スライドの読み上げ文章を作成する&lt;/h3&gt;
+&lt;p&gt;スライドごとに読み上げてもらう文章を作成しました。字幕を入れることを考えると1つのスライドで長々と話せないので、約100～130字程度 (1tweet程度)が適切でしょうか。長いと感じれば次のスライドに文章を移せば良いです。作成したら、字幕に貼り付けと個別のtxtファイルに保存を行います。&lt;/p&gt;
+
+&lt;h3 id=&quot;-txtファイルをvoiceroidに読み上げてもらう&quot;&gt;③ txtファイルをVOICEROIDに読み上げてもらう&lt;/h3&gt;
+&lt;p&gt;②で作成した音声をVOICEROIDに読み上げてもらいます (自分は東北きりたんを購入しました)。この時、難しい熟語や英単語、数式等はひらがな・カタカナに直す必要があります。また、音声を読み上げてもらうと文章のおかしさに気づくこともしばしばありました。調声を行ってよいと思ったら音声をwavファイルで保存します。&lt;/p&gt;
+
+&lt;h3 id=&quot;-wavファイルを各スライドに貼り付ける&quot;&gt;④ wavファイルを各スライドに貼り付ける&lt;/h3&gt;
+&lt;p&gt;wavファイルを各スライドに1つずつ付けて行きます。苦行ですね。自動化したいところですが。このとき、将来的にスライドを使うなら音声無し版も別ファイルで保存しておきましょう。音声を貼り付ける際には、同時に「再生」&amp;gt;「音声の開始タイミング」を&lt;strong&gt;自動&lt;/strong&gt;に設定し、「スライドショーを実行中にサウンドのアイコンを隠す」にチェックを入れておきます。&lt;/p&gt;
+
+&lt;h3 id=&quot;-スライド切替時間の設定&quot;&gt;⑤ スライド切替時間の設定&lt;/h3&gt;
+&lt;p&gt;④で貼り付けた音声の長さに合わせて「画面切り替え」&amp;gt;「画面切り替えのタイミング」&amp;gt;「自動」にチェックを入れて、切り替え時間を&lt;strong&gt;音声の長さ + 1～2秒&lt;/strong&gt;としました。気になる部分は個別で修正しましょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;-アニメーションの追加&quot;&gt;⑥ アニメーションの追加&lt;/h3&gt;
+&lt;p&gt;画像を動かしたい場合などにはアニメーションを追加します。これは画面を切り替えるまでの時間で開始タイミングなどを設定します。&lt;/p&gt;
+
+&lt;h3 id=&quot;-スライドショーで確認&quot;&gt;⑦ スライドショーで確認&lt;/h3&gt;
+&lt;p&gt;完成したスライドをスライドショーで通してチェックします。この時違和感がある部分は修正しましょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;-動画に出力&quot;&gt;⑧ 動画に出力&lt;/h3&gt;
+&lt;p&gt;「ファイル」&amp;gt;「名前を付けて保存」で動画形式で保存すれば良いです。このとき、&lt;strong&gt;mp4形式ではなくwmv形式にすることをお勧めします&lt;/strong&gt; (Windowsの場合ですが)。自分だけではないようですが、mp4形式で保存すると、動画中にノイズ音がランダムに発生する、ということが起こりました。&lt;/p&gt;
+
+&lt;h2 id=&quot;感想&quot;&gt;感想&lt;/h2&gt;
+&lt;p&gt;動画作成は初めてだったのでかなり時間がかかりましたが、見返せる良い資料ができたと個人的に思っています（大変だったのでしばらく次の動画は作りたくないと思いましたが）。&lt;/p&gt;</content><author><name>山拓</name></author><summary type="html">タイトルの通り、PowerPointでVOICEROID音声付きプレゼン動画を作成しました。VOICEROIDは読み上げ用音声合成ソフトのシリーズ製品です。動画編集ソフトを使おうかと思いましたが、PowerPointで完結させられたので備忘録として残します。なお、環境はWindows10です。また、VOICEROIDを使わずに自分の声を入れたい場合は「スライドショー」&amp;gt;「スライドショーの記録」または「録音」を使いましょう。</summary></entry><entry><title type="html">脳が対側支配をする進化的な利点は何か</title><link href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain.html" rel="alternate" type="text/html" title="脳が対側支配をする進化的な利点は何か" /><published>2020-03-07T00:00:00-06:00</published><updated>2020-03-07T00:00:00-06:00</updated><id>https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain</id><content type="html" xml:base="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/03/07/contralateral_brain.html">&lt;p&gt;神経解剖を学ぶと、次のような疑問は自然と生じると思います。それは「&lt;strong&gt;なぜ脳では対側支配(contralateral innervation)があるのか&lt;/strong&gt;」というものです。ここでの&lt;strong&gt;対側&lt;/strong&gt;とは、身体の正中線に対し反対側のことを指します。例としては&lt;strong&gt;左運動野&lt;/strong&gt;が&lt;strong&gt;右側の筋群&lt;/strong&gt;を、&lt;strong&gt;右運動野&lt;/strong&gt; が &lt;strong&gt;左側の筋群&lt;/strong&gt; を制御するといった対側制御(contralateral control)が挙げられます。何ともややこしい配線ですが、なぜ同側支配ではダメだったのでしょうか？対側支配をする利点はあるのでしょうか？&lt;/p&gt;
 
 &lt;p&gt;かなり基本的な内容に対する疑問ではありますが、この問題はRamón y Cajalの1898年の論文に端を発します (Ramón y Cajal. 1898)。古くはHippocratesも、左頭部負傷が右の筋群の運動に影響を与えることを知っていたようです (&lt;a href=&quot;https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(05)00990-7/fulltext&quot;&gt;Vulliemoz et al., &lt;em&gt;Lancet Neurol&lt;/em&gt;. 2005&lt;/a&gt;)。しかしながら、神経科学の著名な教科書にもこれに対する明確な回答はありません (カンデル神経科学や神経科学-脳の探求-を一通りざっと見ただけですが)。幸い、英語でGoogle検索すると当然ながら同様の疑問を抱く人は多数いるようで、Quoraにおいていくつかの解答を見つけました (&lt;a href=&quot;https://www.quora.com/Why-does-our-left-hemisphere-of-brain-control-our-right-side-of-our-body-and-the-right-our-left&quot;&gt;Why does our left hemisphere of brain control our right side of our body and the right our left? - Quora&lt;/a&gt;)。&lt;/p&gt;
 
