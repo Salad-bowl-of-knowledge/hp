@@ -14,7 +14,9 @@ title: PowerPointによるボイロ音声付きプレゼン動画の作成法
 阪医Python会の新入生歓迎用動画として作成しました。
 
 ### 動画
-> youtube: https://youtu.be/0NF6zhajueg
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0NF6zhajueg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### スライド
+<div style="width: 65%">
 <script async class="speakerdeck-embed" data-id="4eb92fd774f0446ea4d40e103c3ad188" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>
