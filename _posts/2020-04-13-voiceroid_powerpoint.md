@@ -1,7 +1,7 @@
 ---
 toc: true
 layout: post
-description: 
+description:
 author: 山拓
 comments: true
 categories: [presentation]
@@ -13,7 +13,13 @@ title: PowerPointによるVOICEROID音声付きプレゼン動画の作成法
 ## 作成した動画
 阪医Python会の新入生歓迎用動画として作成しました。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0NF6zhajueg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="youtube">
+  <iframe
+    src="https://www.youtube.com/embed/0NF6zhajueg"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
 
 スライド版は[こちら](https://speakerdeck.com/takyamamoto/shen-jing-sheng-li-xue-falseshi-dian-dejian-runiyurarunetutowakuru-men)
 
