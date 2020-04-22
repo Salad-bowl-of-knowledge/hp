@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>ニューラルネットワークにおける意味発達の数学理論 | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="ニューラルネットワークにおける意味発達の数学理論" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="この記事は" />
+<meta property="og:description" content="この記事は" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-15T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"description":"この記事は","@type":"BlogPosting","headline":"ニューラルネットワークにおける意味発達の数学理論","dateModified":"2019-01-15T00:00:00-06:00","datePublished":"2019-01-15T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/hp/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" /><link rel="shortcut icon" type="image/x-icon" href="/hp/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>ニューラルネットワークにおける意味発達の数学理論 | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="ニューラルネットワークにおける意味発達の数学理論" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="この記事は" />
+<meta property="og:description" content="この記事は" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-15T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"description":"この記事は","@type":"BlogPosting","headline":"ニューラルネットワークにおける意味発達の数学理論","dateModified":"2019-01-15T00:00:00-06:00","datePublished":"2019-01-15T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/01/15/semantic_development.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/hp/">知識のサラダボウル</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/hp/about/">About Us</a><a class="page-link" href="/hp/neuroscience/">神経科学</a><a class="page-link" href="/hp/machine-learning/">機械学習</a><a class="page-link" href="/hp/statistics/">統計学</a><a class="page-link" href="/hp/medicine/">医学</a><a class="page-link" href="/hp/chemistry/">化学</a><a class="page-link" href="/hp/physics/">物理学</a><a class="page-link" href="/hp/mathematics/">数学</a><a class="page-link" href="/hp/programming/">Programming</a><a class="page-link" href="/hp/computer/">Computer</a><a class="page-link" href="/hp/reading/">読書</a><a class="page-link" href="/hp/essay/">エッセイ</a><a class="page-link" href="/hp/search/">Search</a><a class="page-link" href="/hp/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">ニューラルネットワークにおける意味発達の数学理論</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-01-15T00:00:00-06:00" itemprop="datePublished">
+        Jan 15, 2019
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">山拓</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/hp/categories/#neuroscience">neuroscience</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#概要">概要</a></li>
+<li class="toc-entry toc-h2"><a href="#知識の獲得とそのダイナミクス">知識の獲得とそのダイナミクス</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#タスク">タスク</a></li>
+<li class="toc-entry toc-h3"><a href="#モデル">モデル</a></li>
+<li class="toc-entry toc-h3"><a href="#学習">学習</a></li>
+<li class="toc-entry toc-h3"><a href="#特異値分解svdによる学習ダイナミクスの解析">特異値分解(SVD)による学習ダイナミクスの解析</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#実装">実装</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#3層線形ネットワーク-deep">3層線形ネットワーク (deep)</a></li>
+<li class="toc-entry toc-h3"><a href="#2層線形ネットワーク-shallow">2層線形ネットワーク (shallow)</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#考察">考察</a></li>
+</ul><p>この記事は</p>
+
+<p>A. M. Saxe, J. L. McClelland, S. Ganguli. “<strong>A mathematical theory of semantic development in deep neural networks</strong>”. <em>PNAS.</em> (2019). (<a href="https://arxiv.org/abs/1810.10531">arXiv</a>). (<a href="https://www.pnas.org/content/early/2019/05/16/1820226116">PNAS</a>)</p>
+
+<p>を読んだまとめ (+ 実装) です。全部ではなく、初めの部分だけについて解説します。</p>
+
+<h2 id="概要">
+<a class="anchor" href="#%E6%A6%82%E8%A6%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>概要</h2>
+<p>Abstractからではなく、著者の一人であるS. Ganguli氏の<a href="https://twitter.com/suryaganguli/status/1056606478285455360">twitter</a>を日本語訳しました。とりあえず大まかな内容を掴むためのメモのようなものです。</p>
+
+<blockquote>
+  <p>人間の意味的認知における現象が深層ニューラルネットワークでいくつ発生するか、そしてこれらの現象が単純な深層線形ネットワークで解析的に理解されることができるかという研究。</p>
+
+  <p>以下は、人間の意味的認知における現象の例。</p>
+
+  <ol>
+    <li>幼児の意味発達に対する概念の階層的な区別。<strong>幼児は細かいカテゴリーの区別を取得する前に広いカテゴリーの区別を取得する</strong>ということである。</li>
+    <li>幼児には<strong>しばらくの間何も学習せず、突然新しい概念を習得する</strong>というような発達的学習における<strong>段階的な急速な遷移</strong>(Rapid stage)が存在する。</li>
+    <li>幼児は発達過程において誤った事実（例えば『芋虫には骨がある』）を思い込んでしまうことがある。そのような事実を裏付けるデータは外部環境には<strong>存在しない</strong>ので、古典的な関連モデルでは説明できない。</li>
+    <li>あるカテゴリーの<strong>典型的な要素と非典型的な要素の概念</strong>（例えば、カナリアは典型的な鳥だがダチョウはそうではない）が存在し、そしてなぜニューラルネットワークが典型的な要素をより迅速に意味的に処理できるのか。</li>
+  </ol>
+
+  <p>いくつかのカテゴリはより「統一がある(coherent)」（例えば『犬』の集合）ものであり、他のカテゴリはそうではない（例えば『すべてのものが青』の集合）。<strong>カテゴリーの統一度</strong>(category coherence)の定量的概念を定義し、より統一のあるカテゴリーがより早く学習されることを数学的に証明した。</p>
+
+  <ol>
+    <li>基本レベルの効果：ニューラルネットワークが上位レベル（例えば『動物』）または下位レベル（例えば『ロビン(コマドリなど)』）よりも、<strong>基本的な階層レベル</strong>（例えば『鳥』）<strong>の構造を優先的に学習し、名前付けする</strong>ことができる理由の説明。</li>
+    <li>発達過程における帰納的一般化のパターンの変化：なぜ幼児やニューラルネットワークは学習の早い段階で過剰に一般化され、その後徐々に一般化のパターンを制限するのかということの説明。</li>
+    <li>表現類似度解析 (Representational Similarity Analysis; RSA)：異なる初期重みから同じデータを学習した2つの深層線形ネットワークは、学習が最適（つまり最小ノルム重み）である場合に<strong>限り</strong>、同じ類似度構造を持つ内部表現を学習する。</li>
+  </ol>
+</blockquote>
+
+<h2 id="知識の獲得とそのダイナミクス">
+<a class="anchor" href="#%E7%9F%A5%E8%AD%98%E3%81%AE%E7%8D%B2%E5%BE%97%E3%81%A8%E3%81%9D%E3%81%AE%E3%83%80%E3%82%A4%E3%83%8A%E3%83%9F%E3%82%AF%E3%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>知識の獲得とそのダイナミクス</h2>
+
+<h3 id="タスク">
+<a class="anchor" href="#%E3%82%BF%E3%82%B9%E3%82%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>タスク</h3>
+
+<p>まずタスクについて。入力 $\boldsymbol{x}$ は「もの」の項目(例えばカナリア、犬、サーモン、樫など)、出力 $\boldsymbol{y}$はそれぞれの項目の性質・特性となっています。例えばカナリア(Canary)は成長し(Grow)、動き(Move)、空を飛べる(Fly)ので、Canaryという入力に対し、ネットワークが出力するのはGrow, Move, Flyとなります。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/001.png" alt="001"></p>
+
+<p>(Saxe et al. 2019, Fig. 1B)</p>
+
+<p>上図はマンボウ(sunfish)の場合です。マンボウはBarkするのでしょうか…。</p>
+
+<h3 id="モデル">
+<a class="anchor" href="#%E3%83%A2%E3%83%87%E3%83%AB" aria-hidden="true"><span class="octicon octicon-link"></span></a>モデル</h3>
+<p>モデルは3層の全結合線形ネットワークです。 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi mathvariant="bold-italic">y</mi><mo>^</mo></mover><mo>=</mo><msup><mi mathvariant="bold-italic">W</mi><mn>2</mn></msup><msup><mi mathvariant="bold-italic">W</mi><mn>1</mn></msup><mi mathvariant="bold-italic">x</mi></mrow><annotation encoding="application/x-tex">\hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {2} \boldsymbol{ W} ^ {1}\boldsymbol{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.90232em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.70788em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span></span></span><span style="top:-3.01344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.890118em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">W</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.890118em;"><span style="top:-3.1390100000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">W</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.890118em;"><span style="top:-3.1390100000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span></span></span></span> ただし非線形な活性化関数が無いので、普段使うニューラルネットワークではありません。これはニューラルネットワークを学ぶ人なら誰でも知っていると思いますが、 $ \boldsymbol{ W} ^ {s}={\bf W} ^ {2} \boldsymbol{ W} ^ {1}$として、 上のネットワークは</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi mathvariant="bold-italic">y</mi><mo>^</mo></mover><mo>=</mo><msup><mi mathvariant="bold-italic">W</mi><mi>s</mi></msup><mi mathvariant="bold-italic">x</mi></mrow><annotation encoding="application/x-tex">\hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {s}\boldsymbol{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.90232em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.70788em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.03704em;">y</span></span></span></span></span><span style="top:-3.01344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.740402em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">W</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740402em;"><span style="top:-3.1390100000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span></span></span></span></span>
+
+<p>とまとめることができます。なので線形な活性化関数で深いニューラルネットワークを構築しても何の意味もなく、それゆえ非線形な活性化関数が必要となるということです。しかし、この論文では<strong>深い(3層の)ネットワークである場合のみ、幼児の発達における非線形な現象が説明でき</strong>、浅い(2層の)ネットワークでは当てはまらないと主張しています。3層で「深い」というのはどうかと思いますが、2層を「浅い」とした場合、比較して「深い」ということです。</p>
+
+<h3 id="学習">
+<a class="anchor" href="#%E5%AD%A6%E7%BF%92" aria-hidden="true"><span class="octicon octicon-link"></span></a>学習</h3>
+<p>ネットワークの学習(重みの更新)は誤差逆伝搬から導かれる次の2式により行います。</p>
+
+<span class="katex-error" title="ParseError: KaTeX parse error: No such environment: align at position 7: \begin{̲a̲l̲i̲g̲n̲}̲ \tau \frac{d}{…" style="color:#cc0000">\begin{align} \tau \frac{d}{dt} \boldsymbol{ W} ^ {1}&amp;=(\boldsymbol{W} ^ 2) ^ T ( \boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ 2 \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x})\\ 
+\tau \frac{d}{dt} \boldsymbol{W} ^ {2}&amp;=(\boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ {2} \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x}) (\boldsymbol{W} ^ 1)^T
+\end{align}</span>
+
+<p>ただし、$ \boldsymbol{\Sigma} ^ {x}$は入力間の関係を表す行列、$\boldsymbol{\Sigma} ^ {yx}$は入出力の関係を表す行列です。他にも定義していない変数がありますが、これは後の実装を見ると分かりやすいと思います。</p>
+
+<h3 id="特異値分解svdによる学習ダイナミクスの解析">
+<a class="anchor" href="#%E7%89%B9%E7%95%B0%E5%80%A4%E5%88%86%E8%A7%A3svd%E3%81%AB%E3%82%88%E3%82%8B%E5%AD%A6%E7%BF%92%E3%83%80%E3%82%A4%E3%83%8A%E3%83%9F%E3%82%AF%E3%82%B9%E3%81%AE%E8%A7%A3%E6%9E%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>特異値分解(SVD)による学習ダイナミクスの解析</h3>
+<p>学習ダイナミクスは$ \boldsymbol{\Sigma} ^ {yx}$に対する特異値分解(SVD)を用いて説明できます。</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">Σ</mi><mrow><mi>y</mi><mi>x</mi></mrow></msup><mo>=</mo><msup><mi><mrow><mi mathvariant="bold-italic">U</mi><mi mathvariant="bold-italic">S</mi><mi mathvariant="bold-italic">V</mi></mrow></mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\boldsymbol{\Sigma} ^ {yx}=\boldsymbol{USV}^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.740402em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05451em;">Σ</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740402em;"><span style="top:-3.1390100000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mord mathdefault mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.917341em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.11424em;">U</span><span class="mord boldsymbol" style="margin-right:0.05382em;">S</span><span class="mord boldsymbol" style="margin-right:0.25555em;">V</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.917341em;"><span style="top:-3.1390100000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span></span>
+
+<p>行列$ \boldsymbol{ S}$の対角成分の非ゼロ要素が特異値です。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/002.png" alt="002">
+(Saxe et al. 2019, Fig. 3A)</p>
+
+<p>次の図は学習途中における$\hat{\boldsymbol{\Sigma}} ^ {yx}(t)=\boldsymbol{W} ^ 2 (t) \boldsymbol{W} ^ 1(t) \boldsymbol{\Sigma} ^ {x}$のSVDの結果です。$ \boldsymbol{ A}(t)$の要素$a_{\alpha}(t)$が特異値です。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/003.png" alt="003">
+(Saxe et al. 2019, Fig. 3B)</p>
+
+<p>この $a _ {\alpha}(t)$ですが、3層のネットワークの場合、大きな特異値から先に学習されます(C)。2層の浅いネットワークの場合、全ての特異値が同時に学習されます(D)。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/004.png" alt="004">
+(Saxe et al. 2019, Fig. 3C, D)</p>
+
+<p>このダイナミクスですが、<strong>低ランク近似</strong>が生じていて、特異値の大きな要素から学習されていると捉えることができます。学習が進むとランクが大きくなっていく感じです。</p>
+
+<p>低ランク近似の例として、SVDによる画像の圧縮と復元を見てみましょう。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/005.png" alt="005"></p>
+
+<p>元画像はカメラマンの写真です。この画像に対し、低ランク近似を行い、ランクを上げていきます。するとランクが上がるにつれて、画像が鮮明になります。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/1546740093.gif" alt="1546740093"></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="n">animation</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+ 
+<span class="c1"># Low-rank approximation with SVD
+</span><span class="k">def</span> <span class="nf">LowRankApprox</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+    <span class="n">ur</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">]</span>
+    <span class="n">sr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">s</span><span class="p">[:</span><span class="n">rank</span><span class="p">])</span>
+    <span class="n">vr</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">ur</span> <span class="o">@</span> <span class="n">sr</span> <span class="o">@</span> <span class="n">vr</span>
+ 
+<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span> <span class="c1"># 512 x 512
+#plt.imshow(img)
+#plt.show()
+#plt.tight_layout()
+#plt.savefig("camera.png")
+</span> 
+<span class="c1"># Animation
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+ 
+<span class="n">ims</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">max_rank</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+ 
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_rank</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">.97</span><span class="p">,</span> <span class="s">"rank = "</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+                     <span class="n">transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                     <span class="n">verticalalignment</span> <span class="o">=</span> <span class="s">"center"</span><span class="p">,</span>
+                     <span class="n">fontsize</span><span class="o">=</span><span class="s">"large"</span><span class="p">)</span>
+    <span class="n">img_approx</span> <span class="o">=</span> <span class="n">LowRankApprox</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">im</span><span class="p">,</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_approx</span><span class="p">)]</span>
+    <span class="n">ims</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">im</span><span class="p">,</span> <span class="n">title</span><span class="p">])</span>
+ 
+<span class="c1">#run animation
+</span><span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">ArtistAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="n">ims</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1">#plt.show()
+</span><span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">"results_video.mp4"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>これと同じことが知識の獲得において生じていると見なすことができます。</p>
+
+<h2 id="実装">
+<a class="anchor" href="#%E5%AE%9F%E8%A3%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>実装</h2>
+
+<p>再現自体は簡単だったので、実装してみました。ニューラルネットワークといえど、numpyで十分なレベルです。一部のハイパーパラメータは適当に設定しています。</p>
+
+<h3 id="3層線形ネットワーク-deep">
+<a class="anchor" href="#3%E5%B1%A4%E7%B7%9A%E5%BD%A2%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF-deep" aria-hidden="true"><span class="octicon octicon-link"></span></a>3層線形ネットワーク (deep)</h3>
+<p>Fig. 3Cに対応。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/006.png" alt="006"></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+ 
+<span class="c1"># Set initial values
+</span><span class="n">N_1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">N_2</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">N_3</span> <span class="o">=</span> <span class="mi">7</span>
+ 
+<span class="n">s_yx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">s_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N_1</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">s_yx</span><span class="p">)</span>
+ 
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">w_1</span> <span class="o">=</span> <span class="n">eps</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_2</span><span class="p">,</span><span class="n">N_1</span><span class="p">)</span>
+<span class="n">w_2</span> <span class="o">=</span> <span class="n">eps</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_3</span><span class="p">,</span><span class="n">N_2</span><span class="p">)</span>
+ 
+<span class="c1"># Simulation &amp; training
+</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="n">N_t</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N_t</span><span class="p">,</span> <span class="n">N_1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_t</span><span class="p">):</span>
+    <span class="c1"># Update
+</span>    <span class="n">D</span> <span class="o">=</span> <span class="n">s_yx</span> <span class="o">-</span> <span class="n">w_2</span> <span class="o">@</span> <span class="n">w_1</span> <span class="o">@</span> <span class="n">s_x</span>
+    <span class="n">dw_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">w_2</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">D</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">dw_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">D</span> <span class="o">@</span> <span class="n">w_1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+     
+    <span class="n">w_1</span> <span class="o">+=</span> <span class="n">dw_1</span> 
+    <span class="n">w_2</span> <span class="o">+=</span> <span class="n">dw_2</span>
+     
+    <span class="c1"># SVD &amp; save results
+</span>    <span class="n">s_yx_hat</span> <span class="o">=</span> <span class="n">w_2</span> <span class="o">@</span> <span class="n">w_1</span> <span class="o">@</span> <span class="n">s_x</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">s_yx_hat</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span>
+ 
+<span class="c1"># Plot results
+</span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">N_t</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a3"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a4"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"t"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"A(t)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1">#plt.show()
+</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"result_deep.png"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>大きな特異値から学習が始まっている</strong>のが分かります。また、それぞれの特異値の学習においてはシグモイド関数様の<strong>急速な学習段階</strong>が見られます。</p>
+
+<h3 id="2層線形ネットワーク-shallow">
+<a class="anchor" href="#2%E5%B1%A4%E7%B7%9A%E5%BD%A2%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF-shallow" aria-hidden="true"><span class="octicon octicon-link"></span></a>2層線形ネットワーク (shallow)</h3>
+<p>Fig. 3Dに対応。</p>
+
+<p><img src="/hp/images/posts/semantic_development_figs/007.png" alt="007"></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+ 
+<span class="c1"># Set initial values
+</span><span class="n">N_1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="c1">#N_2 = 16
+</span><span class="n">N_3</span> <span class="o">=</span> <span class="mi">7</span>
+ 
+<span class="n">s_yx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">s_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N_1</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">s_yx</span><span class="p">)</span>
+ 
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">w_s</span> <span class="o">=</span> <span class="n">eps</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N_3</span><span class="p">,</span><span class="n">N_1</span><span class="p">)</span>
+ 
+<span class="c1"># Simulation &amp; training
+</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="n">N_t</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N_t</span><span class="p">,</span> <span class="n">N_1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_t</span><span class="p">):</span>
+    <span class="c1"># Update
+</span>    <span class="n">dw_s</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_yx</span> <span class="o">-</span> <span class="n">w_s</span> <span class="o">@</span> <span class="n">s_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>   
+    <span class="n">w_s</span> <span class="o">+=</span> <span class="n">dw_s</span> 
+     
+    <span class="c1"># SVD &amp; save results
+</span>    <span class="n">s_yx_hat</span> <span class="o">=</span> <span class="n">w_s</span> <span class="o">@</span> <span class="n">s_x</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">s_yx_hat</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span>
+ 
+<span class="c1"># Plot results
+</span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">N_t</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a3"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">"a4"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"t"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"A(t)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1">#plt.show()
+</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">"result_shallow.png"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>全ての特異値の学習が初めから起こっています。ただ、収束はこちらの方が速かったです（パラメータが少ないので）。</p>
+
+<h2 id="考察">
+<a class="anchor" href="#%E8%80%83%E5%AF%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>考察</h2>
+<p>学習ダイナミクスにおいて特異値分解が関わっているというのは面白く思いました。ただ、特異値分解自体を学習しているわけではないと思います。</p>
+
+<p>もう1つ面白いと思ったのが知識の混同（例えば『芋虫には骨がある』）の仕組みです。発達において、大きい特異値から先に学習されるため、「動く」、「成長する」などの動物の要素が先に獲得されます。身の回りの動物のほとんどが「骨を持つ」ので、<strong>低ランク近似により、『芋虫にも骨がある』と錯覚してしまう</strong>のではないか、という話です。</p>
+
+<p>データ数もモデルも小さいので、大きなデータセットに対し、非線形な深層ニューラルネットワークでもこの理論が成り立つのかというのが今後の課題となりそうですね。</p>
+
+  </div><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="Salad-bowl-of-knowledge/hp"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/hp/neuroscience/2019/01/15/semantic_development.html" hidden></a>
+</article>
+
+      </div>
+    </main><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+</body>
+
+</html>
