@@ -58,9 +58,9 @@ $$
 ネットワークの学習(重みの更新)は誤差逆伝搬から導かれる次の2式により行います。 
 
 $$
-\begin{align} \tau \frac{d}{dt} \boldsymbol{ W} ^ {1}&=(\boldsymbol{W} ^ 2) ^ T ( \boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ 2 \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x})\\ 
+\begin{aligned} \tau \frac{d}{dt} \boldsymbol{ W} ^ {1}&=(\boldsymbol{W} ^ 2) ^ T ( \boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ 2 \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x})\\ 
 \tau \frac{d}{dt} \boldsymbol{W} ^ {2}&=(\boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ {2} \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x}) (\boldsymbol{W} ^ 1)^T
-\end{align}
+\end{aligned}
 $$
 
 ただし、$ \boldsymbol{\Sigma} ^ {x}$は入力間の関係を表す行列、$\boldsymbol{\Sigma} ^ {yx}$は入出力の関係を表す行列です。他にも定義していない変数がありますが、これは後の実装を見ると分かりやすいと思います。
