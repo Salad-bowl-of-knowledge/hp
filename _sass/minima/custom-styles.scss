@@ -104,13 +104,19 @@ body {
 .highlight pre, .highlight code {
     background: #364549!important;
     color: #f8f8f2;
+	font-size: 14px!important;
 }
+
+.language-python highlighter-rouge{
+	margin: 10px;
+}
+
 .highlight .n {color: #dddddd!important; background: none!important;}
 .highlight .nf {color: #8bdf4c!important; background: none!important;}
 .highlight .nt {color: #8bdf4c!important; background: none!important;}
 .highlight .m {color: #dddddd!important; background: none!important;}
 .highlight .nn {color: #dddddd!important; background: none!important;}
-.highlight .nb {color: #ebd247!important; background: none!important;}
+.highlight .nb {color: #ebd247!important; background: none!important; font-style: normal!important;}
 .highlight .o {color: #e18095!important;}
 .highlight .ow {color: #e18095!important;}
 .highlight .p {color: #dddddd!important;}
