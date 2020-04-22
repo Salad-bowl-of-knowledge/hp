@@ -464,7 +464,9 @@ h4 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #cc
 
 body { font-size: 16px !important; }
 
-.highlight pre, .highlight code { background: #364549 !important; color: #f8f8f2; }
+.highlight pre, .highlight code { background: #364549 !important; color: #f8f8f2; font-size: 14px !important; }
+
+.language-python highlighter-rouge { margin: 10px; }
 
 .highlight .n { color: #dddddd !important; background: none !important; }
 
@@ -476,7 +478,7 @@ body { font-size: 16px !important; }
 
 .highlight .nn { color: #dddddd !important; background: none !important; }
 
-.highlight .nb { color: #ebd247 !important; background: none !important; }
+.highlight .nb { color: #ebd247 !important; background: none !important; font-style: normal !important; }
 
 .highlight .o { color: #e18095 !important; }
 
