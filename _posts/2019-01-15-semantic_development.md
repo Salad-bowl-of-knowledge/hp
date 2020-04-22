@@ -46,10 +46,10 @@ Abstractからではなく、著者の一人であるS. Ganguli氏の[twitter](h
 
 
 ### モデル
-モデルは3層の全結合線形ネットワークです。 $$ \hat{\boldsymbol{y}} = {\bf W}^{2}{\bf W}^{1}\boldsymbol{x} $$ ただし非線形な活性化関数が無いので、普段使うニューラルネットワークではありません。これはニューラルネットワークを学ぶ人なら誰でも知っていると思いますが、 ${\bf W}^{s}={\bf W}^{2}{\bf W}^{1}$として、 上のネットワークは 
+モデルは3層の全結合線形ネットワークです。 $$ \hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {2} \boldsymbol{ W} ^ {1}\boldsymbol{x} $$ ただし非線形な活性化関数が無いので、普段使うニューラルネットワークではありません。これはニューラルネットワークを学ぶ人なら誰でも知っていると思いますが、 $ \boldsymbol{ W} ^ {s}={\bf W} ^ {2} \boldsymbol{ W} ^ {1}$として、 上のネットワークは 
 
 $$
-\hat{\boldsymbol{y}} = {\bf W}^{s}\boldsymbol{x} 
+\hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {s}\boldsymbol{x} 
 $$
 
 とまとめることができます。なので線形な活性化関数で深いニューラルネットワークを構築しても何の意味もなく、それゆえ非線形な活性化関数が必要となるということです。しかし、この論文では**深い(3層の)ネットワークである場合のみ、幼児の発達における非線形な現象が説明でき**、浅い(2層の)ネットワークでは当てはまらないと主張しています。3層で「深い」というのはどうかと思いますが、2層を「浅い」とした場合、比較して「深い」ということです。
@@ -58,31 +58,31 @@ $$
 ネットワークの学習(重みの更新)は誤差逆伝搬から導かれる次の2式により行います。 
 
 $$
-\begin{align} \tau \frac{d}{dt}{\bf W}^{1}&={{\bf W}^{2}}^T({\bf \Sigma}^{yx}-{\bf W}^{2}{\bf W}^{1}{\bf \Sigma}^{x})\\ 
-\tau \frac{d}{dt}{\bf W}^{2}&=({\bf
-\Sigma}^{yx}-{\bf W}^{2}{\bf W}^{1}{\bf \Sigma}^{x}){{\bf W}^{1}}^T\\ \end{align} 
+\begin{align} \tau \frac{d}{dt} \boldsymbol{ W} ^ {1}&=(\boldsymbol{W} ^ 2) ^ T ( \boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ 2 \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x})\\ 
+\tau \frac{d}{dt} \boldsymbol{W} ^ {2}&=(\boldsymbol{\Sigma} ^ {yx} - \boldsymbol{W} ^ {2} \boldsymbol{W} ^ 1 \boldsymbol{\Sigma} ^ {x}) (\boldsymbol{W} ^ 1)^T
+\end{align}
 $$
 
-ただし、${\bf \Sigma}^{x}$は入力間の関係を表す行列、${\bf \Sigma}^{yx}$は入出力の関係を表す行列です。他にも定義していない変数がありますが、これは後の実装を見ると分かりやすいと思います。
+ただし、$ \boldsymbol{\Sigma} ^ {x}$は入力間の関係を表す行列、$\boldsymbol{\Sigma} ^ {yx}$は入出力の関係を表す行列です。他にも定義していない変数がありますが、これは後の実装を見ると分かりやすいと思います。
 
 ### 特異値分解(SVD)による学習ダイナミクスの解析
-学習ダイナミクスは${\bf \Sigma}^{yx}$に対する特異値分解(SVD)を用いて説明できます。 
+学習ダイナミクスは$ \boldsymbol{\Sigma} ^ {yx}$に対する特異値分解(SVD)を用いて説明できます。 
 
 $$
-{\bf \Sigma}^{yx}={\bf USV}^T
+\boldsymbol{\Sigma} ^ {yx}=\boldsymbol{USV}^T
 $$
 
-行列${\bf S}$の対角成分の非ゼロ要素が特異値です。
+行列$ \boldsymbol{ S}$の対角成分の非ゼロ要素が特異値です。
 
 ![002]({{ site.baseurl }}/images/posts/semantic_development_figs/002.png)
 (Saxe et al. 2019, Fig. 3A)
 
-次の図は学習途中における$\hat{\bf \Sigma}^{yx}(t)={\bf W}^{2}(t){\bf W}^{1}(t){\bf \Sigma}^{x}$のSVDの結果です。${\bf A}(t)$の要素$a_{\alpha}(t)$が特異値です。
+次の図は学習途中における$\hat{\boldsymbol{\Sigma}} ^ {yx}(t)=\boldsymbol{W} ^ 2 (t) \boldsymbol{W} ^ 1(t) \boldsymbol{\Sigma} ^ {x}$のSVDの結果です。$ \boldsymbol{ A}(t)$の要素$a_{\alpha}(t)$が特異値です。
 
 ![003]({{ site.baseurl }}/images/posts/semantic_development_figs/003.png)
 (Saxe et al. 2019, Fig. 3B)
 
-この$a_{\alpha}(t)$ですが、3層のネットワークの場合、大きな特異値から先に学習されます(C)。2層の浅いネットワークの場合、全ての特異値が同時に学習されます(D)。
+この $a _ {\alpha}(t)$ですが、3層のネットワークの場合、大きな特異値から先に学習されます(C)。2層の浅いネットワークの場合、全ての特異値が同時に学習されます(D)。
 
 ![004]({{ site.baseurl }}/images/posts/semantic_development_figs/004.png)
 (Saxe et al. 2019, Fig. 3C, D)
