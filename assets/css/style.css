@@ -334,7 +334,7 @@ table td { border: 1px solid #e8e8e8; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; }
+.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; max-width: 500px; }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
 
@@ -604,7 +604,5 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 .site-nav .page-link:not(:last-child) { margin-right: 0; }
 
 .youtube iframe { position: relative; max-width: 90vw !important; max-height: calc(90vw * 0.75) !important; display: block; margin: auto; }
-
-/* .post img { max-width: min(100vw, 500px); } */
 
 /*# sourceMappingURL=style.css.map */
