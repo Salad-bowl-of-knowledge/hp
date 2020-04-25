@@ -234,7 +234,35 @@ $$<p>が成立しているとします。ただし、$f(\cdot)$は活性化関�
 $$
 \boldsymbol{r} = \boldsymbol{r}^{td}+\boldsymbol{n}^{td}=f(U^h \boldsymbol{r}^h)+\boldsymbol{n}^{td} \tag{2}
 $$<p>ただし、Top-downの予測信号を $\boldsymbol{r}^{td}:=f(U^h \boldsymbol{r}^h)$としました。また、$\boldsymbol{r}^{td} \in \mathbb{R}^{n_1}, \boldsymbol{r}^{h} \in \mathbb{R}^{n_2}, U^h \in \mathbb{R}^{n_1 \times n_2} $です。$\boldsymbol{n}^{td} \in \mathbb{R}^{n_1} $は平均0, 分散 $\sigma_{td}^2$ のGaussian ノイズ項とします。</p>
-<p>ここまで、<strong>高次表現による低次表現の予測</strong>、という<strong>top-down 信号</strong>について説明しました。それではPredictive codingのもう一つの要となる、<strong>低次から高次への予測誤差の伝搬</strong>という<strong>bottom-up 信号</strong>はどのように導かれるのでしょうか。結論から言えば、これは<strong>復元誤差 (reconstruction error)の最小化を行う再帰的ネットワーク (recurrent network)を考慮することで自然に導かれます</strong>。</p>
+<p>話は飛びますが、Predictive codingのネットワークは下図のように表されます。特徴は</p>
+<ul>
+<li>階層的な構造</li>
+<li>高次による低次の予測 (Feedback or Top-down信号)</li>
+<li>低次から高次への誤差信号の伝搬 (Feedforward or Bottom-up 信号)</li>
+</ul>
+<p>です。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><figure>
+  
+    <img class="docimage" src="/hp/images/copied_from_nb/images/predictive-coding_figs/fig1a.JPG" alt="" style="max-width: 500pxpx">
+    
+    
+</figure>
+</p>
+<div style="text-align: right;"> (Rao and Ballard, 1999; Fig. 1a)</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ここまで、高次表現による低次表現の予測、というFeedback信号について説明しました。それではPredictive codingのもう一つの要となる、低次から高次への予測誤差の伝搬というFeedforward信号はどのように導かれるのでしょうか。結論から言えば、これは<strong>復元誤差 (reconstruction error)の最小化を行う再帰的ネットワーク (recurrent network)を考慮することで自然に導かれます</strong>。</p>
 
 </div>
 </div>
@@ -326,6 +354,28 @@ $$
 \frac{d \boldsymbol{r}^h}{d t}&amp;=-\frac{k_{1}}{2} \frac{\partial E}{\partial \boldsymbol{r}^h}=k_{1}\cdot\Bigg(\frac{1}{\sigma_{t d}^{2}}(U^h)^T\bigg[\frac{\partial f(\boldsymbol{x}^h)}{\partial \boldsymbol{x}^h}\odot\underbrace{\left(\boldsymbol{r}-f(\boldsymbol{x}^h)\right)}_{\text{bottom-up error}}\bigg]-\frac{1}{2}g'(\boldsymbol{r}^h)\Bigg)\tag{10}
 \end{align}
 $$<p>ただし、$k_1$は更新率 (updating rate)です。または、発火率の時定数を$\tau:=1/k_1$として、$k_1$は発火率の時定数$\tau$の逆数であると捉えることもできます。ここで(9)式において、中間表現 $\boldsymbol{r}$ のダイナミクスはbottom-up errorとtop-down errorで記述されています。このようにbottom-up errorが $\boldsymbol{r}$ への入力となることは自然に導出されます。なお、top-down errorに関しては高次からの予測 (prediction)の項 $f(\boldsymbol{x}^h)$とleaky-integratorとしての項 $-\boldsymbol{r}$に分割することができます。また$U^T, (U^h)^T$は重み行列の転置となっており、bottom-upとtop-downの投射において対称な重み行列を用いることを意味しています。$-g'(\boldsymbol{r})$は発火率を抑制してスパースにすることを目的とする項ですが、無理やり解釈をすると自己再帰的な抑制と言えます。</p>
+<p>(9), (10)式の処理をまとめると下図のようになります。図では離散化されていますが、連続時間RNNであることに注意しましょう。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><figure>
+  
+    <img class="docimage" src="/hp/images/copied_from_nb/images/predictive-coding_figs/fig1b.JPG" alt="" style="max-width: 500pxpx">
+    
+    
+</figure>
+</p>
+<div style="text-align: right;"> (Rao and Ballard, 1999; Fig. 1b)</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="重み行列の学習則">
 <a class="anchor" href="#%E9%87%8D%E3%81%BF%E8%A1%8C%E5%88%97%E3%81%AE%E5%AD%A6%E7%BF%92%E5%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>重み行列の学習則<a class="anchor-link" href="#%E9%87%8D%E3%81%BF%E8%A1%8C%E5%88%97%E3%81%AE%E5%AD%A6%E7%BF%92%E5%89%87"> </a>
 </h3>
@@ -350,6 +400,27 @@ $$<p>更新則の中にはHebb則 (特に<a href="https://en.wikipedia.org/wiki/
 <a class="anchor" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%A7%8B%E9%80%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>ネットワークの構造<a class="anchor-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%A7%8B%E9%80%A0"> </a>
 </h3>
 <p>(Rao &amp; Ballard, 1999)におけるネットワークを実装しましょう。ネットワークは入力層(level-0 module), 3つのlevel-1 module, 1つのlevel-2 moduleから構成されます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><figure>
+  
+    <img class="docimage" src="/hp/images/copied_from_nb/images/predictive-coding_figs/fig1c.JPG" alt="" style="max-width: 500pxpx">
+    
+    
+</figure>
+</p>
+<div style="text-align: right;"> (Rao and Ballard, 1999; Fig. 1c)</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>まず、自然画像を<strong>DoG</strong> (difference of Gaussians)フィルタで処理します (これはLGNのモデルです)。次に前処理した自然画像から16 × 26 pxの画像パッチをランダムに切り出し、そこからさらに3つの16 × 16 pxの画像パッチ($I_0, I_1, I_2$)を切り出して3つのlevel-1 moduleへの入力とします (ただし水平に5pxずつオーバーラップさせて切り出します)。入力する前に正規化(白色化)をしておきます。</p>
 <p>level-0 moduleの次元は3 × 16 × 16となりますが、平坦化 (flatten)して3 × 256とします。</p>
 <p>1つのlevel-1 moduleは32ニューロンから構成され、これが3つあるので計96ニューロンとなります。ただし、<strong>重み共有</strong> (weight sharing)を行うことで、学習効率を向上させます。さらにlevel-2 moduleは64ニューロンで構成され、96ニューロンにフィードバックを返します。</p>
@@ -917,9 +988,45 @@ $$<p>更新則の中にはHebb則 (特に<a href="https://en.wikipedia.org/wiki/
 <li>入力画像にノイズが多く含まれる：リサイズや切り出し、jpeg形式での保存などを行っているので</li>
 <li>ハイパーパラメータの調整：一応論文通りのはず。前処理等があまりにも簡潔に書かれ過ぎていて完全な再現は不可能ですが</li>
 <li>非線形ネットワークではない：今回用いているのは線形ネットワークであるので、PCAを実行した時と類似のフィルタが獲得されたと考えられます。活性化関数にtanhを用いて何度か試しましたが、学習が難しい上、前処理も調整必要。</li>
-<li>そもそもこのネットワークであまり明確にGaborフィルタは得られ無い：論文のfigureを見ると分かりますが、(Olshausen &amp; Field. <em>Nature</em>. 1996)のように明確なGaborフィルタは得られていません（tanhを用いた場合は獲得できているようですが…）。</li>
+<li>そもそもこのネットワークであまり明確にGaborフィルタは得られ無い：Fig. 2b-cを見ると分かりますが、(Olshausen &amp; Field. <em>Nature</em>. 1996)のように明確なGaborフィルタは得られていません。</li>
 </ul>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><figure>
+  
+    <img class="docimage" src="/hp/images/copied_from_nb/images/predictive-coding_figs/fig2bc.JPG" alt="" style="max-width: 500pxpx">
+    
+    
+</figure>
+</p>
+<div style="text-align: right;"> (Rao and Ballard, 1999; Fig. 2b-c)</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>なおtanhを活性化関数に用いた場合は獲得できるようです（今回は再現できませんでしたが）。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><figure>
+  
+    <img class="docimage" src="/hp/images/copied_from_nb/images/predictive-coding_figs/fig2d.JPG" alt="" style="max-width: 500pxpx">
+    
+    
+</figure>
+</p>
+<div style="text-align: right;"> (Rao and Ballard, 1999; Fig. 2d)</div>
 </div>
 </div>
 </div>
