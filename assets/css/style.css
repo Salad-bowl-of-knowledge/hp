@@ -450,7 +450,7 @@ h3:after { position: absolute; content: " "; display: block; border-bottom: soli
 
 h4 { font-weight: bold; padding: .25em 0 .25em .75em; border-left: 6px solid #ccc; }
 
-.wrapper { position: relative !important; max-width: calc(1200px - (30px * 2)); }
+.wrapper { position: relative !important; max-width: 950px; }
 
 .section-nav { padding: 0.5em 1em; padding-left: 30px; margin: 2em 0; border: solid 3px #16a085; /*線*/ border-radius: 10px; /*角の丸み*/ }
 
@@ -604,5 +604,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 .site-nav .page-link:not(:last-child) { margin-right: 0; }
 
 .youtube iframe { position: relative; max-width: 90vw !important; max-height: calc(90vw * 0.75) !important; display: block; margin: auto; }
+
+/* .post img { max-width: min(100vw, 500px); } */
 
 /*# sourceMappingURL=style.css.map */
