@@ -48,7 +48,7 @@ Quoraの記事で紹介されている論文を足掛かりに文献を調べた
 
 ![img2]({{ site.baseurl }}/images/posts/contralateral_brain_figs/img2.png)
 
-(Ramón y Cajal. 1898)
+<div style="text-align: right;">(Ramón y Cajal. 1898)</div>
 
 しかし、Cajalの仮説は完全に誤っているわけではないものの、いくつかの問題点があることが指摘されています ([de Lussanet & Osse, *Animal Biol*. 2012](https://arxiv.org/abs/1003.1872))。まず、視交叉の説について、眼球は動くため、網膜像も動きます。そのため、位置合わせを完全に正確にすることはできません (予測により補間はしていると思われるので、Cajalが間違っているとは言えませんが)。次に、運動路と感覚路を関連させた説については、同側の視覚情報・感覚情報のみが運動野に至るというのは最適ではないということです。運動することを考えれば、両側の情報を統合して座標系を生み出した方がよいでしょうし、実際に脳はそうしています。
 
@@ -61,7 +61,7 @@ Quoraの記事で紹介されている論文を足掛かりに文献を調べた
 
 ![img3]({{ site.baseurl }}/images/posts/contralateral_brain_figs/img3.png)
 
-(de Lussanet & Osse, *Neuropsychology*. 2015, Fig.1)
+<div style="text-align: right;">(de Lussanet & Osse, *Neuropsychology*. 2015, Fig.1)</div>
 
 AはKinsbourneの体性ねじれ説を示しており、前口動物(Protostome)が脊椎動物(vertebrate)へと進化するに伴い、前脳と眼の領域が180度回転したことを表します。Bはde LussanetとOsseの軸ねじれ説で、黒線が背側、白線が腹側、点は眼となる領域、ovはoptic vesicleを意味します。重要なのはB2で、前脳と眼の領域が90度の時計回り、中脳より下が90度の反時計回りをすることで合計で180度のねじれが生まれます。
 
@@ -75,7 +75,7 @@ AはKinsbourneの体性ねじれ説を示しており、前口動物(Protostome)
 
 ![img4]({{ site.baseurl }}/images/posts/contralateral_brain_figs/img4.png)
 
-(Vulliemoz et al., *Lancet Neurol*. 2005, Fig.2)
+<div style="text-align: right;">(Vulliemoz et al., *Lancet Neurol*. 2005, Fig.2)</div>
 
 まず、交叉が無く、手足も無い原始的な種の場合を考えます(図上部; なお図では魚のような見た目ですが、魚類の錐体路も交叉が存在するようです)。このような生物の場合、危険な刺激は右脳半球によって知覚され、右半身の筋肉の収縮を引き起こし、屈曲させることで危険を回避します。このとき、交叉していない原始的な経路 (**網様体脊髄路**や**前庭脊髄路**)を介して筋肉は制御されます。
 
