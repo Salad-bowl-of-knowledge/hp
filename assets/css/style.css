@@ -334,7 +334,7 @@ table td { border: 1px solid #e8e8e8; }
 
 /*-----------------------------------*/
 /*--- IMPORT STYLES FOR FASTPAGES ---*/
-.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; max-width: 500px; }
+.post img { display: block; vertical-align: top; margin-left: auto; margin-right: auto; max-width: calc(min(90%, 500px)); }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
 
