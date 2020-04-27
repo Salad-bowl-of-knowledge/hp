@@ -297,13 +297,12 @@ code {
 		position: fixed;
     top: 100px;
     left: 10px;
-    border: solid 3px black;
-    border-radius: 3px;
-		margin-left: 2vw;
+    border-left: solid 3px black;
+    margin-left: 2vw;
   	width: 16vw;
 
 		ul {
-		width: 200px;
+		width: 100%;
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
