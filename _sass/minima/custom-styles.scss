@@ -297,7 +297,7 @@ code {
 		position: fixed;
     top: 100px;
     left: 10px;
-    border-left: solid 3px black;
+		border-top: solid 5px #ccc;
     margin-left: 2vw;
   	width: 16vw;
 
@@ -312,7 +312,8 @@ code {
 			display: block;
 			padding: 8px 16px;
 			text-decoration: none;
-			color: #000000;
+			border-bottom: 2px solid #ccc;
+			color: #24292e;
 		}
 		li {
 			text-align: center;
