@@ -263,3 +263,12 @@ code {
   display: block;
   margin: auto;
 }
+
+.sidemenu{
+	position: absolute;
+	top: 150px;
+}
+
+.sidemenu-contents{
+	position: sticky;
+}
