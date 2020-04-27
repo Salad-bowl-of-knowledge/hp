@@ -302,5 +302,33 @@ code {
     padding: 10px;
 		margin-left: 2vw;
   	width: 16vw;
+
+		ul {
+		width: 200px;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		background-color: #eeeeee;
+		}
+		li a {
+			display: block;
+			padding: 8px 16px;
+			text-decoration: none;
+			color: #000000;
+		}
+		li {
+			text-align: center;
+		}
+		li:last-child {
+			border-bottom: none;
+		}
+		li a.active {
+			color: #ffffff;
+			background-color: #da3c41;
+		}
+		li a:hover:not(.active) {
+			color: #ffffff;
+			background-color: #1b2538;
+		}
 	}
 }
