@@ -76,11 +76,17 @@ h4{
     background-color: #2c3e50;
     border-bottom: solid 8px #16a085;
     color: #FFF;
+		position: relative;
 		line-height: 45px!important;
-    position: -webkit-sticky!important;
+    top: 0!important;
+}
+
+@media screen and (max-width: 768px) {
+	.site-header{
+		position: -webkit-sticky!important;
     position: sticky!important;
     z-index: 999!important;
-    top: 0!important;
+  }
 }
 
 .site-title {
@@ -265,10 +271,22 @@ code {
 }
 
 .sidemenu{
-	position: absolute;
-	top: 150px;
+	display: none;
 }
 
-.sidemenu-contents{
-	position: sticky;
+@media screen and (min-width: 768px) {
+	.sidemenu{
+		position: absolute;
+		display: block!important;
+		top: 150px;
+	}
+
+	.sidemenu-contents {
+	    position: fixed;
+	    top: 100px;
+	    left: 10px;
+	    border: solid 3px #16a085;
+	    border-radius: 3px;
+	    padding: 10px;
+	}
 }
