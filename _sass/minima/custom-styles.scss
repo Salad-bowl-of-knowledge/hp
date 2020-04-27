@@ -57,7 +57,6 @@ h4{
 
 .wrapper {
   position: relative!important;
-  max-width: 950px;
 }
 
 .section-nav {
@@ -81,7 +80,7 @@ h4{
     top: 0!important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 	.site-header{
 		position: -webkit-sticky!important;
     position: sticky!important;
@@ -161,7 +160,7 @@ code {
   opacity: 0.6;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .pagetop{
 	right: 20px;
 	bottom: 10px;
@@ -262,7 +261,7 @@ code {
   }
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 900px){
 	.site-nav {
 	    display: none;
 	}
@@ -280,7 +279,14 @@ code {
 	display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
+	.wrapper {
+    max-width: 75vw!important;
+    width: 75vw!important;
+    margin-right: 5vw!important;
+    margin-left: 20vw!important;
+	}
+
 	.sidemenu{
 		position: absolute;
 		display: block!important;
@@ -288,11 +294,13 @@ code {
 	}
 
 	.sidemenu-contents {
-	    position: fixed;
-	    top: 100px;
-	    left: 10px;
-	    border: solid 3px #16a085;
-	    border-radius: 3px;
-	    padding: 10px;
+		position: fixed;
+    top: 100px;
+    left: 10px;
+    border: solid 3px #16a085;
+    border-radius: 3px;
+    padding: 10px;
+		margin-left: 2vw;
+  	width: 16vw;
 	}
 }
