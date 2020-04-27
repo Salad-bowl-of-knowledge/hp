@@ -605,6 +605,8 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .site-nav .page-link:not(:last-child) { margin-right: 0; }
 
+@media screen and (min-width: 768px) { .site-nav { display: none; } }
+
 .youtube iframe { position: relative; max-width: 90vw !important; max-height: calc(90vw * 0.75) !important; display: block; margin: auto; }
 
 .sidemenu { display: none; }
