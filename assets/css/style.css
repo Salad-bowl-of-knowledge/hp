@@ -605,4 +605,8 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 .youtube iframe { position: relative; max-width: 90vw !important; max-height: calc(90vw * 0.75) !important; display: block; margin: auto; }
 
+.sidemenu { position: absolute; top: 150px; }
+
+.sidemenu-contents { position: sticky; }
+
 /*# sourceMappingURL=style.css.map */
