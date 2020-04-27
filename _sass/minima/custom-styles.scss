@@ -297,9 +297,8 @@ code {
 		position: fixed;
     top: 100px;
     left: 10px;
-    border: solid 3px #16a085;
+    border: solid 3px black;
     border-radius: 3px;
-    padding: 10px;
 		margin-left: 2vw;
   	width: 16vw;
 
@@ -308,7 +307,7 @@ code {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
-		background-color: #eeeeee;
+		background-color: #ffffff;
 		}
 		li a {
 			display: block;
@@ -322,13 +321,8 @@ code {
 		li:last-child {
 			border-bottom: none;
 		}
-		li a.active {
-			color: #ffffff;
-			background-color: #da3c41;
-		}
 		li a:hover:not(.active) {
-			color: #ffffff;
-			background-color: #1b2538;
+			background-color: #eeeeee;
 		}
 	}
 }
