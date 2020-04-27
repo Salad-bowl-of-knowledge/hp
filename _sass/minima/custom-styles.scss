@@ -295,11 +295,10 @@ code {
 
 	.sidemenu-contents {
 		position: fixed;
-    top: 100px;
-    left: 10px;
-		border-top: solid 5px #ccc;
-    margin-left: 2vw;
-  	width: 16vw;
+    top: 90px;
+		border-top: solid 3px #ccc;
+    margin-left: 3vw;
+  	width: 15vw;
 
 		ul {
 		width: 100%;
@@ -324,5 +323,9 @@ code {
 		li a:hover:not(.active) {
 			background-color: #eeeeee;
 		}
+	}
+
+	.sidemenu-subcontents {
+		border-top: solid 3px #ccc;
 	}
 }
