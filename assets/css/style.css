@@ -613,12 +613,11 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
 
 @media screen and (min-width: 900px) { .wrapper { max-width: 75vw !important; width: 75vw !important; margin-right: 5vw !important; margin-left: 20vw !important; }
   .sidemenu { position: absolute; display: block !important; top: 150px; }
-  .sidemenu-contents { position: fixed; top: 100px; left: 10px; border: solid 3px #16a085; border-radius: 3px; padding: 10px; margin-left: 2vw; width: 16vw; }
-  .sidemenu-contents ul { width: 200px; margin: 0; padding: 0; list-style-type: none; background-color: #eeeeee; }
+  .sidemenu-contents { position: fixed; top: 100px; left: 10px; border: solid 3px black; border-radius: 3px; margin-left: 2vw; width: 16vw; }
+  .sidemenu-contents ul { width: 200px; margin: 0; padding: 0; list-style-type: none; background-color: #ffffff; }
   .sidemenu-contents li a { display: block; padding: 8px 16px; text-decoration: none; color: #000000; }
   .sidemenu-contents li { text-align: center; }
   .sidemenu-contents li:last-child { border-bottom: none; }
-  .sidemenu-contents li a.active { color: #ffffff; background-color: #da3c41; }
-  .sidemenu-contents li a:hover:not(.active) { color: #ffffff; background-color: #1b2538; } }
+  .sidemenu-contents li a:hover:not(.active) { background-color: #eeeeee; } }
 
 /*# sourceMappingURL=style.css.map */
