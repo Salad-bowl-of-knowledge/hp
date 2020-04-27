@@ -297,7 +297,7 @@ code {
 		position: fixed;
     top: 100px;
     left: 10px;
-		border-top: solid 5px #ccc;
+		border-top: solid 3px #ccc;
     margin-left: 2vw;
   	width: 16vw;
 
@@ -324,5 +324,9 @@ code {
 		li a:hover:not(.active) {
 			background-color: #eeeeee;
 		}
+	}
+	
+	.sidemenu-subcontents {
+		border-top: solid 3px #ccc;
 	}
 }
