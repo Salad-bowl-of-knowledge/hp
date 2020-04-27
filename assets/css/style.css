@@ -615,7 +615,7 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
   .sidemenu { position: absolute; display: block !important; top: 150px; }
   .sidemenu-contents { position: fixed; top: 90px; border-top: solid 3px #ccc; margin-left: 3vw; width: 15vw; }
   .sidemenu-contents ul { width: 100%; margin: 0; padding: 0; list-style-type: none; background-color: #ffffff; }
-  .sidemenu-contents li a { display: block; padding: 8px 16px; text-decoration: none; border-bottom: 2px solid #ccc; color: #24292e; }
+  .sidemenu-contents li a { display: block; padding: 3px 5px; text-decoration: none; border-bottom: 2px solid #ccc; color: #24292e; }
   .sidemenu-contents li { text-align: center; }
   .sidemenu-contents li:last-child { border-bottom: none; }
   .sidemenu-contents li a:hover:not(.active) { background-color: #eeeeee; }
