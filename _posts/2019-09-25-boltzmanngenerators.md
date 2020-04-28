@@ -116,35 +116,36 @@ Boltzmann Generatorでは，主に２つの機械学習：training by energyとt
 
 ### training by energyの場合
 1. latent spaceから正規分布$p_Z(\boldsymbol{z})$に従って適当に$\boldsymbol{z}$を選ぶ
-2. $\boldsymbol{F} _ {zx}:\boldsymbol{z}\mapsto\boldsymbol{x}$を使って$p_X(x)$を計算する
+2. $\boldsymbol{F} _ {zx}:\boldsymbol{z}\mapsto\boldsymbol{x}$ を使って$p_X(x)$を計算する
 3. 生成された確率分布$p_X(x)$と目標のBoltzmann分布$e^{-u(\boldsymbol{x})}$との差を次のロスで評価する．
+
 $$
 \begin{aligned}
 J_\text{KL}=E_{\boldsymbol{z}}[u(\boldsymbol{F} _ {zx}(\boldsymbol{z}))-\log R_{zx}(\boldsymbol{z})]
-\end{aligned}\tag{9}
+\end{aligned} \tag{9}
 $$
 
 $J_\text{KL}$を小さくすることが目標となる．
 
 ### training by exampleの場合
-
 1. シミュレーションや観測結果から，実際に得られた$\boldsymbol{x}$を用意する．つまり，$e^{-u(\boldsymbol{x})}$が大きい．
 2. $F_{xz}:\boldsymbol{x}\mapsto\boldsymbol{z}$で，これを$\boldsymbol{z}$に変換する．この$\boldsymbol{z}$が正規分布$p_Z(\boldsymbol{z})$から選ばれやすければよい．それは，次のロス
 
 $$
 \begin{aligned}
-    J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F} _ {xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]
-\end{aligned}\tag{10}
+J_\text{ML}=E_{\boldsymbol{x}}\left[\frac{1}{2}\|\boldsymbol{F} _ {xz}(\boldsymbol{x})\|^2-\log R_{xz}(\boldsymbol{x})\right]
+\end{aligned} \tag{10}
 $$
 
 を最小化することに等しい．$J_\text{ML}$の第１項は正規分布に対応する調和振動子のエネルギーを表す．
 
 ### 一般の場合
 一般の場合にはBoltzmann Generatorでは合計のロス
+
 $$
 \begin{aligned}
-  J=w_\text{ML}J_\text{ML}+w_\text{KL}J_\text{KL}+w_\text{ML}J_\text{ML}
-\end{aligned}\tag{11}
+J=w_\text{ML}J_\text{ML}+w_\text{KL}J_\text{KL}+w_\text{ML}J_\text{ML}
+\end{aligned} \tag{11}
 $$
 
 を最小とすることが目標になる．
