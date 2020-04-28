@@ -60,8 +60,8 @@ $$
 
 $$
 \begin{aligned}
-    R_{xz}(\boldsymbol{x}; \theta) &= |\det J_{xz}(\boldsymbol{x}; \theta)|\\
-    R_{zx}(\boldsymbol{x}; \theta) &= |\det J_{zx}(\boldsymbol{z}; \theta)|
+    R_{xz}(\boldsymbol{x}; \theta) &= \left|\det J_{xz}(\boldsymbol{x}; \theta)\right|\\
+    R_{zx}(\boldsymbol{x}; \theta) &= \left|\det J_{zx}(\boldsymbol{z}; \theta)\right|
 \end{aligned}\tag{5}
 $$
 
@@ -215,7 +215,7 @@ $$
   H_X &= -\int q_X(\boldsymbol{x};\theta)\log q_X(\boldsymbol{x};\theta)\,d\boldsymbol{x}\\
   &= -\int\mu_Z(F_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x})\\
   &\qquad\qquad\times\log(\mu_Z(F_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x}))\,d\boldsymbol{x}\\
-  &= -\int\mu_Z(F_{xz}(\boldsymbol{x};\theta)) \mid\frac{\partial\boldsymbol{z}}{\partial\boldsymbol{x}} \mid\\
+  &= -\int\mu_Z(F_{xz}(\boldsymbol{x};\theta)) \left|\frac{\partial\boldsymbol{z}}{\partial\boldsymbol{x}} \right|\\
   &\qquad\qquad\times\log(\mu_Z(F_{xz}(\boldsymbol{x};\theta))R_{xz}(\boldsymbol{x}))\,d\boldsymbol{x}\\
   &= -\int\mu_Z(\boldsymbol{z})\log(\mu_Z(\boldsymbol{z})R_{zx}{}^{-1}(\boldsymbol{z}))\,d\boldsymbol{z}\\
   &= -\int\mu_Z(\boldsymbol{z})\log\mu_Z(\boldsymbol{z})\,d\boldsymbol{z}+E_{\boldsymbol{z}\sim\mu_Z(\boldsymbol{z})}
