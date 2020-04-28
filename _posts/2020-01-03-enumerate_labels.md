@@ -8,6 +8,7 @@ categories: [LaTeX]
 title: enumerateのラベルを毎週の日付にする
 ---
 
+## 概要
 久しぶりのLaTeXネタ．~~カッコつけて~~カウンタ類をTeXで作ったら，引き継がれなかったりして面倒だった．やっぱりLaTeXだね．
 
 表題の通りです．LaTeXの`enumerate`のラベルを１週間づつの日付にします．ソースは以下の２つのstyファイル：
@@ -17,6 +18,7 @@ title: enumerateのラベルを毎週の日付にする
 
 を適当なフォルダに入れれば動きます．
 
+## 使い方
 ```latex
 \documentclass{jsarticle}
 \usepackage{enumitem_extended}
