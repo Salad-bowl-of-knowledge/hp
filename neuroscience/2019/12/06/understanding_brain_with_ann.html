@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>人工神経回路による脳の理解はどこまで進んだか | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="人工神経回路による脳の理解はどこまで進んだか" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。" />
+<meta property="og:description" content="神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-06T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"description":"神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。","@type":"BlogPosting","headline":"人工神経回路による脳の理解はどこまで進んだか","dateModified":"2019-12-06T00:00:00-06:00","datePublished":"2019-12-06T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/hp/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" /><link rel="shortcut icon" type="image/x-icon" href="/hp/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>人工神経回路による脳の理解はどこまで進んだか | 知識のサラダボウル</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="人工神経回路による脳の理解はどこまで進んだか" />
+<meta name="author" content="山拓" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。" />
+<meta property="og:description" content="神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。" />
+<link rel="canonical" href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html" />
+<meta property="og:url" content="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html" />
+<meta property="og:site_name" content="知識のサラダボウル" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-06T00:00:00-06:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"山拓"},"description":"神経科学 Advent Calendar 2019の2記事目です。人工神経回路 (Artificial neural network, ANN) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。","@type":"BlogPosting","headline":"人工神経回路による脳の理解はどこまで進んだか","dateModified":"2019-12-06T00:00:00-06:00","datePublished":"2019-12-06T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html"},"url":"https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://salad-bowl-of-knowledge.github.io/hp/feed.xml" title="知識のサラダボウル" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><div class="sidemenu">
+  <div class="sidemenu-contents">
+      <div class="sidemenu-subcontents">
+        <ul>
+          <li><a href="/hp/">HOME</a></li>
+        </ul>
+      </div>
+      <div class="sidemenu-subcontents">
+        <ul>
+          <li><a href="/hp/neuroscience/">Neuroscience</a></li>
+          <li><a href="/hp/machine-learning/">Machine Learning</a></li>
+          <li><a href="/hp/statistics/">Statistics</a></li>
+          <li><a href="/hp/medicine/">Medicine</a></li>
+          <li><a href="/hp/chemistry/">Chemistry</a></li>
+          <li><a href="/hp/physics/">Physics</a></li>
+          <li><a href="/hp/mathematics/">Mathematics</a></li>
+          <li><a href="/hp/programming/">Programming</a></li>
+          <li><a href="/hp/computer/">Computer</a></li>
+          <li><a href="/hp/reading/">Books</a></li>
+          <li><a href="/hp/essay/">Essay</a></li>
+        </ul>
+      </div>
+      <div class="sidemenu-subcontents">
+      <ul>
+        <li><a href="/hp/about/">About Us</a></li>
+        <li><a href="/hp/search/">Search</a></li>
+        <li><a href="/hp/categories/">Tags</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="trigger">
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/hp/">知識のサラダボウル</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/hp/about/">About Us</a><a class="page-link" href="/hp/neuroscience/">神経科学</a><a class="page-link" href="/hp/machine-learning/">機械学習</a><a class="page-link" href="/hp/statistics/">統計学</a><a class="page-link" href="/hp/medicine/">医学</a><a class="page-link" href="/hp/chemistry/">化学</a><a class="page-link" href="/hp/physics/">物理学</a><a class="page-link" href="/hp/mathematics/">数学</a><a class="page-link" href="/hp/programming/">Programming</a><a class="page-link" href="/hp/computer/">Computer</a><a class="page-link" href="/hp/reading/">読書</a><a class="page-link" href="/hp/essay/">エッセイ</a><a class="page-link" href="/hp/search/">Search</a><a class="page-link" href="/hp/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">人工神経回路による脳の理解はどこまで進んだか</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-12-06T00:00:00-06:00" itemprop="datePublished">
+        Dec 6, 2019
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">山拓</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/hp/categories/#neuroscience">neuroscience</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#脳とannを3つの観点で捉える">脳とANNを3つの観点で捉える</a></li>
+<li class="toc-entry toc-h2"><a href="#脳はある目的関数に対して最適化されている">脳はある目的(関数)に対して最適化されている</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#視覚系">視覚系</a></li>
+<li class="toc-entry toc-h3"><a href="#聴覚系">聴覚系</a></li>
+<li class="toc-entry toc-h3"><a href="#運動野">運動野</a></li>
+<li class="toc-entry toc-h3"><a href="#場所受容野">場所受容野</a></li>
+<li class="toc-entry toc-h3"><a href="#その他">その他</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#脳における目的関数とは何か">脳における目的関数とは何か</a></li>
+<li class="toc-entry toc-h2"><a href="#脳では如何なる最適化手法が用いられているか">脳では如何なる最適化手法が用いられているか</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#貢献度分配問題-credit-assignment-problem">貢献度分配問題 (credit assignment problem)</a></li>
+<li class="toc-entry toc-h3"><a href="#誤差逆伝搬法の近似">誤差逆伝搬法の近似</a></li>
+<li class="toc-entry toc-h3"><a href="#進化による獲得">進化による獲得</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#in-silicoからin-vivoへ">in silicoからin vivoへ</a></li>
+</ul><p><a href="https://adventar.org/calendars/4132">神経科学 Advent Calendar 2019</a>の2記事目です。人工神経回路 (Artificial neural network, <strong>ANN</strong>) を用いた研究により、脳の理解はどこまで進んだか、次に何が調べられるべきなのかということについて解説します。</p>
+
+<p>昨年の年末からhttps://github.com/takyamamoto/BNN-ANN-papersにANNと脳に関する論文リストを作成しており (これは先に研究が出てしまう悲劇が頻発したための措置ですが)、このリストがそのまま参考文献となっています。</p>
+
+<p>本記事は特に(<a href="https://www.nature.com/articles/s41593-019-0520-2">B.A. Richards, T.P. Lillicrap, et al. <em>Nat. Neurosci.</em> 2019</a>)での議論を参考にしています(翻訳ではないです)。 この論文はANNと脳についての研究を先導してきた多くの研究者が共著者となっています（一体どうやって纏めたのやら）。論文にアクセス権の無い場合は、Kording先生が<a href="https://twitter.com/KordingLab/status/1189158149476896769">twitter</a>にpdfの短縮リンクを貼ってくださっているのでそこから読むことができます。</p>
+
+<h2 id="脳とannを3つの観点で捉える">
+<a class="anchor" href="#%E8%84%B3%E3%81%A8ann%E3%82%923%E3%81%A4%E3%81%AE%E8%A6%B3%E7%82%B9%E3%81%A7%E6%8D%89%E3%81%88%E3%82%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>脳とANNを3つの観点で捉える</h2>
+<p>(<a href="https://www.nature.com/articles/s41593-019-0520-2">B.A. Richards, T.P. Lillicrap, et al. <em>Nat. Neurosci.</em> 2019</a>)で言っていることは多くありますが、ざっくり言えば、『脳もANNと同じように<strong>目的関数(objective functions), 学習則(learning rules), 構造(architectures)</strong>の3つの観点で捉えよう』という主張です (<a href="https://arxiv.org/abs/1907.06374">T.P. Lillicrap, K.P. Kording. <em>arXiv</em>. 2019</a>でも、この前段階となる主張をしています)。ちなみにこれはDeep learningに限った話ではなく論文のタイトルを機械学習と置き換えても良いのですが、Reviewerが”Deep learning”を入れるように言ったため、タイトルに入ったそうです(ソースはtwitterですがリンクを忘却しました)。</p>
+
+<p>かなり思い切った主張ですが、この考えが生まれるまでの動向を(不正確かもしれませんが)、本記事で解説します。</p>
+
+<h2 id="脳はある目的関数に対して最適化されている">
+<a class="anchor" href="#%E8%84%B3%E3%81%AF%E3%81%82%E3%82%8B%E7%9B%AE%E7%9A%84%E9%96%A2%E6%95%B0%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>脳はある目的(関数)に対して最適化されている</h2>
+<p>近年の研究により(古いものは1980年代のものも含みますが)、ある目的関数に対して最適化されたANNが脳と同様の、あるいは類似した神経活動を得ることがあることが分かってきました（ただし全てを説明できるわけではありません）。これは神経活動を生み出すための機構を考えるという従来の研究と異なり、目的関数さえ仮定してしまえば（もちろん仮定するのはこれだけではないですが）自然に出現する、という簡素さと美しさがあります。</p>
+
+<p>全部説明するのは不可能なので、一部の論文を広く浅く紹介します。</p>
+
+<h3 id="視覚系">
+<a class="anchor" href="#%E8%A6%96%E8%A6%9A%E7%B3%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>視覚系</h3>
+<p>視覚系は元々の研究が多いのと、ANNが畳み込みニューラルネットワーク(CNN)で成功をしたために論文の数が最も多いです。</p>
+
+<p>まず、先駆的な研究を紹介します。(<a href="https://www.nature.com/articles/331679a0">D. Zipser, R.A. Andersen. <em>Nature.</em> 1988</a>)は網膜座標から頭部中心座標への変換をするように誤差逆伝搬法で最適化した3層NNの中間層に、7a野のニューロンの活動に類似したゲインフィールドが得られるという内容です。</p>
+
+<p>(<a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">A. Krizhevsky, I. Sutskever, G. Hinton. <em>NIPS</em>. 2012</a>)はご存知の通り、AlexNetの論文です。CNNにImageNetデータセットの画像分類タスクを学習させると、CNNの畳み込みカーネルに一次視覚野(V1野)の単純細胞の受容野に似たパターンが現れた、というのが関連する結果です。なお、V1野の単純細胞の受容野がガボール関数で近似できることについては(<a href="http://www.neuro-it.net/pdf_dateien/summer_2004/Jones%201987.pdf">JP. Jones &amp; LA. Palmer. <em>Neurophysiol.</em> 1987</a>)を参照してください。</p>
+
+<p>(<a href="https://www.pnas.org/content/111/23/8619">D. Yamins, et al. <em>PNAS</em>. 2014</a>; <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003915">S. Khaligh-Razavi &amp; N. Kriegeskorte. <em>PLoS Comput. Biol.</em> 2014</a>)は物体認識において、V4野やIT野などの高次視覚野においてもANNと神経活動に相関があったという論文です。これらの論文が出てからANNを用いた脳の研究に関する論文の数が急速に増えたという感じがします。</p>
+
+<h3 id="聴覚系">
+<a class="anchor" href="#%E8%81%B4%E8%A6%9A%E7%B3%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>聴覚系</h3>
+<p>(<a href="https://arxiv.org/abs/1606.02627">U. Güçlü, et al., <em>NIPS.</em> 2016</a>; <a href="https://www.sciencedirect.com/science/article/pii/S0896627318302502?via%3Dihub">A.J.E. Kell, et al., Neuron. 2018</a>)は音楽やヒトの声を分類するように学習させたANNが、階層的な情報処理をしており、ヒトfMRIのボクセル応答も予測することを示しています。</p>
+
+<p>(<a href="https://www.jneurosci.org/content/39/28/5517">T. Koumura, H. Terashima, S. Furukawa. <em>J. Neurosci</em>. 2019</a>)では、自然音を分類するように学習させたANNは、聴覚経路全体と最適変調周波数や上限周波数の分布が類似することを示しています(書いてて合ってるか不安になったので<a href="https://www.ntt.co.jp/news2019/1907/190710a.html">NTTのプレスリリース</a>を読んでください)。</p>
+
+<h3 id="運動野">
+<a class="anchor" href="#%E9%81%8B%E5%8B%95%E9%87%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>運動野</h3>
+<p>一報だけ紹介。(<a href="https://www.ncbi.nlm.nih.gov/pubmed/26075643">D. Sussillo, et al., <em>Nat. Neurosci.</em> 2015</a>)はRNN(recurrent neural network)にサルの到達運動時の筋電活動(electromyographic; EMG)を出力するよう学習させると、RNNのユニットは運動野のニューロンのダイナミクスに類似した発火パターンを生み出したという論文です。出力が筋電活動なのに中間にニューロンの活動が現れたということや、正則化を付けないと現れなかったというのも面白い点です。</p>
+
+<h3 id="場所受容野">
+<a class="anchor" href="#%E5%A0%B4%E6%89%80%E5%8F%97%E5%AE%B9%E9%87%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>場所受容野</h3>
+<p>(<a href="https://arxiv.org/abs/1803.07770">C. Cueva, X. Wei. <em>ICLR</em>. 2018</a>; <a href="https://deepmind.com/documents/201/Vector-based%20Navigation%20using%20Grid-like%20Representations%20in%20Artificial%20Agents.pdf">A. Banino, et al. <em>Nature</em>. 2018</a>)は自己運動の速度を積分して自己位置を推定させるタスクをRNNに学習させると、中間層にグリッド細胞のような発火パターンが生まれたという論文です。</p>
+
+<p>どちらも主張はほぼ同一ですが、(<a href="https://arxiv.org/abs/1803.07770">C. Cueva, X. Wei. <em>ICLR</em>. 2018</a>)ではグリッド細胞の発達過程が実際の嗅内皮質のニューロンと類似することを示しています。</p>
+
+<p>一方で(<a href="https://deepmind.com/documents/201/Vector-based%20Navigation%20using%20Grid-like%20Representations%20in%20Artificial%20Agents.pdf">A. Banino, et al. <em>Nature</em>. 2018</a>)はCuevaらの研究より発表は遅かったのですが、Baninoらの研究ではグリッド細胞のパターンが壁面から少しずれていることまで再現されていました。グリッド細胞の発火の方向が壁面から少しずれていることは謎でしたが、この実験からこれが最適であるということが分かりました。つまり、壁面からずれていることで格子パターンが部屋全体を覆うことができ、一様な場所受容野の形成に役立っているといえます。また、このネットワークを持った強化学習エージェントが迷路課題において高い性能を出したことも注目されました。</p>
+
+<p>いずれの研究でも正則化(Cuevaらは発火抑制損失、BaninoらはDropout)を入れなければグリッド様の発火が生まれなかったことを述べています。</p>
+
+<h3 id="その他">
+<a class="anchor" href="#%E3%81%9D%E3%81%AE%E4%BB%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>その他</h3>
+<p>ANNを用いた研究対象となる脳の機能は様々です。特にヒトに固有の高次機能については、fMRIなどでは脳の機能部位しか分からなかったため、ANNは打開策となるかもと期待されています。関連する総説としては(<a href="https://arxiv.org/abs/1807.11819">N. Kriegeskorte &amp; P. Douglas. <em>Nat. Neurosci.</em> 2018</a>)などを参照してください。</p>
+
+<h2 id="脳における目的関数とは何か">
+<a class="anchor" href="#%E8%84%B3%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%9B%AE%E7%9A%84%E9%96%A2%E6%95%B0%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>脳における目的関数とは何か</h2>
+<p>前節のような結果が多数報告されたため、(<a href="https://www.nature.com/articles/s41593-019-0520-2">B.A. Richards, T.P. Lillicrap, et al. <em>Nat. Neurosci.</em> 2019</a>)では「神経細胞の個々の活動の意味をボトムアップ的に考えるのではなく目的関数の最適化の結果として捉えよう」といったことが言われています。それでは脳における目的関数とは何でしょうか。</p>
+
+<p>ANNでは定義しなければならない目的関数ですが、脳内では明確に存在はしていません。そもそも目的<strong>関数</strong>という言い方ですが、これは生体内のパラメータなどが不明であっても数値的に表現はできると思うので関数であることに違いはないと思います。ただし、ANNの目的関数のように微分可能かということは保証されていません。</p>
+
+<p>一度、脳から離れて<strong>生物および生体の目的関数</strong>を考えてみましょう。生物の目的は主に種の生存と個体の生存の2つがあるでしょう(この他にもあると思いますが)。前者は子孫の数、後者は寿命の長さが目的関数であると言えます。これらの目的関数を最大化するために生物は主に、4つのF (<strong>Four Fs</strong>)であるfeeding, fighting, fleeing, および fornicating (またはmating)を行います。</p>
+
+<p>生体内で考えると、体温や血中酸素濃度や血糖値などなど恒常性(homeostasis)の維持が至る所で行われています。この場合の目的関数は定常状態からの変位と言えます(この場合は最小化します)。</p>
+
+<p>脳に戻れば、例えば物体認識では物体に対する神経表現の距離を最大化している、要は<strong>距離学習</strong>(metric learning)していると言えそう…だったり言えそうじゃなかったりします。ANNでは教師ラベルを仮定してCross entropy誤差を目的関数と置くのが基本(非生物的)ですが、最近は教師なしの距離学習も盛んです。あまりサーベイできていませんが、最近だと(<a href="https://arxiv.org/abs/1911.05722">K. He, et al., <em>arXiv</em>, 2019</a>)があります。少し違うのですが、1つの物を手に取って色々な角度から見れば、1つの物体としてラベル付けされた複数の画像が得られます。これを生かした距離学習もしているのでは、と自分の中では思っています。もう少しはっきりした例を挙げれば強化学習における<strong>報酬</strong>(reward)の最大化があるでしょう。これは結構明示的で、報酬という大域的目的関数のためのサブ目的関数が複数存在するように思います。また<strong>好奇心</strong>(curiosity)や<strong>驚き</strong>(surprise)による学習も存在します。これに関して、報酬、好奇心、驚きに基づいた学習を指す言葉として、それぞれ<strong>Reward-based learning, curiosity-driven learning, Surprise-based learning</strong>などがあります。</p>
+
+<p>解剖学・発生学的な観点で言えば回路の配線最適化問題も挙げられるでしょう。できるだけ配線長が短くなるように効率的なネットワークを構築することが目的となります。また、頭蓋骨という体積の制約の中で、可能な限り回路を大きくするという形態学的な面においても目的関数が存在するでしょう。</p>
+
+<p>少し計算論の方に話を逸らせば、<strong>予測符号化</strong>(predictive coding, <a href="https://www.nature.com/articles/nn0199_79">R.P. N. Rao &amp; D.H. Ballard<em>. Nat. Neurosci.</em> 1999</a>)では予測誤差の最小化、これをBayesの枠組みで拡張した(知覚においてBayes的考えを予測符号化ネットワークに乗っけたり行動も付けたりした)<strong>自由エネルギー原理</strong>(free energy principle, <a href="https://www.fil.ion.ucl.ac.uk/~karl/A%20free%20energy%20principle%20for%20the%20brain.pdf">K. Friston, et al., <em>Journal of Physiology.</em> 2006</a>)では自由エネルギーの最小化(あるいは変分下限(variational lower bound)の最大化、記述長(description length)の最小化)などを仮定しています。他のANNに関与しない研究もこうした目的関数を定義していることは多いです。</p>
+
+<p>脳は学習方法を学習できたりと様々なことができます。実際には目的関数が複数並列・分散しているのでしょう。では目的関数がどこに表現されていて、外部からどのように知ることができるか、という疑問が当然でます。前者は恐らくゲノム(適応的に目的関数を生み出している感じもありますが、大概は報酬の最大化だったり)、後者は経験的に知るしかないのでは、と思います(曖昧過ぎますが)。</p>
+
+<h2 id="脳では如何なる最適化手法が用いられているか">
+<a class="anchor" href="#%E8%84%B3%E3%81%A7%E3%81%AF%E5%A6%82%E4%BD%95%E3%81%AA%E3%82%8B%E6%9C%80%E9%81%A9%E5%8C%96%E6%89%8B%E6%B3%95%E3%81%8C%E7%94%A8%E3%81%84%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>脳では如何なる最適化手法が用いられているか</h2>
+<p>脳における学習は<strong>Hebb則</strong>や<strong>STDP(spike-timing dependent plasticity)則</strong>などが挙げられますが、これらは完全ではありません。上で議論されていた最適化は<strong>誤差逆伝搬法(back-prop)</strong>によるものです。この節では<strong>貢献度分配問題(credit assignment problem)</strong>を中心として脳における最適化について考えます。</p>
+
+<h3 id="貢献度分配問題-credit-assignment-problem">
+<a class="anchor" href="#%E8%B2%A2%E7%8C%AE%E5%BA%A6%E5%88%86%E9%85%8D%E5%95%8F%E9%A1%8C-credit-assignment-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>貢献度分配問題 (credit assignment problem)</h3>
+<p><strong>貢献度分配問題(credit assignment problem)</strong>はある出力を得るためにどのニューロンまたはシナプスに功罪(credit/blame)、要は貢献度を割り当てるかという問題です。ある出力について貢献度の高いニューロンの出力(発火率)は大きくなりますし、逆は小さくなります。</p>
+
+<h3 id="誤差逆伝搬法の近似">
+<a class="anchor" href="#%E8%AA%A4%E5%B7%AE%E9%80%86%E4%BC%9D%E6%90%AC%E6%B3%95%E3%81%AE%E8%BF%91%E4%BC%BC" aria-hidden="true"><span class="octicon octicon-link"></span></a>誤差逆伝搬法の近似</h3>
+<p>誤差逆伝搬法が生体内で用いられていないという批判は数多く、DNAの二重螺旋構造を発見したCrickも記事を書いています(<a href="https://www.nature.com/articles/337129a0">F. Crick. <em>Nature</em>. 1989</a>)。</p>
+
+<p>色々と問題点はあるのですが、逆伝搬の結合重みが順伝搬の結合重みの転置行列になっているという問題(<strong>weight transport problem</strong>)は、例えば逆伝搬時の重みをランダム行列にすることでも上手くいく(<a href="https://www.nature.com/articles/ncomms13276">T. Lillicrap, et al., <em>Nat. Commun.</em> 2016</a>)、という研究により緩和されています。この手法を<strong>Feedback alignment</strong>と言います。誤差逆伝搬法を緩和しようという試みは多数ありますが(他には<strong>Equilibrium Propagation</strong>(<a href="https://arxiv.org/abs/1602.05179">B. Scellier &amp; Y. Bengio. <em>Front. Comput. Neurosci.</em> 2017</a>)など)、とりあえず総説(J. <a href="https://www.sciencedirect.com/science/article/pii/S1364661319300129?via%3Dihub">Whittington &amp; R. Bogacz. <em>Trends. Cogn. Sci.</em> 2019</a>; <a href="https://www.sciencedirect.com/science/article/pii/S0959438818302009">T.P. Lillicrap &amp; A.Santoro. <em>Curr. Opin. Neurobiol.</em> 2019</a>)を参照してください。</p>
+
+<p>誤差逆伝搬法は現状ANNを訓練するのに最適ですが、それは層を縦断して貢献度分配問題を解決できるためです。以前は誤差逆伝搬法は全く生理学的ではないと切り捨てられてきましたが、緩和すれば全く不可能ではないかもしれません。また誤差逆伝搬法は無理でも、勾配法（に類する最適化）は使ってるんじゃないか、という意見もありますが決着はついていません(参考：<a href="https://treeverse.app/view/1hX6Xm0w">Kording先生のtweetに対するリプライ</a>)。また、誤差逆伝搬法に関係なく貢献度分配問題を解決する研究も出始めています(<a href="https://arxiv.org/abs/1911.00307">J. Aljadeff, et al., <em>arXiv.</em> 2019</a>)。</p>
+
+<p>よく<strong>生物学的妥当性(biological plausibility)</strong>や<strong>生理学的妥当性(physiological plausibility)</strong>という語を用いますが、ここでの生物学や生理学には「人類が既知の」という枕詞が付きます。生体内では発見されるまで人類が予想していなかった現象も多いので、否定はしきれないでしょう（かといって自分が完全肯定しているということでもないですが）。</p>
+
+<h3 id="進化による獲得">
+<a class="anchor" href="#%E9%80%B2%E5%8C%96%E3%81%AB%E3%82%88%E3%82%8B%E7%8D%B2%E5%BE%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>進化による獲得</h3>
+<p>ANNが脳と違う点として学習データを大量に必要とする、という指摘があります。確かに脳は少ないサンプルで物事を見分ける<strong>Few shot learning</strong>が可能です。しかし、脳の最適化は生まれてから起こっているのではなく、進化の過程においても最適化が起こっています。</p>
+
+<p>(<a href="https://www.nature.com/articles/s41467-019-11786-6">A. Zador. <em>Nat. Commun</em>. 2019</a>)ではヒトを含めた動物の行動は未知の優れた教師あり/教師なし学習によるのではなく、大部分がゲノムに符号化された神経回路によると主張しています。同時にゲノムにはあらゆることが記述できるわけではない(<strong>genomic bottleneck</strong>)ので、優れた汎用的な回路(いわゆる <strong>canonical microcircuit</strong>)が生まれたとしています。</p>
+
+<p>物体認識で考えれば、幼児であっても顔に対してはよく反応します。また、飼育員が顔を隠して育てたサルであってもヒトとサルの顔の識別はできます(<a href="https://www.pnas.org/content/105/1/394">Y. Sugita, <em>PNAS</em>. 2008</a>)。ただしこれについては経験がやっぱり大事だという主張もあります(<a href="https://www.nature.com/articles/nn.4635">M. J. Arcaro, et al., <em>Nat. Neurosci</em>. 2017</a>)。関連して、謎ですが、ANNにおいて顔認識ニューロンが未訓練でも自発的に生まれるという報告もあります (<a href="https://www.biorxiv.org/content/10.1101/857466v1">S. Baek, et al., <em>bioRxiv.</em> 2019</a>)。</p>
+
+<p>色々と議論はありますが、最適化において進化が占める割合はとても大きいです。しかし、ヒトに戻って考えてみると環境は常に変化しているにも関わらず何とか適応できています。このことを考えれば貢献度分配問題は進化による最適化だけでは説明できるとは言えなさそうです。</p>
+
+<h2 id="in-silicoからin-vivoへ">
+<a class="anchor" href="#in-silico%E3%81%8B%E3%82%89in-vivo%E3%81%B8" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>in silico</em>から<em>in vivo</em>へ</h2>
+<p>結局、ANNを用いた<em>in silicoの</em>研究で分かったことは『<strong>脳は目的関数を最適化している</strong>』ということです(個々の論文を読めばそれだけではないですが)。この結果を<em>in vivoの研究</em>に持っていくわけですが、解決すべき問題は『<strong>脳における貢献度分配問題を解決するような学習則は何か</strong>』ということです。</p>
+
+<p>かなり難しいと思いますが、研究が進めばいずれ解決できる問題だと自分は思っています。</p>
+
+
+  </div><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+<!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="Salad-bowl-of-knowledge/hp"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/hp/neuroscience/2019/12/06/understanding_brain_with_ann.html" hidden></a>
+</article>
+
+      </div>
+    </main><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<p class="pagetop"><a href="#wrap"></a></p>
+<script>
+$(document).ready(function() {
+    var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+            }
+        });
+        pagetop.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+    });
+});
+</script>
+
+<script>
+$(function(){
+  $('a[href*="#"]').on('click',function() {
+    var header = $('.site-header');
+    var add_move = header.height() + 30
+    var speed = 400;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top - add_move;
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
+</script>
+</body>
+
+</html>
