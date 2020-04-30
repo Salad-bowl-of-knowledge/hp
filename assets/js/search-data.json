@@ -357,7 +357,7 @@
   
       ,"page1": {
           "title": "神経科学",
-          "content": "神経表現の可視化 . グリッド細胞の発火パターンをPythonで可視化する | スパイクトリガー平均・共分散の計算法 (Python) | ネコLGN細胞のスパイクトリガー平均による受容野解析 | Sorted plotの注意点 | . 解剖・形態学 . NibabelとMayaviによるMR画像の可視化 | 脳が対側支配をする進化的な利点は何か | . 色覚 . RGBからXYZ, LMS色空間への変換 | CIELUV色相環をPythonで描画する | . 強化学習 . Distributional Reinforcement Learningの仕組み | . 計算神経科学 . 古典的モデル . FitzHugh-Nagumoモデルをアニメーションで見る | Hodgkin-Huxleyモデルをアニメーションで見る | 心臓刺激伝導系の数理モデルのPythonでのシミュレーション | . ニューラルネットワークと神経科学 . 予測符号化 (predictive coding) とは何か | 掛け算のニューラルネットワークとベイズ推定 | 『人工神経回路で脳を理解する』論文まとめ | ニューラルネットワークにおける意味発達の数学理論 | Spiking Neural UnitをChainerで実装してみた | 物体認識のためのRecurrent CNNまとめ | FORCE法によるRecurrent Spiking Neural Networksの教師あり学習 | 人工神経回路による脳の理解はどこまで進んだか | . Computational neuroscience (Coursera) . Computational neuroscience : Week0 | Computational neuroscience : Week1 | Computational neuroscience : Week2 | Computational neuroscience : Week3 | .",
+          "content": "Predictive coding入門 . Sparse coding (Olshausen &amp; Field, 1996) モデルの実装 | Predictive coding (Rao &amp; Ballard, 1999) モデルの実装 | . 神経表現の可視化 . グリッド細胞の発火パターンをPythonで可視化する | ネコLGN細胞のスパイクトリガー平均による受容野解析 | Sorted plotの注意点 | . 解剖・形態学 . NibabelとMayaviによるMR画像の可視化 | 脳が対側支配をする進化的な利点は何か | . 色覚 . CIELUV色相環をPythonで描画する | . 強化学習 . Distributional Reinforcement Learningの仕組み | . ニューラルネットワークと神経科学 . ニューラルネットワークにおける意味発達の数学理論 | 人工神経回路による脳の理解はどこまで進んだか | . Computational neuroscience (Coursera) . Computational neuroscience : Week0 | Computational neuroscience : Week1 | Computational neuroscience : Week2 | Computational neuroscience : Week3 | .",
           "url": "https://salad-bowl-of-knowledge.github.io/hp/neuroscience/",
           "relUrl": "/neuroscience/",
           "date": ""
