@@ -176,11 +176,10 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#画像のsparse-coding">画像のsparse coding </a></li>
 <li class="toc-entry toc-h2"><a href="#目的関数の設定">目的関数の設定 </a></li>
-<li class="toc-entry toc-h2"><a href="#係数の更新則">係数の更新則 </a>
+<li class="toc-entry toc-h2"><a href="#Locally-Competitive-Algorithm-(LCA)">Locally Competitive Algorithm (LCA) </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#共役勾配法を用いた更新則">共役勾配法を用いた更新則 </a></li>
-<li class="toc-entry toc-h3"><a href="#ISTAを用いた更新則">ISTAを用いた更新則 </a></li>
-<li class="toc-entry toc-h3"><a href="#Cauchy分布の閾値関数を用いた更新則">Cauchy分布の閾値関数を用いた更新則 </a></li>
+<li class="toc-entry toc-h3"><a href="#軟判定閾値関数を用いる場合-(ISTA)">軟判定閾値関数を用いる場合 (ISTA) </a></li>
+<li class="toc-entry toc-h3"><a href="#Cauchy分布の閾値関数を用いる場合">Cauchy分布の閾値関数を用いる場合 </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#重み行列の更新則">重み行列の更新則 </a></li>
@@ -325,19 +324,16 @@ $$<p>ただし、$\lambda$は正則化係数、$\sigma$は定数(scaling constan
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="係数の更新則">
-<a class="anchor" href="#%E4%BF%82%E6%95%B0%E3%81%AE%E6%9B%B4%E6%96%B0%E5%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>係数の更新則<a class="anchor-link" href="#%E4%BF%82%E6%95%B0%E3%81%AE%E6%9B%B4%E6%96%B0%E5%89%87"> </a>
+<h2 id="Locally-Competitive-Algorithm-(LCA)">
+<a class="anchor" href="#Locally-Competitive-Algorithm-(LCA)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Locally Competitive Algorithm (LCA)<a class="anchor-link" href="#Locally-Competitive-Algorithm-(LCA)"> </a>
 </h2>
-<h3 id="共役勾配法を用いた更新則">
-<a class="anchor" href="#%E5%85%B1%E5%BD%B9%E5%8B%BE%E9%85%8D%E6%B3%95%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>共役勾配法を用いた更新則<a class="anchor-link" href="#%E5%85%B1%E5%BD%B9%E5%8B%BE%E9%85%8D%E6%B3%95%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87"> </a>
-</h3>
 <p>$\boldsymbol{r}$の勾配法による更新則は、目的関数 $E$の微分により次のように得られます。</p>
 $$
 \begin{aligned}
 \frac{d \boldsymbol{r}}{dt} &amp;= -\frac{\eta_\boldsymbol{r}}{2}\frac{\partial E}{\partial \boldsymbol{r}}\\
 &amp;=\eta_\boldsymbol{r} \cdot\left[\Phi^T (\boldsymbol{I}-\Phi\boldsymbol{r})- \frac{\lambda}{2\sigma}S'\left(\frac{r_i}{\sigma}\right)\right]
 \end{aligned}\tag{3}
-$$<p>ただし、$\eta_{\boldsymbol{r}}$は学習率です。この式により$\boldsymbol{r}$が収束するまで最適化しますが、単なる勾配法ではなく、Olshausenらは<strong>共役勾配法</strong> (conjugate gradient method)を用いています。しかし、共役勾配法は実装が煩雑であり、かつ脳内では実現しにくいという点から、今回はよりシンプルな学習法として、<strong>閾値関数</strong> (thresholding function)と側抑制 (lateral inhibition)を用いる更新則、<strong>LCA</strong>  (locally competitive algorithm)を用います (<a href="https://www.ece.rice.edu/~eld1/papers/Rozell08.pdf">Rozell et al., <em>Neural Comput</em>. 2008</a>)。なお、LCAはHopfield networkで用いられているために、Olshausenは"the Hopfield trick"と呼んでいます。</p>
+$$<p>ただし、$\eta_{\boldsymbol{r}}$は学習率です。この式により$\boldsymbol{r}$が収束するまで最適化しますが、単なる勾配法ではなく、(Olshausen &amp; Field, 1996)では<strong>共役勾配法</strong> (conjugate gradient method)を用いています。しかし、共役勾配法は実装が煩雑で非効率であるため、より効率的かつ生理学的な妥当性の高い学習法として、<strong>LCA</strong>  (locally competitive algorithm)が提案されています (<a href="https://www.ece.rice.edu/~eld1/papers/Rozell08.pdf">Rozell et al., <em>Neural Comput</em>. 2008</a>)。LCAは<strong>側抑制</strong> (local competition, lateral inhibition)と<strong>閾値関数</strong> (thresholding function)を用いる更新則です。LCAによる更新を行うRNNは通常のRNNとは異なり、コスト関数(またはエネルギー関数)を最小化する動的システムです。このような機構はHopfield networkで用いられているために、Olshausenは"the Hopfield trick"と呼んでいます。</p>
 
 </div>
 </div>
@@ -345,8 +341,8 @@ $$<p>ただし、$\eta_{\boldsymbol{r}}$は学習率です。この式により$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="ISTAを用いた更新則">
-<a class="anchor" href="#ISTA%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>ISTAを用いた更新則<a class="anchor-link" href="#ISTA%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87"> </a>
+<h3 id="軟判定閾値関数を用いる場合-(ISTA)">
+<a class="anchor" href="#%E8%BB%9F%E5%88%A4%E5%AE%9A%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88-(ISTA)" aria-hidden="true"><span class="octicon octicon-link"></span></a>軟判定閾値関数を用いる場合 (ISTA)<a class="anchor-link" href="#%E8%BB%9F%E5%88%A4%E5%AE%9A%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88-(ISTA)"> </a>
 </h3>
 <p>$S(x)=|x|$とした場合の閾値関数を用いる手法として<strong>ISTA</strong>(Iterative Shrinkage Thresholding Algorithm)があります。ISTAはL1-norm正則化項に対する近接勾配法で、要はLasso回帰に用いる勾配法です。</p>
 <p>解くべき問題は(4)式で表されます。</p>
@@ -438,8 +434,8 @@ $$<p>となります。ここで、(7)式の最小値を与える$x$は場合分
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Cauchy分布の閾値関数を用いた更新則">
-<a class="anchor" href="#Cauchy%E5%88%86%E5%B8%83%E3%81%AE%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cauchy分布の閾値関数を用いた更新則<a class="anchor-link" href="#Cauchy%E5%88%86%E5%B8%83%E3%81%AE%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E6%9B%B4%E6%96%B0%E5%89%87"> </a>
+<h3 id="Cauchy分布の閾値関数を用いる場合">
+<a class="anchor" href="#Cauchy%E5%88%86%E5%B8%83%E3%81%AE%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cauchy分布の閾値関数を用いる場合<a class="anchor-link" href="#Cauchy%E5%88%86%E5%B8%83%E3%81%AE%E9%96%BE%E5%80%A4%E9%96%A2%E6%95%B0%E3%82%92%E7%94%A8%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88"> </a>
 </h3>
 <p>次に、$S(x)=\ln(1+x^2)$を用いた場合を考えます。これはCauchy分布を$\boldsymbol{r}$の事前分布 $p(\boldsymbol{r})=\prod_i p(r_i)=\prod_i \exp\left[-\alpha \ln(1+r_i^2)\right]$としたときの負の対数事前分布 $g(\boldsymbol{r}):=-\ln p(\boldsymbol{r})=\alpha \sum_i \ln(1+r_i^2)$に対応しています。</p>
 <p>前節と同様に次式で表される、1次元の目的関数$C$を最小にする$x$を求めます。</p>
@@ -1323,6 +1319,7 @@ iter: 500/500, Moving error: 0.04789606380023766
 <li>
 <a href="https://talks.stanford.edu/bruno-olshausen-sparse-coding-in-brains-and-machines/">Bruno Olshausen: “Sparse coding in brains and machines”(Stanford talks)</a>, <a href="http://www.rctn.org/bruno/public/Simons-sparse-coding.pdf">Slide</a>
 </li>
+<li><a href="https://redwood.berkeley.edu/wp-content/uploads/2018/08/sparse-coding-LCA.pdf">https://redwood.berkeley.edu/wp-content/uploads/2018/08/sparse-coding-LCA.pdf</a></li>
 </ul>
 <h3 id="ISTA">
 <a class="anchor" href="#ISTA" aria-hidden="true"><span class="octicon octicon-link"></span></a>ISTA<a class="anchor-link" href="#ISTA"> </a>
