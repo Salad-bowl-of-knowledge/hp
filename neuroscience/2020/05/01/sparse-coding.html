@@ -209,7 +209,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#論文">論文 </a></li>
 <li class="toc-entry toc-h3"><a href="#GitHubで確認した他の実装例">GitHubで確認した他の実装例 </a></li>
 <li class="toc-entry toc-h3"><a href="#Olshausen先生の講義">Olshausen先生の講義 </a></li>
-<li class="toc-entry toc-h3"><a href="#ISTA">ISTA </a></li>
+<li class="toc-entry toc-h3"><a href="#スパースモデリング">スパースモデリング </a></li>
 </ul>
 </li>
 </ul><!--
@@ -608,7 +608,7 @@ $$
 <h3 id="ネットワークの構造">
 <a class="anchor" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%A7%8B%E9%80%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>ネットワークの構造<a class="anchor-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E6%A7%8B%E9%80%A0"> </a>
 </h3>
-<p>入力層を含め2層の単純な構造です。入力はランダムに切り出した16×16 (＝256)の画像パッチとし、これを入力層の256個のニューロンが受け取るとします。入力層のニューロンは次層の100個のニューロンに投射します。100個のニューロンは入力をSparseに符号化するようにその活動および重み行列を最適化します。下図はネットワークの構造図です。ただし、$a_i$は本記事における$r_i$に対応します。</p>
+<p>入力層を含め2層の単純な構造です。今回は、入力はランダムに切り出した16×16 (＝256)の画像パッチとし、これを入力層の256個のニューロンが受け取るとします。入力層のニューロンは次層の100個のニューロンに投射するとします。100個のニューロンが入力をSparseに符号化するようにその活動および重み行列を最適化します。下図はネットワークの構造図です。ただし、$a_i$は本記事における$r_i$に対応します。</p>
 
 </div>
 </div>
@@ -659,7 +659,7 @@ $$
 <h3 id="画像データの読み込み">
 <a class="anchor" href="#%E7%94%BB%E5%83%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF" aria-hidden="true"><span class="octicon octicon-link"></span></a>画像データの読み込み<a class="anchor-link" href="#%E7%94%BB%E5%83%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"> </a>
 </h3>
-<p>描画などは『<a href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/04/25/predictive-coding.html">Predictive coding (Rao &amp; Ballard, 1999) モデルの実装</a>』を参照してください。</p>
+<p>データは<a href="http://www.rctn.org/bruno/sparsenet/">http://www.rctn.org/bruno/sparsenet/</a>からダウンロードできます。MATLABコードもダウンロードできますが、手元では動かすことができませんでした。<code>IMAGES.mat</code>には白色化された10枚の自然画像が記録されています。画像の描画などは『<a href="https://salad-bowl-of-knowledge.github.io/hp/neuroscience/2020/04/25/predictive-coding.html">Predictive coding (Rao &amp; Ballard, 1999) モデルの実装</a>』を参照してください。</p>
 
 </div>
 </div>
@@ -1321,8 +1321,8 @@ iter: 500/500, Moving error: 0.04789606380023766
 </li>
 <li><a href="https://redwood.berkeley.edu/wp-content/uploads/2018/08/sparse-coding-LCA.pdf">https://redwood.berkeley.edu/wp-content/uploads/2018/08/sparse-coding-LCA.pdf</a></li>
 </ul>
-<h3 id="ISTA">
-<a class="anchor" href="#ISTA" aria-hidden="true"><span class="octicon octicon-link"></span></a>ISTA<a class="anchor-link" href="#ISTA"> </a>
+<h3 id="スパースモデリング">
+<a class="anchor" href="#%E3%82%B9%E3%83%91%E3%83%BC%E3%82%B9%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>スパースモデリング<a class="anchor-link" href="#%E3%82%B9%E3%83%91%E3%83%BC%E3%82%B9%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0"> </a>
 </h3>
 <ul>
 <li><a href="http://www-adsys.sys.i.kyoto-u.ac.jp/mohzeki/Presentation/lecturenote20150909.pdf">今日からできるスパースモデリング</a></li>
