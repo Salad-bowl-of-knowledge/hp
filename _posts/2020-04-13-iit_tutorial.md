@@ -53,3 +53,9 @@ https://figshare.com/articles/phi_toolbox_zip/3203326/10
 https://bsd.neuroinf.jp/wiki/%E6%84%8F%E8%AD%98
 
 https://science.sciencemag.org/content/366/6463/293
+
+
+
+- IIT 3.0 Tutorial | Tsuchiya Lab
+https://www.youtube.com/watch?time_continue=2328&v=IflW_oaOJqg
+
