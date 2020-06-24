@@ -44,7 +44,13 @@ Abstractからではなく、著者の一人であるS. Ganguli氏の[twitter](h
 
 
 ### モデル
-モデルは3層の全結合線形ネットワークです。 $$ \hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {2} \boldsymbol{ W} ^ {1}\boldsymbol{x} $$ ただし非線形な活性化関数が無いので、普段使うニューラルネットワークではありません。これはニューラルネットワークを学ぶ人なら誰でも知っていると思いますが、 $ \boldsymbol{ W} ^ {s}={\bf W} ^ {2} \boldsymbol{ W} ^ {1}$として、 上のネットワークは
+モデルは3層の全結合線形ネットワークです。
+
+$$
+\hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {2} \boldsymbol{ W} ^ {1}\boldsymbol{x} 
+$$
+
+ただし非線形な活性化関数が無いので、普段使うニューラルネットワークではありません。これはニューラルネットワークを学ぶ人なら誰でも知っていると思いますが、 $ \boldsymbol{ W} ^ {s}={\bf W} ^ {2} \boldsymbol{ W} ^ {1}$として、 上のネットワークは
 
 $$
 \hat{\boldsymbol{y}} =  \boldsymbol{ W} ^ {s}\boldsymbol{x}
@@ -76,7 +82,7 @@ $$
 
 <div style="text-align: right;">(Saxe et al. 2019, Fig. 3A)</div>
 
-次の図は学習途中における$\hat{\boldsymbol{\Sigma}} ^ {yx}(t)=\boldsymbol{W} ^ 2 (t) \boldsymbol{W} ^ 1(t) \boldsymbol{\Sigma} ^ {x}$のSVDの結果です。$ \boldsymbol{ A}(t)$の要素$a_{\alpha}(t)$が特異値です。
+次の図は学習途中における$\hat{\boldsymbol{\Sigma}} ^ {yx}(t)=\boldsymbol{W} ^ 2 (t) \boldsymbol{W} ^ 1(t) \boldsymbol{\Sigma} ^ {x}$のSVDの結果です。$ \boldsymbol{ A}(t)$の要素 $a_{\alpha}(t)$が特異値です。
 
 ![003]({{ site.baseurl }}/images/posts/semantic_development_figs/003.png)
 
