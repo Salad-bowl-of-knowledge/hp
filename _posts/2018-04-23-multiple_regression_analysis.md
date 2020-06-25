@@ -10,24 +10,24 @@ title: 重回帰分析
 
 ## 重回帰モデル
 
-$n$個のデータ $(y_1,x_{11},\cdots,x_{1p}),\cdots(y_n,x_{n1},\cdots,x_{np})$ を線形モデル 
+$n$個のデータ $(y _ 1,x _ {11},\cdots,x _ {1p}),\cdots(y _ n,x _ {n1},\cdots,x _ {np})$ を線形モデル 
 
 $$
-y=\beta_0+\beta_1x_1+\cdots+\beta_px_p=\beta_0+\sum_{j=1}^p \beta_jx_j
+y=\beta _ 0+\beta _ 1x _ 1+\cdots+\beta _ px _ p=\beta _ 0+\sum _ {j=1}^p \beta _ jx _ j
 $$
 
-で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum_{i=1}^n\left[y_i-\left(\beta_0+\sum_{j=1}^p \beta_jx_{ij}\right)\right]^2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
+で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum _ {i=1}^n\left[y _ i-\left(\beta _ 0+\sum _ {j=1}^p \beta _ jx _ {ij}\right)\right]^2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
 
 $$
-\renewcommand{\arraystretch}{1.5} \boldsymbol{y}= \left[ \begin{array}{c} y_1\\ y_2\\ \vdots \\ y_n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x_{11}& x_{12} &\cdots
-& x_{1p} \\ 1& x_{21}& x_{22}&\cdots & x_{2p}\\ \vdots & \vdots& \vdots& & \vdots \\1 &x_{n1} & x_{n2} &\cdots & x_{np} \end{array} \right] ,\ \ \
-\boldsymbol{\beta}= \left[ \begin{array}{c} \beta_0\\ \beta_1\\ \vdots \\ \beta_p \end{array} \right]
+\renewcommand{\arraystretch}{1.5} \boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
+& x _ {1p} \\ 1& x _ {21}& x _ {22}&\cdots & x _ {2p}\\ \vdots & \vdots& \vdots& & \vdots \\1 &x _ {n1} & x _ {n2} &\cdots & x _ {np} \end{array} \right] ,\ \ \
+\boldsymbol{\beta}= \left[ \begin{array}{c} \beta _ 0\\ \beta _ 1\\ \vdots \\ \beta _ p \end{array} \right]
 $$
 
 とすると、重回帰モデルは 
 
 $$
-\boldsymbol{y}=X\boldsymbol{\beta}+\underbrace{\boldsymbol{\varepsilon}}_{誤差項}
+\boldsymbol{y}=X\boldsymbol{\beta}+\underbrace{\boldsymbol{\varepsilon}} _ {誤差項}
 $$
 
 と書けるので、最小二乗法により、 $$ \boldsymbol{\hat{y}}=X\boldsymbol{\hat{\beta}} $$ を推定します。
@@ -35,8 +35,8 @@ $$
 目的関数$S(\boldsymbol{\beta})$は 
 
 $$
-S(\boldsymbol{\beta})=\sum_{i=1}^n\left[y_i-\left(\beta_0+\sum_{j=1}^p
-\beta_jx_{ij}\right)\right]^2={\|\boldsymbol{y}-X\boldsymbol{\beta}\|}^2={\|X\boldsymbol{\beta}-\boldsymbol{y}\|}^2
+S(\boldsymbol{\beta})=\sum _ {i=1}^n\left[y _ i-\left(\beta _ 0+\sum _ {j=1}^p
+\beta _ jx _ {ij}\right)\right]^2={\|\boldsymbol{y}-X\boldsymbol{\beta}\|}^2={\|X\boldsymbol{\beta}-\boldsymbol{y}\|}^2
 $$
 
 となり、 $S(\boldsymbol{\beta})$を最小化する$\boldsymbol{\beta}$, つまり 
@@ -97,7 +97,7 @@ $$
 要は連立方程式を解いているわけなので、求める未知数の数が式の数よりも多いと解は求まりません。そんな場合あるの？と思うでしょうが、例えば遺伝子を取り扱う場合、遺伝子数（説明変数の数）が数千単位なのに被験者数（サンプルサイズ）が数十ということはよく起こります。
 
 #### 2. $n>p$ だとしても、ある説明変数の値が他の変数の線形結合で表現できる場合（多重共線性がある場合）
-例えば、降雨量を予想する際に$x_1$が摂氏、$x_2$が華氏となっている場合や家の価格を求めるときに$x_1$がメートルによる値、$x_2$がフィートによる値となっている場合、などが当てはまります。要は冗長な説明変数が入っている場合とも言えます。
+例えば、降雨量を予想する際に$x _ 1$が摂氏、$x _ 2$が華氏となっている場合や家の価格を求めるときに$x _ 1$がメートルによる値、$x _ 2$がフィートによる値となっている場合、などが当てはまります。要は冗長な説明変数が入っている場合とも言えます。
 
 ### 解決策
 #### 1. サンプルサイズを増やす
@@ -143,7 +143,7 @@ $$
 
 $$
 \begin{aligned}
-E[\boldsymbol{\hat\beta}]&=E[\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\boldsymbol{\varepsilon}]\\ &=\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\underbrace{E[\boldsymbol{\varepsilon}]}_{=0}\\
+E[\boldsymbol{\hat\beta}]&=E[\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\boldsymbol{\varepsilon}]\\ &=\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\underbrace{E[\boldsymbol{\varepsilon}]} _ {=0}\\
 &=\boldsymbol{\beta} 
 \end{aligned}
 $$
@@ -158,7 +158,7 @@ $$
 $$
 
 の誤差項 $\boldsymbol{\varepsilon}$は多変量正規分布 $\mathcal{N}(0, \sigma^2
-I_n)$に従うとします。ただし、$\sigma$は未知の定数、$I_n$は$n$次の単位行列です。分散共分散行列が$\sigma^2 I_n$となっている意味ですが、それぞれのサンプルにおける誤差は「独立だが同じ分布」から発生しているものと考えるためです。そのため、共分散は全て0になっています。
+I _ n)$に従うとします。ただし、$\sigma$は未知の定数、$I _ n$は$n$次の単位行列です。分散共分散行列が$\sigma^2 I _ n$となっている意味ですが、それぞれのサンプルにおける誤差は「独立だが同じ分布」から発生しているものと考えるためです。そのため、共分散は全て0になっています。
 
 係数の推定値の標準誤差を求めましょう。まずは係数の推定値の分散$\textrm{Var}[\boldsymbol{\hat\beta}]$を計算します。分散共分散行列の定義より、 
 
@@ -179,28 +179,28 @@ $$
 \textrm{Var}[\boldsymbol{\hat\beta}]&=E[({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})^T]\\
 &=E[({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})(\boldsymbol{\varepsilon}^TX{(X^TX)}^{-1})]\ \ \ (\because {(AB)}^T=B^TA^T)\\
 &={(X^TX)}^{-1}X^TE[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^T]X{(X^TX)}^{-1}\\
-&={(X^TX)}^{-1}X^T\sigma^2I_n X{(X^TX)}^{-1}\\ &=\sigma^2{(X^TX)}^{-1}X^TX{(X^TX)}^{-1}\\
+&={(X^TX)}^{-1}X^T\sigma^2I _ n X{(X^TX)}^{-1}\\ &=\sigma^2{(X^TX)}^{-1}X^TX{(X^TX)}^{-1}\\
 &=\color{red}{\sigma^2{(X^TX)}^{-1}} \end{align*}
 $$
 
 となります。
 
-さて、$\sigma^2$ですが、これは未知の定数です。なので、これの推定値を計算する必要があります。残差平方和 $S_e=\|\boldsymbol{y}-X\boldsymbol{\beta}\|$を計算し、 
+さて、$\sigma^2$ですが、これは未知の定数です。なので、これの推定値を計算する必要があります。残差平方和 $S _ e=\|\boldsymbol{y}-X\boldsymbol{\beta}\|$を計算し、 
 
 $$
-\color{red}{{\hat\sigma}^2=\frac{S_e}{n-p-1}} 
+\color{red}{{\hat\sigma}^2=\frac{S _ e}{n-p-1}} 
 $$
 
 とします。これより、 
 
 $$
-\textrm{Var}[\boldsymbol{\hat\beta}]\approx\frac{S_e}{n-p-1}{(X^TX)}^{-1} 
+\textrm{Var}[\boldsymbol{\hat\beta}]\approx\frac{S _ e}{n-p-1}{(X^TX)}^{-1} 
 $$
 
-となり、各係数$\hat\beta_j$について 
+となり、各係数$\hat\beta _ j$について 
 
 $$
-\textrm{Var}[\hat\beta_j]=(\textrm{Var}[\boldsymbol{\hat\beta}])_{jj} 
+\textrm{Var}[\hat\beta _ j]=(\textrm{Var}[\boldsymbol{\hat\beta}]) _ {jj} 
 $$
 
 が成り立つので、標準誤差 $\textrm{SE}(\boldsymbol{\hat\beta})$は 
@@ -215,10 +215,10 @@ $$
 t値は回帰係数がゼロと差があるかを検定するための統計量です。$t$値は 
 
 $$
-T(\hat\beta_j)=\frac{\hat\beta_j}{\textrm{SE}(\hat\beta_j)} 
+T(\hat\beta _ j)=\frac{\hat\beta _ j}{\textrm{SE}(\hat\beta _ j)} 
 $$
 
-と定義されます。アダマール除算(要素ごとの割り算; $A\oslash B:=[A_{ij}/B_{ij}]$)を用いて表記すると、 
+と定義されます。アダマール除算(要素ごとの割り算; $A\oslash B:=[A _ {ij}/B _ {ij}]$)を用いて表記すると、 
 
 $$
 T(\boldsymbol{\hat\beta})=\boldsymbol{\hat\beta}\oslash\textrm{SE}(\boldsymbol{\hat\beta})
