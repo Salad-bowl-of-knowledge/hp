@@ -122,7 +122,7 @@ $$
 E[\hat \theta]=\theta 
 $$
 
-が成り立つことです。なので、今回は$\color{red}{E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta}}$を示せば目標達成できます。
+が成り立つことです。なので、今回は $E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta}$を示せば目標達成できます。
 
 それではこれを示してみましょう。重回帰モデルは 
 
