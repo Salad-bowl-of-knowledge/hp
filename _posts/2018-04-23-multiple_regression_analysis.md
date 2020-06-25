@@ -19,7 +19,7 @@ $$
 で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum _ {i=1} ^ n\left[y _ i-\left(\beta _ 0+\sum _ {j=1} ^ p \beta _ jx _ {ij}\right)\right] ^ 2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
 
 $$
-\renewcommand{\arraystretch}{1.5} \boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
+\boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
 & x _ {1p} \\ 1& x _ {21}& x _ {22}&\cdots & x _ {2p}\\ \vdots & \vdots& \vdots& & \vdots \\1 &x _ {n1} & x _ {n2} &\cdots & x _ {np} \end{array} \right] ,\ \ \
 \boldsymbol{\beta}= \left[ \begin{array}{c} \beta _ 0\\ \beta _ 1\\ \vdots \\ \beta _ p \end{array} \right]
 $$
@@ -168,19 +168,19 @@ $$
 
 となります。ここで、
 $$
-\begin{align*} \boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]&={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}-\boldsymbol{\beta}\ \ \ (\because\ E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta})\\
-&={(X ^ TX)} ^ {-1}X ^ T(X \boldsymbol{\beta}+\boldsymbol{\varepsilon})-\boldsymbol{\beta}\\ &={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon} \end{align*}
+\begin{aligned} \boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]&={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}-\boldsymbol{\beta}\ \ \ (\because\ E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta})\\
+&={(X ^ TX)} ^ {-1}X ^ T(X \boldsymbol{\beta}+\boldsymbol{\varepsilon})-\boldsymbol{\beta}\\ &={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon} \end{aligned}
 $$
 
 が成り立つので、 
 
 $$
-\begin{align*}
+\begin{aligned}
 \textrm{Var}[\boldsymbol{\hat\beta}]&=E[({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon})({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon}) ^ T]\\
 &=E[({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon})(\boldsymbol{\varepsilon} ^ TX{(X ^ TX)} ^ {-1})]\ \ \ (\because {(AB)} ^ T=B ^ TA ^ T)\\
 &={(X ^ TX)} ^ {-1}X ^ TE[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon} ^ T]X{(X ^ TX)} ^ {-1}\\
 &={(X ^ TX)} ^ {-1}X ^ T\sigma ^ 2I _ n X{(X ^ TX)} ^ {-1}\\ &=\sigma ^ 2{(X ^ TX)} ^ {-1}X ^ TX{(X ^ TX)} ^ {-1}\\
-&=\sigma ^ 2{(X ^ TX)} ^ {-1} \end{align*}
+&=\sigma ^ 2{(X ^ TX)} ^ {-1} \end{aligned}
 $$
 
 となります。
