@@ -19,8 +19,8 @@ $$
 で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum _ {i=1} ^ n\left[y _ i-\left(\beta _ 0+\sum _ {j=1} ^ p \beta _ jx _ {ij}\right)\right] ^ 2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
 
 $$
-\boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
-& x _ {1p} \\ 1& x _ {21}& x _ {22}&\cdots & x _ {2p}\\ \vdots & \vdots& \vdots& & \vdots \\1 &x _ {n1} & x _ {n2} &\cdots & x _ {np} \end{array} \right] ,\ \ \
+\boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right],\quad X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
+& x _ {1p} \\ 1& x _ {21}& x _ {22}&\cdots & x _ {2p}\\ \vdots & \vdots& \vdots& & \vdots \\1 &x _ {n1} & x _ {n2} &\cdots & x _ {np} \end{array} \right],\quad
 \boldsymbol{\beta}= \left[ \begin{array}{c} \beta _ 0\\ \beta _ 1\\ \vdots \\ \beta _ p \end{array} \right]
 $$
 
