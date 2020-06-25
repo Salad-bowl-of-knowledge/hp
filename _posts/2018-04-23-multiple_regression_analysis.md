@@ -10,13 +10,13 @@ title: 重回帰分析
 
 ## 重回帰モデル
 
-$n$個のデータ $(y _ 1,x _ {11},\cdots,x _ {1p}),\cdots(y _ n,x _ {n1},\cdots,x _ {np})$ を線形モデル 
+$n$個のデータ $(y _ 1,x _ {11}, \cdots, x _ {1p}),\cdots (y _ n,x _ {n1},\cdots,x _ {np})$ を線形モデル 
 
 $$
-y=\beta _ 0+\beta _ 1x _ 1+\cdots+\beta _ px _ p=\beta _ 0+\sum _ {j=1}^p \beta _ jx _ j
+y=\beta _ 0+\beta _ 1x _ 1+\cdots+\beta _ px _ p=\beta _ 0+\sum _ {j=1} ^ p \beta _ jx _ j
 $$
 
-で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum _ {i=1}^n\left[y _ i-\left(\beta _ 0+\sum _ {j=1}^p \beta _ jx _ {ij}\right)\right]^2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
+で説明することを考えます。これは単回帰において説明変数を1つから $p$ 個に増やしたものです。最小二乗法の考え方に基づき、 $\displaystyle\sum _ {i=1} ^ n\left[y _ i-\left(\beta _ 0+\sum _ {j=1} ^ p \beta _ jx _ {ij}\right)\right] ^ 2$ を最小化することを目標とするわけですが、データをまとめて扱うために行列とベクトルで表記することを考えましょう。 ここで、 
 
 $$
 \renewcommand{\arraystretch}{1.5} \boldsymbol{y}= \left[ \begin{array}{c} y _ 1\\ y _ 2\\ \vdots \\ y _ n \end{array} \right] ,\ \ \ X=\left[ \begin{array}{ccccc} 1 & x _ {11}& x _ {12} &\cdots
@@ -35,8 +35,8 @@ $$
 目的関数$S(\boldsymbol{\beta})$は 
 
 $$
-S(\boldsymbol{\beta})=\sum _ {i=1}^n\left[y _ i-\left(\beta _ 0+\sum _ {j=1}^p
-\beta _ jx _ {ij}\right)\right]^2={\|\boldsymbol{y}-X\boldsymbol{\beta}\|}^2={\|X\boldsymbol{\beta}-\boldsymbol{y}\|}^2
+S(\boldsymbol{\beta})=\sum _ {i=1} ^ n\left[y _ i-\left(\beta _ 0+\sum _ {j=1} ^ p
+\beta _ jx _ {ij}\right)\right] ^ 2={\|\boldsymbol{y}-X\boldsymbol{\beta}\|} ^ 2={\|X\boldsymbol{\beta}-\boldsymbol{y}\|} ^ 2
 $$
 
 となり、 $S(\boldsymbol{\beta})$を最小化する$\boldsymbol{\beta}$, つまり 
@@ -52,13 +52,13 @@ $$
 さて、最小二乗法により最適な解を求めたいわけですが、条件に基づいて目的関数$S(\boldsymbol{\beta})$を微分すると次のような方程式が得られます。 
 
 $$
-X^TX\boldsymbol{\hat\beta}=X^T\boldsymbol{y}
+X ^ TX\boldsymbol{\hat\beta}=X ^ T\boldsymbol{y}
 $$
 
 これを**正規方程式**と言います。正規方程式の導出については[こちら]([https://omedstu.jimdofree.com/2018/04/21/%E6%AD%A3%E8%A6%8F%E6%96%B9%E7%A8%8B%E5%BC%8F/](https://omedstu.jimdofree.com/2018/04/21/正規方程式/))をお読みください。この正規方程式より、係数の推定値は
 
 $$
-\color{red}{\boldsymbol{\hat\beta}={(X^TX)}^{-1}X^T\boldsymbol{y}}
+\boldsymbol{\hat\beta}={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}
 $$
 
 という式で得られます。
@@ -70,28 +70,28 @@ $$
 \boldsymbol{y}=X\boldsymbol{\beta} 
 $$
 
-これは得られたデータが誤差なく完全に直線（平面）上にある場合のみ解が存在します。しかし、実際にはそのようなデータはなく、必ず誤差を含むので、この方程式の解は存在しません。ところで、この方程式に左から$X^{T}$をかけると、
+これは得られたデータが誤差なく完全に直線（平面）上にある場合のみ解が存在します。しかし、実際にはそのようなデータはなく、必ず誤差を含むので、この方程式の解は存在しません。ところで、この方程式に左から$X ^ {T}$をかけると、
 
 $$
-X^T\boldsymbol{y}=X^TX\boldsymbol{\beta} 
+X ^ T\boldsymbol{y}=X ^ TX\boldsymbol{\beta} 
 $$
 
 つまり、 
 
 $$
-X^TX\boldsymbol{\hat\beta}=X^T\boldsymbol{y} 
+X ^ TX\boldsymbol{\hat\beta}=X ^ T\boldsymbol{y} 
 $$
 
-となり、これは正規方程式です。なので、「正規方程式は$\boldsymbol{y}=X\boldsymbol{\beta}$の左から$X^{T}$をかける」と覚えると良いでしょう。
+となり、これは正規方程式です。なので、「正規方程式は$\boldsymbol{y}=X\boldsymbol{\beta}$の左から$X ^ {T}$をかける」と覚えると良いでしょう。
 
 ### 正規方程式で解が求められない場合
 正規方程式 
 
 $$
-X^TX\boldsymbol{\hat\beta}=X^T\boldsymbol{y} 
+X ^ TX\boldsymbol{\hat\beta}=X ^ T\boldsymbol{y} 
 $$
 
-の解を求めるには${(X^TX)}^{-1}$が計算できなくてはなりません。そのためには$X^TX$が正則であることが条件です。大概が正則になりますが、データによっては正則にならない場合 (線形代数の言葉で「rank落ち」する場合)も存在します。その原因として次の2つが挙げられます。
+の解を求めるには${(X ^ TX)} ^ {-1}$が計算できなくてはなりません。そのためには$X ^ TX$が正則であることが条件です。大概が正則になりますが、データによっては正則にならない場合 (線形代数の言葉で「rank落ち」する場合)も存在します。その原因として次の2つが挙げられます。
 
 #### 1. 説明変数の数 $p$ がサンプルサイズ $n$よりも多いとき ($n<p$)
 要は連立方程式を解いているわけなので、求める未知数の数が式の数よりも多いと解は求まりません。そんな場合あるの？と思うでしょうが、例えば遺伝子を取り扱う場合、遺伝子数（説明変数の数）が数千単位なのに被験者数（サンプルサイズ）が数十ということはよく起こります。
@@ -112,7 +112,7 @@ $$
 
 ## 係数の最小二乗推定値は不偏推定量か
 $$
-\boldsymbol{\hat\beta}={(X^TX)}^{-1}X^T\boldsymbol{y} 
+\boldsymbol{\hat\beta}={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y} 
 $$
 によって推定した値ですが、これは不偏推定量になっているのでしょうか。答えから言えば誤差項について、$E[\boldsymbol{\varepsilon}]=0$が成り立っていれば、これは不偏推定量になります。
 
@@ -134,8 +134,8 @@ $$
 
 $$
 \begin{aligned}
-\boldsymbol{\hat\beta}&={(X^TX)}^{-1}X^T\boldsymbol{y}\\
-&={(X^TX)}^{-1}X^T(X\boldsymbol{\beta}+\boldsymbol{\varepsilon})\\ &=\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\boldsymbol{\varepsilon} 
+\boldsymbol{\hat\beta}&={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}\\
+&={(X ^ TX)} ^ {-1}X ^ T(X\boldsymbol{\beta}+\boldsymbol{\varepsilon})\\ &=\boldsymbol{\beta}+{(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon} 
 \end{aligned}
 $$
 
@@ -143,7 +143,7 @@ $$
 
 $$
 \begin{aligned}
-E[\boldsymbol{\hat\beta}]&=E[\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\boldsymbol{\varepsilon}]\\ &=\boldsymbol{\beta}+{(X^TX)}^{-1}X^T\underbrace{E[\boldsymbol{\varepsilon}]} _ {=0}\\
+E[\boldsymbol{\hat\beta}]&=E[\boldsymbol{\beta}+{(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon}]\\ &=\boldsymbol{\beta}+{(X ^ TX)} ^ {-1}X ^ T\underbrace{E[\boldsymbol{\varepsilon}]} _ {=0}\\
 &=\boldsymbol{\beta} 
 \end{aligned}
 $$
@@ -157,44 +157,44 @@ $$
 \boldsymbol{y}=X \boldsymbol{\beta}+\boldsymbol{\varepsilon} 
 $$
 
-の誤差項 $\boldsymbol{\varepsilon}$は多変量正規分布 $\mathcal{N}(0, \sigma^2
-I _ n)$に従うとします。ただし、$\sigma$は未知の定数、$I _ n$は$n$次の単位行列です。分散共分散行列が$\sigma^2 I _ n$となっている意味ですが、それぞれのサンプルにおける誤差は「独立だが同じ分布」から発生しているものと考えるためです。そのため、共分散は全て0になっています。
+の誤差項 $\boldsymbol{\varepsilon}$は多変量正規分布 $\mathcal{N}(0, \sigma ^ 2
+I _ n)$に従うとします。ただし、$\sigma$は未知の定数、$I _ n$は$n$次の単位行列です。分散共分散行列が$\sigma ^ 2 I _ n$となっている意味ですが、それぞれのサンプルにおける誤差は「独立だが同じ分布」から発生しているものと考えるためです。そのため、共分散は全て0になっています。
 
 係数の推定値の標準誤差を求めましょう。まずは係数の推定値の分散$\textrm{Var}[\boldsymbol{\hat\beta}]$を計算します。分散共分散行列の定義より、 
 
 $$
-\textrm{Var}[\boldsymbol{\hat\beta}]=E\left[\left(\boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]\right)\left(\boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]\right)^{T}\right] 
+\textrm{Var}[\boldsymbol{\hat\beta}]=E\left[\left(\boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]\right)\left(\boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]\right) ^ {T}\right] 
 $$
 
 となります。ここで、
 $$
-\begin{align*} \boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]&={(X^TX)}^{-1}X^T\boldsymbol{y}-\boldsymbol{\beta}\ \ \ (\because\ E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta})\\
-&={(X^TX)}^{-1}X^T(X \boldsymbol{\beta}+\boldsymbol{\varepsilon})-\boldsymbol{\beta}\\ &={(X^TX)}^{-1}X^T\boldsymbol{\varepsilon} \end{align*}
+\begin{align*} \boldsymbol{\hat\beta}-E[\boldsymbol{\hat\beta}]&={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}-\boldsymbol{\beta}\ \ \ (\because\ E[\boldsymbol{\hat\beta}]=\boldsymbol{\beta})\\
+&={(X ^ TX)} ^ {-1}X ^ T(X \boldsymbol{\beta}+\boldsymbol{\varepsilon})-\boldsymbol{\beta}\\ &={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon} \end{align*}
 $$
 
 が成り立つので、 
 
 $$
 \begin{align*}
-\textrm{Var}[\boldsymbol{\hat\beta}]&=E[({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})^T]\\
-&=E[({(X^TX)}^{-1}X^T\boldsymbol{\varepsilon})(\boldsymbol{\varepsilon}^TX{(X^TX)}^{-1})]\ \ \ (\because {(AB)}^T=B^TA^T)\\
-&={(X^TX)}^{-1}X^TE[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^T]X{(X^TX)}^{-1}\\
-&={(X^TX)}^{-1}X^T\sigma^2I _ n X{(X^TX)}^{-1}\\ &=\sigma^2{(X^TX)}^{-1}X^TX{(X^TX)}^{-1}\\
-&=\color{red}{\sigma^2{(X^TX)}^{-1}} \end{align*}
+\textrm{Var}[\boldsymbol{\hat\beta}]&=E[({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon})({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon}) ^ T]\\
+&=E[({(X ^ TX)} ^ {-1}X ^ T\boldsymbol{\varepsilon})(\boldsymbol{\varepsilon} ^ TX{(X ^ TX)} ^ {-1})]\ \ \ (\because {(AB)} ^ T=B ^ TA ^ T)\\
+&={(X ^ TX)} ^ {-1}X ^ TE[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon} ^ T]X{(X ^ TX)} ^ {-1}\\
+&={(X ^ TX)} ^ {-1}X ^ T\sigma ^ 2I _ n X{(X ^ TX)} ^ {-1}\\ &=\sigma ^ 2{(X ^ TX)} ^ {-1}X ^ TX{(X ^ TX)} ^ {-1}\\
+&=\sigma ^ 2{(X ^ TX)} ^ {-1} \end{align*}
 $$
 
 となります。
 
-さて、$\sigma^2$ですが、これは未知の定数です。なので、これの推定値を計算する必要があります。残差平方和 $S _ e=\|\boldsymbol{y}-X\boldsymbol{\beta}\|$を計算し、 
+さて、$\sigma ^ 2$ですが、これは未知の定数です。なので、これの推定値を計算する必要があります。残差平方和 $S _ e=\|\boldsymbol{y}-X\boldsymbol{\beta}\|$を計算し、 
 
 $$
-\color{red}{{\hat\sigma}^2=\frac{S _ e}{n-p-1}} 
+{\hat\sigma} ^ 2=\frac{S _ e}{n-p-1}
 $$
 
 とします。これより、 
 
 $$
-\textrm{Var}[\boldsymbol{\hat\beta}]\approx\frac{S _ e}{n-p-1}{(X^TX)}^{-1} 
+\textrm{Var}[\boldsymbol{\hat\beta}]\approx\frac{S _ e}{n-p-1}{(X ^ TX)} ^ {-1} 
 $$
 
 となり、各係数$\hat\beta _ j$について 
@@ -206,7 +206,7 @@ $$
 が成り立つので、標準誤差 $\textrm{SE}(\boldsymbol{\hat\beta})$は 
 
 $$
-\color{red}{\textrm{SE}(\boldsymbol{\hat\beta})=\left(\textrm{diag}\left[\textrm{Var}[\boldsymbol{\hat\beta}]\right]\right)^{\frac{1}{2}}}
+\textrm{SE}(\boldsymbol{\hat\beta})=\left(\textrm{diag}\left[\textrm{Var}[\boldsymbol{\hat\beta}]\right]\right) ^ {\frac{1}{2}}
 $$
 
 と表せます。
