@@ -16,6 +16,7 @@ title: 正規方程式
 ---
 
 **定理**
+
 $X$を行列、$\boldsymbol{\beta}, \boldsymbol{y}$を縦ベクトルとし、$\|\cdot\|$をノルムとする。また$X ^ T$を$X$の転置行列とする。$X ^ TX$が正則なとき, $S(\boldsymbol{\beta})=\|X\boldsymbol{\beta}-\boldsymbol{y}\| ^ 2$つまり$\|X\boldsymbol{\beta}-\boldsymbol{y}\|$を最小にする$\boldsymbol{\beta}$はただ1つ存在し、それは、正規方程式：
 
 $$
@@ -73,9 +74,8 @@ $$
 が得られます。$X ^ TX$が正則なとき、$\boldsymbol{\beta}=(X ^ TX) ^ {-1}X ^ T\boldsymbol{y}$ が唯一の解であり、この $\boldsymbol{\beta}$ が目的関数の最小値を与えます。
 
 ### 補足2 :
-$\mathbb{R} ^ n$のベクトル $\boldsymbol{a}=  \left[ \begin{array}{c} a _ 1 \\ \vdots \\ a _ n \end{array} \right], \ \boldsymbol{b}= \left[ \begin{array}{c} b _ 1 \\ \vdots \\ b _ n
+$\mathbb{R} ^ n$のベクトル $\displaystyle \boldsymbol{a}=  \left[ \begin{array}{c} a _ 1 \\ \vdots \\ a _ n \end{array} \right], \ \boldsymbol{b}= \left[ \begin{array}{c} b _ 1 \\ \vdots \\ b _ n
 \end{array} \right] $に対して 
-
 $$
 \langle \boldsymbol{a}, \boldsymbol{b}\rangle=\boldsymbol{a} ^ T\boldsymbol{b}=a _ 1b _ 1+\cdots+a _ nb _ n
 $$
@@ -141,6 +141,7 @@ $$
 が成り立ちます。
 
 また、線形関数 
+
 $$
 \begin{aligned} 
 \boldsymbol{\beta} ^ TX ^ T\boldsymbol{y}&=\langle X\boldsymbol{\beta}, \boldsymbol{y}\rangle\\
@@ -185,6 +186,7 @@ L2正則化(ridge)をかけた場合の目的関数$S _ \lambda(\boldsymbol{\bet
 $$
 S _ \lambda(\boldsymbol{\beta})=\frac{1}{n}\|\boldsymbol{y}-X\boldsymbol{\beta}\| ^ 2+\lambda\|\boldsymbol{\beta}\| ^ 2 
 $$
+
 となります。
 
 第1項は正則化が無い場合と同じなので、第2項について考えます。 $\|\boldsymbol{\beta}\| ^ 2$を$\beta _ k$で偏微分すると、 
@@ -202,6 +204,7 @@ $$
 $$
 \frac{\partial \|\boldsymbol{\beta}\| ^ 2}{\partial \boldsymbol{\beta}}=2\boldsymbol{\beta} 
 $$
+
 となります。
 
 第1項と合わせると、目的関数 $S _ \lambda(\boldsymbol{\beta})$を最小化する条件は 
