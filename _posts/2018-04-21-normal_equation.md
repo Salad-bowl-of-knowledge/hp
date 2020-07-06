@@ -74,8 +74,7 @@ $$
 が得られます。$X ^ TX$が正則なとき、$\boldsymbol{\beta}=(X ^ TX) ^ {-1}X ^ T\boldsymbol{y}$ が唯一の解であり、この $\boldsymbol{\beta}$ が目的関数の最小値を与えます。
 
 ### 補足2 :
-$\mathbb{R} ^ n$のベクトル $\displaystyle \boldsymbol{a}=  \left[ \begin{array}{c} a _ 1 \\ \vdots \\ a _ n \end{array} \right], \ \boldsymbol{b}= \left[ \begin{array}{c} b _ 1 \\ \vdots \\ b _ n
-\end{array} \right] $に対して 
+$\mathbb{R} ^ n$のベクトル $\displaystyle \boldsymbol{a}=  \left[a _ 1 \cdots \ a _ n \right]^T, \ \boldsymbol{b}= \left[b _ 1  \cdots  b _ n\right]^T $に対して 
 $$
 \langle \boldsymbol{a}, \boldsymbol{b}\rangle=\boldsymbol{a} ^ T\boldsymbol{b}=a _ 1b _ 1+\cdots+a _ nb _ n
 $$
@@ -105,7 +104,7 @@ $$
 
 などと表記されます。ただし縦ベクトルか横ベクトルかは$\boldsymbol{x}$次第です。
 
-対称行列$X'(=X ^ TX)$(→補足5)に関する二次形式 
+対称行列$X' (=X ^ TX)$(→補足5)に関する二次形式 
 
 $$
 \boldsymbol{\beta} ^ TX'\boldsymbol{\beta}=\sum _ {i=1} ^ n\sum _ {j=1} ^ nx' _ {ij}\beta _ i\beta _ j\ \ \ \left(X':=\left[x' _ {ij}\right] _ {n\times n}\right)
