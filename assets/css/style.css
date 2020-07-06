@@ -621,4 +621,9 @@ code { padding: 2px 4px; font-size: 90%; color: #252525; background-color: rgba(
   .sidemenu-contents li a:hover:not(.active) { background-color: #eeeeee; }
   .sidemenu-subcontents { border-top: solid 3px #ccc; } }
 
+/*Table*/
+table td { max-width: 100em !important; }
+
+table { font-size: 100% !important; }
+
 /*# sourceMappingURL=style.css.map */
