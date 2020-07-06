@@ -55,7 +55,7 @@ $$
 X ^ TX\boldsymbol{\hat\beta}=X ^ T\boldsymbol{y}
 $$
 
-これを**正規方程式**と言います。正規方程式の導出については別記事の[『正規方程式』]([https://salad-bowl-of-knowledge.github.io/hp/statistics/2018/04/21/normal_equation.html) をお読みください。この正規方程式より、係数の推定値は
+これを**正規方程式**と言います。正規方程式の導出については別記事の[『正規方程式』](https://salad-bowl-of-knowledge.github.io/hp/statistics/2018/04/21/normal_equation.html) をお読みください。この正規方程式より、係数の推定値は
 
 $$
 \boldsymbol{\hat\beta}={(X ^ TX)} ^ {-1}X ^ T\boldsymbol{y}
