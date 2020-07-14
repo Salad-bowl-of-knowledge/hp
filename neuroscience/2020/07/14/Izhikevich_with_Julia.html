@@ -198,10 +198,18 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Juliaで<a href="https://www.izhikevich.org/publications/spikes.htm">Izhikevichモデル</a>の実装をする。JuliaによるSNNの実装は<a href="https://github.com/AStupidBear/SpikingNeuralNetworks.jl">SpikingNeuralNetworks.jl</a>が既にある。この記事の実装ではJuliaの書き方を勉強すべく大幅に参考にした。以下はJulia 1.4.0で実行。ブログでは何故かJuliaのSyntax highlightがされてない。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="モデルの定義">
 <a class="anchor" href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9" aria-hidden="true"><span class="octicon octicon-link"></span></a>モデルの定義<a class="anchor-link" href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%AE%9A%E7%BE%A9"> </a>
 </h2>
-<p>まず必要なパッケージを読み込む。<code>Parameters.jl</code>は<code>struct</code>のデフォルト値の設定のために必要。<code>struct</code>の前に<code>@with_kw</code>というmacroを書くことで<code>struct</code>をデコレートできる。この辺、デフォルトの機能であってもいいと思いましたが。</p>
+<p>まず必要なパッケージを読み込む。<a href="https://github.com/mauro3/Parameters.jl">Parameters.jl</a>は<code>struct</code>のデフォルト値の設定のために必要。<code>struct</code>の前に<code>@with_kw</code>というmacroを書くことで<code>struct</code>をデコレートできる。この辺、デフォルトの機能であってもいいと思いましたが。</p>
 
 </div>
 </div>
