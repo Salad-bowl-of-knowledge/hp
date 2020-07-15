@@ -9689,9 +9689,18 @@ M279.415 1425.62 L2352.76 1425.62 L2352.76 1060.04 L279.415 1060.04  Z
 </h2>
 <p>SNN本では書かなかったが、HH modelをSNNに使用することは見直されているらしい。要はif文が入らないから安定するとのこと。</p>
 <blockquote>
-<p>Valadez-Godínez S, Sossa H, Santiago-Montero R. <a href="(https://www.sciencedirect.com/science/article/abs/pii/S0893608019303065">On the accuracy and computational cost of spiking neuron implementation</a>). Neural Netw. 2020;122:196-217.
-上記の論文では次のように書かれている。
-we found that 1) HH model (without using tables) is the most accurate, computationally inexpensive, and efficient, 2) IZH model is the most expensive and inefficient, 3) both LIF and HHT models are the most inaccurate, 4) HHT model is more expensive and inaccurate than HH model due to α’s and β’s table discretization, and 5) HHT model is not comparable in computational cost to IZH model.</p>
+<p>Valadez-Godínez S, Sossa H, Santiago-Montero R. <a href="(https://www.sciencedirect.com/science/article/abs/pii/S0893608019303065">On the accuracy and computational cost of spiking neuron implementation</a>). Neural Netw. 2020;122:196-217.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>上記の論文では次のように書かれている。</p>
+<blockquote>
+<p>we found that 1) HH model (without using tables) is the most accurate, computationally inexpensive, and efficient, 2) IZH model is the most expensive and inefficient, 3) both LIF and HHT models are the most inaccurate, 4) HHT model is more expensive and inaccurate than HH model due to α’s and β’s table discretization, and 5) HHT model is not comparable in computational cost to IZH model.</p>
 </blockquote>
 <p>論文読んでもHH modelがcomputationally inexpensiveとは思えなかったが。とりあえず、有名な(Izhikevich, 2004)の次の図のような「HH modelは使うな！Izhikevich model 最高！」は見直すべきという主張のようだ。</p>
 <blockquote>
